@@ -17,7 +17,7 @@ function reducer(state = initialState, action) {
 	}
 }
 
-export function setArchetypes() {
+export function setUser() {
 	return {
 		type: SET_USER,
 		payload: axios.get('/api/user').then((response) => {

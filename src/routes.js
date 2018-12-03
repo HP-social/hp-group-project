@@ -29,5 +29,14 @@ export default (
 		<Route path='/mentions' component={Mentions} />
 		<Route path='/follows' component={Follows} />
 		<Route path='/bookmarks' component={Bookmarks} />
+		<Route
+			path='*'
+			render={() => (
+				<img
+					src='https://cdn-images-1.medium.com/max/1600/1*qdFdhbR00beEaIKDI_WDCw.gif'
+					alt='whooopies'
+				/>
+			)}
+		/>
 	</Switch>
 );

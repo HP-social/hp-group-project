@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setUser } from '../../../ducks/reducer';
+import { setUser } from '../../ducks/reducer';
 
 class Profile extends Component {
 	constructor() {

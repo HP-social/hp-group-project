@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import store from './redux/store';
+import store from './ducks/store';
 import { BrowserRouter } from 'react-router-dom';
 import routes from './routes';
 import Navigation from './components/Navigation/Navigation';
@@ -11,8 +11,10 @@ class App extends Component {
 		return (
 			<Provider store={store}>
 				<BrowserRouter>
-					<Navigation />
-					<div className='App'>{routes}</div>
+					<div className='App'>
+						<Navigation />
+						{routes}
+					</div>
 				</BrowserRouter>
 			</Provider>
 		);
