@@ -32,10 +32,15 @@ export default (
 		<Route
 			path='*'
 			render={() => (
-				<img
-					src='https://cdn-images-1.medium.com/max/1600/1*qdFdhbR00beEaIKDI_WDCw.gif'
-					alt='whooopies'
-				/>
+				<div>
+					<h1>404</h1>
+					<h1>Nothing to see here, muggle!</h1>
+					<img
+						src='https://66.media.tumblr.com/a0809c34a9c339f3c8e1b7a8824906d6/tumblr_ntcbzb5nDr1sfmnojo1_500.gif'
+						alt='whooopies'
+						width='100%'
+					/>
+				</div>
 			)}
 		/>
 	</Switch>
