@@ -1,0 +1,49 @@
+.main_landing {
+  height: 300vh;
+  width: 100%;
+  border: 2.5px dashed orange;
+  background: lightcyan;
+
+  .img_overlay {
+    height: 90%;
+    width: 100%;
+    background: #151414ee; /* fallback for old browsers */
+    // background: -webkit-linear-gradient(to left, #29323c, #485563);  /* Chrome 10-25, Safari 5.1-6 */
+    // background: linear-gradient(to left, #29323c, #485563); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    // opacity: 0.90;
+    // z-index: 0;
+    position: absolute;
+  }
+  .top_castle {
+    // margin: auto;
+    background-image: url("https://i2.wp.com/coasterchitchat.com/wp-content/uploads/2018/01/The-Nighttime-Lights-at-Hogwarts-Castle.jpg");
+    // background-color: #cccccc; /* Used if the image is unavailable */
+    height: 29%; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: contain; /* Resize the background image to cover the entire container */
+    background-attachment: fixed; /* Parallax */
+    // z-index: -10;
+    opacity: 0.35;
+  }
+  .mid_container {
+    height: 60vh;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    background: #f2f26fa3;
+
+    .card {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      height: 40vh;
+      width: 30vw;
+      background: lightcoral;
+      border: 1.5px dashed green;
+    }
+  }
+}
