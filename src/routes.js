@@ -39,6 +39,7 @@ export default (
 						src='https://66.media.tumblr.com/a0809c34a9c339f3c8e1b7a8824906d6/tumblr_ntcbzb5nDr1sfmnojo1_500.gif'
 						alt='whooopies'
 						width='100%'
+						//
 					/>
 				</div>
 			)}
