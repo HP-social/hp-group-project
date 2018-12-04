@@ -1,8 +1,8 @@
 .main_landing {
   height: 300vh;
   width: 100%;
-  border: 2.5px dashed orange;
-  background: lightcyan;
+  // border: 2.5px dashed orange;
+  // background: lightcyan;
 
   .img_overlay {
     height: 90%;
@@ -16,7 +16,7 @@
   }
   .top_castle {
     // margin: auto;
-    background-image: url("https://i2.wp.com/coasterchitchat.com/wp-content/uploads/2018/01/The-Nighttime-Lights-at-Hogwarts-Castle.jpg");
+    background-image: url("https://s3.us-east-2.amazonaws.com/hpsocial/castle.jpg");
     // background-color: #cccccc; /* Used if the image is unavailable */
     height: 29%; /* You must set a specified height */
     background-position: center; /* Center the image */
@@ -27,23 +27,37 @@
     opacity: 0.35;
   }
   .mid_container {
-    height: 60vh;
+    height: 80vh;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
-    background: #f2f26fa3;
+    background: #9d9d9ba3;
 
     .card {
       display: flex;
+      flex-direction: column;
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
       height: 40vh;
       width: 30vw;
-      background: lightcoral;
-      border: 1.5px dashed green;
+      background: #f7f7f9b6;
+      border-radius: 3%;
+      img {
+        height: 15vh;
+        width: auto;
+      }
     }
+  }
+  .bottom_container {
+    height: 20%;
+    background: #d8d4dcb7;
+    background-image: url("https://s3.amazonaws.com/hp-project/Elder_Wand.png");
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: contain; /* Resize the background image to cover the entire container */
+    // background-attachment: fixed; /* Parallax */
   }
 }
