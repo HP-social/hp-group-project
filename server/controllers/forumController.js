@@ -11,5 +11,18 @@ module.exports = {
 				res.status(200).json(result);
 			})
 			.catch((err) => res.status(500).send(err));
+	},
+	getLikes: (req, res, next) => {
+		req.app
+			.get('db')
+			.query(
+				`select count(*) as likes, post_id from likes where post_id=${
+					req.params.postid
+				} group by post_id`
+			)
+			.then((result) => {
+				res.status(200).json(result);
+			})
+			.catch((err) => res.status(500).send(err));
 	}
 };

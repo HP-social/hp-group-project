@@ -11,5 +11,31 @@ module.exports = {
 				res.status(200).json(result);
 			})
 			.catch((err) => res.status(500).send(err));
+	},
+	getBookmarks: (req, res, next) => {
+		req.app
+			.get('db')
+			.query(
+				`select * from bookmarks join forum_post on bookmarks.post_id=forum_post.post_id join wizards on wizards.wizard_id=forum_post.wizard_id where bookmarks.wizard_id=${
+					req.params.id
+				} order by time`
+			)
+			.then((result) => {
+				res.status(200).json(result);
+			})
+			.catch((err) => res.status(500).send(err));
+	},
+	getSubscriptions: (req, res, next) => {
+		req.app
+			.get('db')
+			.query(
+				`select * from subscribe join forum on subscribe.forum_id=forum.forum_id where subscribe.wizard_id=${
+					req.params.id
+				}`
+			)
+			.then((result) => {
+				res.status(200).json(result);
+			})
+			.catch((err) => res.status(500).send(err));
 	}
 };
