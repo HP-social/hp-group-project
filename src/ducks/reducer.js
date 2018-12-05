@@ -4,7 +4,12 @@ const SET_USER = 'SET_USER';
 const initialState = {
 	user: {},
 	forumPosts: [],
-	followed: []
+	followed: [],
+	// placeholder for navbar 
+	dailyProphetCount: [],
+	messagesCount: [],
+	mentionsCount: []
+
 };
 
 function reducer(state = initialState, action) {
