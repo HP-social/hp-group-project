@@ -19,7 +19,8 @@ class SortingHat extends Component {
       hufflepuff: 0,
       questions: [],
 	  answers: [],
-	  winning_house: ''
+	  winning_house: '',
+	  crest: ''
     };
   }
 
@@ -60,38 +61,39 @@ class SortingHat extends Component {
   returnResultsPage() {
 	let {gryffindor, slytherin, ravenclaw, hufflepuff} = this.state
 	if(ravenclaw > slytherin && ravenclaw > gryffindor && ravenclaw > hufflepuff) {
-		this.setState({winning_house: 'Ravenclaw'}, ()=> name())
+		this.setState({winning_house: 'Ravenclaw', crest: 'https://images-na.ssl-images-amazon.com/images/I/61XvQSdFHlL._SY450_.jpg'}, ()=> name())
 		
 	}
 	else if(slytherin > gryffindor && slytherin > hufflepuff && slytherin > ravenclaw) {
-		this.setState({winning_house: 'Slytherin'}, ()=> name())
+		this.setState({winning_house: 'Slytherin', crest: 'https://www.logolynx.com/images/logolynx/37/37c001eedb4d6ff394a8635f7e8b978d.png'}, ()=> name())
 		
 	}
 
 	else if(gryffindor > ravenclaw && gryffindor > slytherin && gryffindor > hufflepuff) {
-		this.setState({winning_house: 'Gryffindor'}, ()=> name())
+		this.setState({winning_house: 'Gryffindor', crest: 'https://i.pinimg.com/originals/1a/64/49/1a6449ba53c49b816d56c5abbbb1d8dc.jpg'}, ()=> name())
 		
 	}
 
 	else {
-		this.setState({winning_house: 'Hufflepuff'}, ()=> name())
+		this.setState({winning_house: 'Hufflepuff', crest: 'http://jkfloodrelief.org/wp-content/uploads/2018/05/img-beautiful-hufflepuff-crest-pottermore.png'}, ()=> name())
 		
 	}
 	
  let name = () => {swal({
-		title: "Congratulations",
-		text: `You have been sorted into ${this.state.winning_house}`,
-		type: "success",
-		showCancelButton: true,
-		confirmButtonColor: "#3085d6",
-		cancelButtonColor: "#d33",
-		confirmButtonText: "Confirm Order"
+		title: "Congratulations!",
+		text: `You are a ${this.state.winning_house}`,
+		imageUrl: `${this.state.crest}`,
+		imageWidth: 150,
+		imageHeight: 150,
+		backdrop: `url('https://media.giphy.com/media/PWfcCP7Jx5aOQ/giphy.gif')
+    		center left
+			no-repeat`
 	  })
   }}
   
   render() {
 	
-    let answers = this.state.answers
+    let answers = this.state.answers && this.state.answers
       .filter(
         item =>
           item.question_id ===
