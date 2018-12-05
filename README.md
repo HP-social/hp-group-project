@@ -28,3 +28,22 @@ Below is the initial component tree that we wrote out during our preplanning pha
 ### Schema
 
 ![componentTree](https://s3.us-east-2.amazonaws.com/khamwas-readme/hp-schema-v1.png)
+
+## Messages
+
+Here is an example of our group collaboratively working and iterating through the direct messaging (DM) view(s). For simplicity, we originally envisioned a singular view to house all of the functionality.
+
+### Mobile Version One
+
+Our original design took inspiration from the NewsFeed view that we developed.
+![mobilev1](https://s3.us-east-2.amazonaws.com/khamwas-readme/mobileDMv1.png)
+
+### Mobile Version Two
+
+Upon further development we decided that a more intuitive approach for the user would be to split up the views for mobile.
+
+![mobilev1](https://s3.us-east-2.amazonaws.com/khamwas-readme/mobileDMv2.png)
+
+### Design Iteration FTW
+
+However, from the UX perspective --- a singular view didn't make sense because there was too much functionality which was taking away from the primary functionality of a private DM environment with minimal distractions. In the end, we decided to reduce UX ambiguity by maximizing the messaging real estate, and splitting the DMs into to two separate views.
