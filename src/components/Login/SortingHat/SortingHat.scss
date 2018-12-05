@@ -1,6 +1,12 @@
 @font-face {
     font-family: 'harryp';
     src: url('../../../HARRYP__.TTF') format('truetype');
+    
+  }
+
+  @font-face {
+    font-family: 'lumos';
+    src: url('../../../LUMOS.TTF') format('truetype');
   }
 
  
@@ -14,7 +20,7 @@
   .quiz {
     font-size: 40px;
     display: flex;
-    margin-left: 44%;
+    margin-left: 45%;
     font-family: 'harryp'
   }
   
@@ -46,7 +52,10 @@
     justify-content: center;
     margin-top: 5vh;
     font-size: 28px;
-    font-family: 'Dumbledor'
+    margin-left: 28vw;
+    margin-right: 25vw;
+    // font-style: italic;
+    font-family: 'lumos';
   }
   
   .sortingHatAnswers {
