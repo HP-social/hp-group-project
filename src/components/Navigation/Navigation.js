@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { setUser } from "../../ducks/reducer";
 //******  MATERIAL UI *******
@@ -10,7 +10,6 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import List from "@material-ui/core/List";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -19,22 +18,24 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
+import MessagesIcon from "@material-ui/icons/Mail";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import Badge from "@material-ui/core/Badge";
-import NotificationsIcon from "@material-ui/icons/Notifications";
+import MentionsIcon from "@material-ui/icons/Notifications";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import SearchIcon from "@material-ui/icons/Search";
 import InputBase from "@material-ui/core/InputBase";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import { fade } from "@material-ui/core/styles/colorManipulator";
-// import BottomNavigation from "@material-ui/core/BottomNavigation";
-// import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
-// import RestoreIcon from "@material-ui/icons/Restore";
-// import FavoriteIcon from "@material-ui/icons/Favorite";
-// import LocationOnIcon from "@material-ui/icons/LocationOn";
+import MapIcon from "@material-ui/icons/Map";
+import BookmarksIcon from "@material-ui/icons/Bookmarks";
+import GroupIcon from "@material-ui/icons/Group";
+import HomeIcon from "@material-ui/icons/Home";
+import GroupAddIcon from "@material-ui/icons/GroupAdd";
+import AddToPhotosIcon from "@material-ui/icons/AddToPhotos";
+import DailyProphetIcon from "@material-ui/icons/LibraryBooks";
+
 const drawerWidth = 400;
 
 const styles = theme => ({
@@ -176,7 +177,7 @@ class Navigation extends React.Component {
     this.setState({ open: false });
   };
   handleProfileMenuOpen = event => {
-    this.setState({ anchorEl: event.currentTarget });
+    alert("Send To Profile Page");
   };
 
   handleMenuClose = () => {
@@ -220,28 +221,42 @@ class Navigation extends React.Component {
       >
         <MenuItem>
           <IconButton color="inherit">
-            <Badge badgeContent={2} color="secondary">
-              <MailIcon />
+            <Badge badgeContent={`${this.props.dailyProphetCount}` && 5} color="secondary">
+              <DailyProphetIcon />
+            </Badge>
+          </IconButton>
+          <p>Daily Prophet</p>
+        </MenuItem>
+        <MenuItem>
+          <IconButton color="inherit">
+            <Badge badgeContent={`${this.props.messagesCount}` && 2} color="secondary">
+              <MessagesIcon />
             </Badge>
           </IconButton>
           <p>Messages</p>
         </MenuItem>
         <MenuItem>
           <IconButton color="inherit">
-            <Badge badgeContent={14} color="secondary">
-              <NotificationsIcon />
+            <Badge badgeContent={`${this.props.mentionsCount}` && 14} color="secondary">
+              <MentionsIcon />
             </Badge>
           </IconButton>
-          <p>Notifications</p>
+          <p>Mentions</p>
         </MenuItem>
-        {/* <MenuItem onClick={this.handleProfileMenuOpen}>
-          <IconButton color="inherit">
-            <AccountCircle />
-          </IconButton>
-          <p>Profile</p>
-        </MenuItem> */}
       </Menu>
     );
+
+    const sideIconTop = [
+      <AccountCircle />,
+      <AddToPhotosIcon />,
+      <GroupAddIcon />
+    ];
+    const sideIconBottom = [
+      <HomeIcon />,
+      <MapIcon />,
+      <GroupIcon />,
+      <BookmarksIcon />
+    ];
 
     return (
       <div className={classes.root}>
@@ -268,10 +283,7 @@ class Navigation extends React.Component {
               aria-haspopup="true"
               onClick={this.handleProfileMenuOpen}
               color="inherit"
-            >
-              {/* <AccountCircle /> */}
-            </IconButton>
-
+            />
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
@@ -284,13 +296,18 @@ class Navigation extends React.Component {
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
               <IconButton color="inherit">
-                <Badge badgeContent={4} color="secondary">
-                  <MailIcon />
+                <Badge badgeContent={`${this.props.dailyProphetCount}` && 5} color="secondary">
+                  <DailyProphetIcon />
                 </Badge>
               </IconButton>
               <IconButton color="inherit">
-                <Badge badgeContent={17} color="secondary">
-                  <NotificationsIcon />
+                <Badge badgeContent={`${this.props.messagesCount}` && 2} color="secondary">
+                  <MessagesIcon />
+                </Badge>
+              </IconButton>
+              <IconButton color="inherit">
+                <Badge badgeContent={`${this.props.mentionsCount}` && 14} color="secondary">
+                  <MentionsIcon />
                 </Badge>
               </IconButton>
             </div>
@@ -332,7 +349,11 @@ class Navigation extends React.Component {
           </div>
           <Divider />
           <List>
-            {["Username"].map((text, index) => (
+            {[
+              `${this.props.username}` && "Username",
+              "Subscriptions",
+              "Follow"
+            ].map((text, index) => (
               <ListItem button key={text}>
                 <ListItemIcon
                   aria-owns={isMenuOpen ? "material-appbar" : undefined}
@@ -340,7 +361,7 @@ class Navigation extends React.Component {
                   onClick={this.handleProfileMenuOpen}
                   color="inherit"
                 >
-                  <AccountCircle />
+                  {sideIconTop[index]}
                 </ListItemIcon>
                 <ListItemText primary={text} />
               </ListItem>
@@ -350,9 +371,7 @@ class Navigation extends React.Component {
           <List>
             {["Commons", "Map", "Stairwell", "Bookmarks"].map((text, index) => (
               <ListItem button key={text}>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
+                <ListItemIcon>{sideIconBottom[index]}</ListItemIcon>
                 <ListItemText primary={text} />
               </ListItem>
             ))}
@@ -377,4 +396,7 @@ Navigation.propTypes = {
   theme: PropTypes.object.isRequired
 };
 
-export default connect(mapStateToProps,{ setUser })(withStyles(styles, { withTheme: true })(Navigation));
+export default connect(
+  mapStateToProps,
+  { setUser }
+)(withStyles(styles, { withTheme: true })(Navigation));
