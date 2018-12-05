@@ -1,25 +1,68 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { setUser } from '../../ducks/reducer';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { setUser } from "../../ducks/reducer";
+import "./LandingPage.scss";
 
 class LandingPage extends Component {
-	constructor() {
-		super();
-		this.state = {};
-	}
-	render() {
-		return <div>LandingPage</div>;
-	}
+  constructor() {
+    super();
+    this.state = {};
+  }
+
+  login = () => {
+    alert("Send This Wizard To The Sorting Hat!");
+  };
+  render() {
+    const icon = [
+      "https://image.flaticon.com/icons/svg/859/859170.svg",
+      "https://image.flaticon.com/icons/svg/784/784629.svg",
+      "https://image.flaticon.com/icons/svg/149/149054.svg"
+    ];
+    const text = [
+      "Find Your Noble House",
+      "Interact In Public & Private Communities",
+      "Discover Adventure Throughout Hogwarts!"
+    ];
+    const cardTitle = ["Houses", "Communities", "Explore"].map((e, i) => {
+      return (
+        <div className="card" key={i}>
+          <>
+            <img src={icon[i]} alt="oops" />
+          </>
+          <>
+            <h1>{e}</h1>
+          </>
+          <>
+            <p>{text[i]}</p>
+          </>
+        </div>
+      );
+    });
+    return (
+      <div className="main_landing">
+        <div class="photo_before">
+          <h1>Welcome Muggles</h1>
+        </div>
+        <div class="photo_after">
+          <h1>Welcome Wizards</h1>
+        </div>
+        <div className="mid_container">{cardTitle}</div>
+        <div className="bottom_container">
+          <h1 onClick={() => this.login()}>Start</h1>
+        </div>
+      </div>
+    );
+  }
 }
 
 function mapStateToProps(state) {
-	const { user } = state;
-	return {
-		user
-	};
+  const { user } = state;
+  return {
+    user
+  };
 }
 
 export default connect(
-	mapStateToProps,
-	{ setUser }
+  mapStateToProps,
+  { setUser }
 )(LandingPage);
