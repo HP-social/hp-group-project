@@ -2,7 +2,7 @@ module.exports = {
 	getQuestions: (req, res, next) => {
 		req.app
 			.get('db')
-			.query('select * from sorting_hat_questions')
+			.query('select * from sorting_hat_questions order by question_id')
 			.then((result) => {
 				res.status(200).json(result);
 			})
