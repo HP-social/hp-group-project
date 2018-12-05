@@ -1,49 +1,93 @@
 .main_landing {
-  height: 300vh;
+  text-align: center;
+  height: 200vh;
   width: 100%;
-  border: 2.5px dashed orange;
-  background: lightcyan;
+  background: grey;
 
-  .img_overlay {
-    height: 90%;
-    width: 100%;
-    background: #151414ee; /* fallback for old browsers */
-    // background: -webkit-linear-gradient(to left, #29323c, #485563);  /* Chrome 10-25, Safari 5.1-6 */
-    // background: linear-gradient(to left, #29323c, #485563); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    // opacity: 0.90;
-    // z-index: 0;
-    position: absolute;
+  .photo_before,
+  .photo_after {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: auto;
+
+    h1 {
+      padding-top: 25%;
+      font-size: 6em;
+      color: white;
+    }
   }
-  .top_castle {
-    // margin: auto;
-    background-image: url("https://i2.wp.com/coasterchitchat.com/wp-content/uploads/2018/01/The-Nighttime-Lights-at-Hogwarts-Castle.jpg");
-    // background-color: #cccccc; /* Used if the image is unavailable */
-    height: 29%; /* You must set a specified height */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: contain; /* Resize the background image to cover the entire container */
-    background-attachment: fixed; /* Parallax */
-    // z-index: -10;
-    opacity: 0.35;
+
+  .photo_before {
+    background-image: url(https://s3.amazonaws.com/hp-project/Night_Hogwarts.jpg);
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
   }
+
+  .photo_after {
+    background-image: url(https://s3.amazonaws.com/hp-project/Night_Hogwarts.jpg);
+    border-top: 1px solid #686868;
+  }
+
+  // .img_overlay {
+  //   height: 90%;
+  //   width: 100%;
+  //   background: #151414ee; /* fallback for old browsers */
+  //   position: absolute;
+  // }
+  // .top_castle {
+  //   background-image: url("https://s3.us-east-2.amazonaws.com/hpsocial/castle.jpg");
+  //   height: 29%; /* You must set a specified height */
+  //   background-position: center; /* Center the image */
+  //   background-repeat: no-repeat; /* Do not repeat the image */
+  //   background-size: contain; /* Resize the background image to cover the entire container */
+  //   background-attachment: fixed; /* Parallax */
+  //   opacity: 0.35;
+  // }
+
   .mid_container {
-    height: 60vh;
+    height: 70vh;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
-    background: #f2f26fa3;
+    background: #9d9d9ba3;
 
     .card {
       display: flex;
+      flex-direction: column;
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
       height: 40vh;
       width: 30vw;
-      background: lightcoral;
-      border: 1.5px dashed green;
+      background: #f7f7f9b6;
+      border-radius: 3%;
+      img {
+        height: 15vh;
+        width: auto;
+      }
+    }
+  }
+  .bottom_container {
+    height: 50%;
+    background: #131213ce;
+    background-image: url(https://images.unsplash.com/photo-1542270370-694e6a9a1f9e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80);
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: contain; /* Resize the background image to cover the entire container */
+    background-attachment: fixed; /* Parallax */
+
+    h1 {
+      padding-top: 15%;
+      font-size: 6em;
+      color: white;
+    }
+    h1:hover {
+      cursor: pointer;
     }
   }
 }

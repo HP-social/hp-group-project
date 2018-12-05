@@ -8,17 +8,48 @@ class LandingPage extends Component {
     super();
     this.state = {};
   }
+
+  login = () => {
+    alert("Send This Wizard To The Sorting Hat!");
+  };
   render() {
+    const icon = [
+      "https://image.flaticon.com/icons/svg/859/859170.svg",
+      "https://image.flaticon.com/icons/svg/784/784629.svg",
+      "https://image.flaticon.com/icons/svg/149/149054.svg"
+    ];
+    const text = [
+      "Find Your Noble House",
+      "Interact In Public & Private Communities",
+      "Discover Adventure Throughout Hogwarts!"
+    ];
+    const cardTitle = ["Houses", "Communities", "Explore"].map((e, i) => {
+      return (
+        <div className="card" key={i}>
+          <>
+            <img src={icon[i]} alt="oops" />
+          </>
+          <>
+            <h1>{e}</h1>
+          </>
+          <>
+            <p>{text[i]}</p>
+          </>
+        </div>
+      );
+    });
     return (
       <div className="main_landing">
-        <div className="img_overlay" />
-        <div className="top_castle" />
-        <div className="mid_container">
-					<div className='card'>1</div>
-					<div className='card'>2</div>
-					<div className='card'>3</div>
-				</div>
-        <div className="bottom_castle">hi3</div>
+        <div class="photo_before">
+          <h1>Welcome Muggles</h1>
+        </div>
+        <div class="photo_after">
+          <h1>Welcome Wizards</h1>
+        </div>
+        <div className="mid_container">{cardTitle}</div>
+        <div className="bottom_container">
+          <h1 onClick={() => this.login()}>Start</h1>
+        </div>
       </div>
     );
   }
