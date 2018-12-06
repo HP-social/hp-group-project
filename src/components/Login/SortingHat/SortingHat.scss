@@ -30,11 +30,10 @@
     position: absolute;
     color: white;
     background: rgba(31, 28, 28, 0.39);
-    top: 10vh;
-    padding-left: 0vw;
-    padding-top: 5vh;
-    padding-bottom: 5vh;
-    margin-left: 0vw;
+    top: 15vh;
+    min-width: 100%;
+   
+   
 
    #quiz_name {
     font-size: 40px;
@@ -44,19 +43,15 @@
     justify-content: center;
     position: absolute;
     margin-bottom: 10vh;
+    border-bottom: 5px solid rgba(90, 46, 28, 0.424);
   }
    
   }
   }
 
-  
-  
- 
-  
-  
-  
   .answer {
-    border-bottom: .5px solid black
+    border-bottom: .5px solid black;
+    padding-bottom: 2vh;
   }
   
   .answer:hover {
