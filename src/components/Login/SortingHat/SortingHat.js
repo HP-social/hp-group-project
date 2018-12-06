@@ -61,7 +61,7 @@ class SortingHat extends Component {
     console.log('hufflepuff', this.state.hufflepuff);
     console.log('slytherin', this.state.slytherin);
   }
-
+  
   returnResultsPage() {
     let { gryffindor, slytherin, ravenclaw, hufflepuff } = this.state;
     if (
@@ -176,13 +176,13 @@ class SortingHat extends Component {
 }
 
 function mapStateToProps(state) {
-  const { user } = state;
-  return {
-    user
-  };
+	const { user } = state;
+	return {
+		user
+	};
 }
 
 export default connect(
-  mapStateToProps,
-  { setUser }
+	mapStateToProps,
+	{ setUser }
 )(SortingHat);
