@@ -1,4 +1,5 @@
 {
+  "proxy": "http://localhost:3001",
   "name": "hp-server-practice",
   "version": "0.1.0",
   "private": true,

@@ -13,7 +13,7 @@ const {
 } = require('./controllers/favoritesController');
 const { getPosts, getLikes } = require('./controllers/forumController');
 const { getQuestions, getAnswers } = require('./controllers/quizController');
-const { getUser } = require('./controllers/userController');
+const { getUser, getNews } = require('./controllers/userController');
 
 const session = require('express-session');
 
@@ -52,7 +52,7 @@ app.get('/api/quiz/answers', getAnswers);
 
 // ***** User Endpoints ****
 app.get('/api/user/:id', getUser);
-// app.get('/api/home', getHome);
+app.get('/api/news/:id', getNews);
 
 // ***** Favorites Endpoints ****
 app.get('/api/followed/:id', getFollowed);

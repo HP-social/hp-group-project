@@ -40,22 +40,10 @@ class SortingHat extends Component {
     }
   }
 
-  clickAnswer(item) {
-    this.setState(
-      {
-        gryffindor: this.state.gryffindor + item.gryffindor,
-        hufflepuff: this.state.hufflepuff + item.hufflepuff,
-        ravenclaw: this.state.ravenclaw + item.ravenclaw,
-        slytherin: this.state.slytherin + item.slytherin
-      },
-      () => this.change()
-    );
-    // console.log(item)
-    console.log("gryffindor", this.state.gryffindor);
-    console.log("ravenclaw", this.state.ravenclaw);
-    console.log("hufflepuff", this.state.hufflepuff);
-    console.log("slytherin", this.state.slytherin);
-  }
+	componentDidMount() {
+		axios
+			.get('http://localhost:3001/api/quiz/questions')
+			.then((result) => this.setState({ questions: result.data }));
 
   returnResultsPage() {
     let { gryffindor, slytherin, ravenclaw, hufflepuff } = this.state;
@@ -162,13 +150,13 @@ class SortingHat extends Component {
 }
 
 function mapStateToProps(state) {
-  const { user } = state;
-  return {
-    user
-  };
+	const { user } = state;
+	return {
+		user
+	};
 }
 
 export default connect(
-  mapStateToProps,
-  { setUser }
+	mapStateToProps,
+	{ setUser }
 )(SortingHat);
