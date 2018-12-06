@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { setUser } from "../../ducks/reducer";
-import "./LandingPage.scss";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { setUser } from '../../ducks/reducer';
+import './LandingPage.scss';
 
 class LandingPage extends Component {
   constructor() {
@@ -10,24 +10,24 @@ class LandingPage extends Component {
   }
 
   login = () => {
-    alert("Send This Wizard To The Sorting Hat!");
+    alert('Send This Wizard To The Sorting Hat!');
   };
   render() {
     const icon = [
-      "https://image.flaticon.com/icons/svg/859/859170.svg",
-      "https://image.flaticon.com/icons/svg/784/784629.svg",
-      "https://image.flaticon.com/icons/svg/149/149054.svg"
+      'https://image.flaticon.com/icons/svg/859/859170.svg',
+      'https://image.flaticon.com/icons/svg/784/784629.svg',
+      'https://image.flaticon.com/icons/svg/149/149054.svg'
     ];
     const text = [
-      "Find Your Noble House",
-      "Interact In Public & Private Communities",
-      "Discover Adventure Throughout Hogwarts!"
+      'Find Your Noble House',
+      'Interact In Public & Private Communities',
+      'Discover Adventure Throughout Hogwarts!'
     ];
-    const cardTitle = ["Houses", "Communities", "Explore"].map((e, i) => {
+    const cardTitle = ['Houses', 'Communities', 'Explore'].map((e, i) => {
       return (
-        <div className="card" key={i}>
+        <div className='card' key={i}>
           <>
-            <img src={icon[i]} alt="oops" />
+            <img src={icon[i]} alt='oops' />
           </>
           <>
             <h1>{e}</h1>
@@ -39,15 +39,15 @@ class LandingPage extends Component {
       );
     });
     return (
-      <div className="main_landing">
-        <div class="photo_before">
+      <div className='main_landing'>
+        <div class='photo_before'>
           <h1>Welcome Muggles</h1>
         </div>
-        <div class="photo_after">
+        <div class='photo_after'>
           <h1>Welcome Wizards</h1>
         </div>
-        <div className="mid_container">{cardTitle}</div>
-        <div className="bottom_container">
+        <div className='mid_container'>{cardTitle}</div>
+        <div className='bottom_container'>
           <h1 onClick={() => this.login()}>Start</h1>
         </div>
       </div>
