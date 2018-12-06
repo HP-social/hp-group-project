@@ -144,29 +144,29 @@ class SortingHat extends Component {
             this.state.questions[this.state.index].question_id
         )
         .map(item => (
-          <div className='answer' onClick={() => this.clickAnswer(item)}>
+          <div className="answer" onClick={() => this.clickAnswer(item)}>
             {item.answer}
           </div>
         ));
     console.log('the winning house is', this.state.winning_house);
     return (
-      <div className='theQuiz'>
+      <div className="theQuiz">
         <img
-          className='greatHallBackground'
-          src='https://vignette.wikia.nocookie.net/harrypotter/images/b/bd/High_Table_PS.png/revision/latest?cb=20161120225850'
+          className="greatHallBackground"
+          src="https://vignette.wikia.nocookie.net/harrypotter/images/b/bd/High_Table_PS.png/revision/latest?cb=20161120225850"
         />
-        <div className='sortingHatQuestionBox'>
-          <div id='quiz_name'>Sorting Hat Quiz</div>
+        <div className="sortingHatQuestionBox">
+          <div id="quiz_name">Sorting Hat Quiz</div>
           <img
-            className='sortingHatPicture'
-            src='https://www.hp-lexicon.org/wp-content/uploads/2016/09/the_sorting_hat_by_sahinduezguen-d47mwt5.png'
-            alt='text'
+            className="sortingHatPicture"
+            src="https://www.hp-lexicon.org/wp-content/uploads/2016/09/the_sorting_hat_by_sahinduezguen-d47mwt5.png"
+            alt="text"
           />
-          <div className='sortingHatQuestion'>
+          <div className="sortingHatQuestion">
             {this.state.questions[5] &&
               this.state.questions[this.state.index].text}
           </div>
-          <div className='sortingHatAnswers'>
+          <div className="sortingHatAnswers">
             {this.state.index < 18 && answers}
           </div>
         </div>
