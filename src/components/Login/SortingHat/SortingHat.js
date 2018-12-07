@@ -4,7 +4,7 @@ import { setUser } from '../../../ducks/reducer';
 import './SortingHat.scss';
 import axios from 'axios';
 import swal from 'sweetalert2';
-import Tweet from '../../Tweet/Tweet'
+import Tweet from '../../Tweet/Tweet';
 
 class SortingHat extends Component {
   constructor() {
@@ -26,8 +26,11 @@ class SortingHat extends Component {
       answers: [],
       winning_house: [],
       crest: [],
-      gif: []
+      gif: [],
+      makeATweet: false
     };
+
+    this.tweet = this.tweet.bind(this);
   }
 
   componentDidMount() {
@@ -129,13 +132,19 @@ class SortingHat extends Component {
         imageAlt: 'house crest',
         confirmButtonText: 'I Accept',
         background: '#fff url()'
-      }).then((result) => this.sendToHouse(result));
+      }).then(result => this.sendToHouse(result));
     };
   }
 
   sendToHouse = () => {
-    console.log('window dot location', window.location)
-    window.location.pathname = `/profile/${this.props.user.wizard_id}` && '/profile/1';
+    console.log('window dot location', window.location);
+    window.location.pathname =
+      `/profile/${this.props.user.wizard_id}` && '/profile/1';
+  };
+
+  tweet = () => {
+    this.setState({ makeATweet: !this.state.makeATweet });
+    console.log(this.state.makeATweet);
   };
 
   render() {
@@ -174,7 +183,12 @@ class SortingHat extends Component {
           <div className='sortingHatAnswers'>
             {this.state.index < 18 && answers}
           </div>
-          <Tweet />
+          <button className='tweetButton' onClick={() => this.tweet()}>
+            <img src='https://image.flaticon.com/icons/svg/1305/1305386.svg' />
+          </button>
+          {this.state.makeATweet === true ? (
+            <Tweet newTweetStatus={this.tweet} />
+          ) : null}
         </div>
       </div>
     );

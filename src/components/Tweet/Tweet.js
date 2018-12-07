@@ -31,7 +31,7 @@ changeHandler(e, name) {
   render(){
     return (
         <div>
-            <div className="confirmWhiteout" />
+            <div className="confirmWhiteout"/>
             <div className="newReview">
                 {/* <h3>{this.props.user.username.toUpperCase()}</h3> */}
                 <h3>RonStoppable</h3>
