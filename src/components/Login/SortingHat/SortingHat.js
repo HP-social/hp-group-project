@@ -4,6 +4,7 @@ import { setUser } from '../../../ducks/reducer';
 import './SortingHat.scss';
 import axios from 'axios';
 import swal from 'sweetalert2';
+import Tweet from '../../Tweet/Tweet'
 
 class SortingHat extends Component {
   constructor() {
@@ -173,6 +174,7 @@ class SortingHat extends Component {
           <div className='sortingHatAnswers'>
             {this.state.index < 18 && answers}
           </div>
+          <Tweet />
         </div>
       </div>
     );
