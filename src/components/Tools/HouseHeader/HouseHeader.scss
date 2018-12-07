@@ -1,0 +1,81 @@
+$slytherin_green: #1a472a;
+$slytherin_silver: #5d5d5d;
+$gryffindor_red: #740001;
+$gryffindor_gold: #d3a625;
+$ravenclaw_blue: #0e1a40;
+$ravenclaw_bronze: #946b2d;
+$hufflepuff_black: #372e29;
+$hufflepuff_yellow: #ecb939;
+
+.topper {
+	// margin-top: 115px;
+	display: flex;
+	position: fixed;
+	/*     flex-direction:row; */
+	justify-content: center;
+	top: 60px;
+	background: #191919;
+	width: 100vw;
+}
+
+.slyth {
+	background: $slytherin_silver;
+}
+.griff {
+	background: $gryffindor_gold;
+}
+.rave {
+	background: $ravenclaw_bronze;
+}
+.huff {
+	background: $hufflepuff_black;
+}
+
+.img-responsive {
+	padding: 0px 0px 0px 0px;
+	margin-bottom: -105px;
+	margin-top: 0px;
+}
+
+.hogwarts {
+	margin-left: 60px;
+	// width: 250px;
+	// height: 225px;
+}
+/* //////////////////////
+ */
+
+sigil {
+	margin-left: 60px;
+	width: 200px;
+	height: 225px;
+	padding: 15px 0 10px;
+	vertical-align: middle;
+	color: #fff;
+	clip-path: polygon(0 0, 100% 0%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+	display: inline-block;
+}
+
+sigil.ravenclaw {
+	background-image: url('http://s6830.storage.proboards.com/6396830/i/iqpk8rdEmScw48FuiWwW.png');
+	background-position: center;
+	background-size: cover;
+}
+
+sigil.gryffindor {
+	background-image: url('http://s6830.storage.proboards.com/6396830/i/AbcM1ixPouTAA92FOJNO.png');
+	background-position: center;
+	background-size: cover;
+}
+
+sigil.slytherin {
+	background-image: url('http://s6830.storage.proboards.com/6396830/i/pO9Rf7QCJbS_R8VW4Jec.png');
+	background-position: center;
+	background-size: cover;
+}
+
+sigil.hufflepuff {
+	background-image: url('http://s6830.storage.proboards.com/6396830/i/QFq0Eoz2xBWttk7uVWzv.png');
+	background-position: center;
+	background-size: cover;
+}
