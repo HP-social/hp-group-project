@@ -13,6 +13,7 @@ import Mentions from './components/Favorites/Mentions/Mentions';
 import Follows from './components/Favorites/Follows/Follows';
 import Bookmarks from './components/Favorites/Bookmarks/Bookmarks';
 import Forum from './components/Forum/Forum';
+import Card from './components/Forum/Cards/Card';
 
 export default (
   <Switch>
@@ -29,6 +30,7 @@ export default (
     <Route path='/thequibbler' component={Mentions} />
     <Route path='/follows' component={Follows} />
     <Route path='/bookmarks' component={Bookmarks} />
+    <Route path='/card' component={Card} />
     <Route
       path='*'
       render={() => (
