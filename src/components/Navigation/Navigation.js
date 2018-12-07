@@ -221,45 +221,44 @@ class Navigation extends React.Component {
         open={isMobileMenuOpen}
         onClose={this.handleMobileMenuClose}
       >
-        <MenuItem>
-          <IconButton color='inherit'>
-            <Badge
-              badgeContent={`${this.props.dailyProphetCount}` && 5}
-              color='secondary'
-            >
-              <Link to={'/dailyprophet'}>
+        <Link to={'/dailyprophet'}>
+          <MenuItem>
+            <IconButton color='inherit'>
+              <Badge
+                badgeContent={`${this.props.dailyProphetCount}` && 5}
+                color='secondary'
+              >
                 <DailyProphetIcon />
-              </Link>
-            </Badge>
-          </IconButton>
-          <p>Daily Prophet</p>
-        </MenuItem>
-        <MenuItem>
-          <IconButton color='inherit'>
-            <Badge
-              badgeContent={`${this.props.messagesCount}` && 2}
-              color='secondary'
-            >
-              <Link to={'/messages'}>
+              </Badge>
+            </IconButton>
+            <p>Daily Prophet</p>
+          </MenuItem>
+        </Link>
+        <Link to={'/messages'}>
+          <MenuItem>
+            <IconButton color='inherit'>
+              <Badge
+                badgeContent={`${this.props.messagesCount}` && 2}
+                color='secondary'
+              >
                 <MessagesIcon />
-              </Link>
-            </Badge>
-          </IconButton>
-          <p>Messages</p>
-        </MenuItem>
-        <MenuItem>
-          <IconButton color='inherit'>
-            <Badge
-              badgeContent={`${this.props.mentionsCount}` && 14}
-              color='secondary'
-            >
-              <Link to={'/thequibbler'}>
-                <MentionsIcon />{' '}
-              </Link>
-            </Badge>
-          </IconButton>
-          <p>Mentions</p>
-        </MenuItem>
+              </Badge>
+            </IconButton>
+            <p>Messages</p>
+          </MenuItem>
+        </Link>
+        <Link to={'/thequibbler'}>
+          <MenuItem>
+            <IconButton color='inherit'>
+              <Badge
+                badgeContent={`${this.props.mentionsCount}` && 14}
+                color='secondary'>
+                <MentionsIcon />
+              </Badge>
+            </IconButton>
+            <p>Mentions</p>
+          </MenuItem>
+        </Link>
       </Menu>
     );
 
