@@ -120,7 +120,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: "";
+  content: '';
   content: none;
 }
 table {
@@ -128,9 +128,18 @@ table {
   border-spacing: 0;
 }
 
-*{
-  // to get rid of link color
+* {
+  // TO REMOVE TEXT DECORATION IN NAVBAR
   text-decoration: none;
   color: inherit;
-  
 }
+
+// SCSS VARIABLES TO BE USED THROUGHOUT PROJECT
+$slytherin_green: #1a472a;
+$slytherin_silver: #5d5d5d;
+$gryffindor_red: #740001;
+$gryffindor_gold: #d3a625;
+$ravenclaw_blue: #0e1a40;
+$ravenclaw_bronze: #946b2d;
+$hufflepuff_black: #372e29;
+$hufflepuff_yellow: #ecb939;
