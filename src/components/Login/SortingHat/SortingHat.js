@@ -127,10 +127,7 @@ class SortingHat extends Component {
         imageHeight: 150,
         imageAlt: 'house crest',
         confirmButtonText: 'I Accept',
-        background: '#fff url()',
-        backdrop: `url(${this.state.gif})
-    		center right
-			  no-repeat`
+        background: '#fff url()'
       }).then((result) => this.sendToHouse(result));
     };
   }
