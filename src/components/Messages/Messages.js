@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setUser } from '../../ducks/reducer';
+import HouseHeader from '../Tools/HouseHeader/HouseHeader';
 
 class Messages extends Component {
 	constructor() {
@@ -8,7 +9,11 @@ class Messages extends Component {
 		this.state = {};
 	}
 	render() {
-		return <div>Messages</div>;
+		return (
+			<div>
+				<HouseHeader house={'ravenclaw'} />
+			</div>
+		);
 	}
 }
 

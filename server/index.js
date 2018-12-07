@@ -14,6 +14,7 @@ const {
 const { getPosts, getLikes } = require('./controllers/forumController');
 const { getQuestions, getAnswers } = require('./controllers/quizController');
 const { getUser, getNews } = require('./controllers/userController');
+const { getFriends, checkFriends } = require('./controllers/messageController');
 
 const session = require('express-session');
 
@@ -62,6 +63,10 @@ app.get('/api/subscriptions/:id', getSubscriptions);
 // ***** Forum Endpoints ****
 app.get('/api/forum/posts/:id', getPosts); //likes comes in as a string
 app.get('/api/likes/:postid', getLikes); //likes comes in as a string
+
+// ***** Message Endpoints ****
+app.get('/api/message/friends/:userid/:wizardid', checkFriends);
+app.get('/api/message/allfriends/:id', getFriends);
 
 app.listen(port, () => {
 	console.log(`Port ${port} is listening...`);
