@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import firebase from 'firebase';
-// import './App.css';
+import './Chat.scss';
 import axios from 'axios';
 
 class Chat extends Component {
@@ -26,7 +26,7 @@ class Chat extends Component {
 		};
 		firebase.initializeApp(config);
 		axios
-			.get(`/api/user/${this.props.match.params.id}`)
+			.get(`/api/wizard/${this.props.match.params.id}`)
 			.then((result) =>
 				this.setState({ wizard: result.data[0] }, () => this.findConversation())
 			);

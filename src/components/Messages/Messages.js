@@ -1,19 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { setUser } from '../../ducks/reducer';
+import './Messages.scss';
 import axios from 'axios';
 
 class Messages extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
 			friends: []
 		};
 	}
 	componentDidMount() {
-		axios
-			.get(`/api/message/allfriends/${this.props.user.wizard_id}`)
-			.then((result) => this.setState({ friends: result.data }));
+		this.props.setUser();
+		setTimeout(
+			() =>
+				axios
+					.get(`/api/message/allfriends/${this.props.user.wizard_id}`)
+					.then((result) => this.setState({ friends: result.data })),
+			5000
+		);
 	}
 
 	render() {
@@ -40,4 +47,7 @@ function mapStateToProps(state) {
 	};
 }
 
-export default connect(mapStateToProps)(Messages);
+export default connect(
+	mapStateToProps,
+	{ setUser }
+)(Messages);
