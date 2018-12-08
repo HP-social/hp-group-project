@@ -14,6 +14,7 @@ import Follows from './components/Favorites/Follows/Follows';
 import Bookmarks from './components/Favorites/Bookmarks/Bookmarks';
 import Forum from './components/Forum/Forum';
 import Card from './components/Forum/Cards/Card';
+import Chat from './components/Messages/Chat/Chat';
 
 export default (
   <Switch>
@@ -31,6 +32,7 @@ export default (
     <Route path='/follows' component={Follows} />
     <Route path='/bookmarks' component={Bookmarks} />
     <Route path='/card' component={Card} />
+    <Route path='/chat/:id' component={Chat} />
     <Route
       path='*'
       render={() => (

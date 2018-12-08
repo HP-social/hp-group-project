@@ -12,7 +12,8 @@ import axios from 'axios';
       tweet: 'Write your tweet here',
       forum_id: 0,
       gif: '',
-      title: ''
+      title: '',
+      showGif: false
     };  
   }
 
@@ -34,7 +35,7 @@ changeHandler(e, name) {
             <div className="confirmWhiteout"/>
             <div className="newReview">
                 {/* <h3>{this.props.user.username.toUpperCase()}</h3> */}
-                <h3>RonStoppable</h3>
+                <h3 id='screen_name'>RonStoppable</h3>
 
                 <input
                     placeholder="Title"
@@ -43,12 +44,7 @@ changeHandler(e, name) {
                     onChange={(e) => this.changeHandler(e,'title')}
                     value={this.state.title}
                 />
-                <input 
-                    placeholder='GIF'
-                    value = {this.state.gif}
-                    type='text'
-                    className='gif'
-                    onChange={(e) => this.changeHandler(e, 'gif')}></input>
+               
                 <textarea
                     placeholder="What is on your mind?"
                     type="text"
@@ -63,7 +59,12 @@ changeHandler(e, name) {
                     >
                         Cancel
                     </button>
-
+                    <input 
+                    placeholder='GIF'
+                    value = {this.state.gif}
+                    type='text'
+                    className={this.state.showGif === true ? 'show_gif' : 'hide_gif'}
+                    onChange={(e) => this.changeHandler(e, 'gif')}></input>
                     <button
                         onClick={() => this.submitTweet()}
                         className="submitTweet"

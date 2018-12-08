@@ -51,7 +51,7 @@ $hufflepuff_yellow: #ecb939;
   border: 2px solid black;
 }
 
-h3 {
+#screen_name {
   color: black;
   background: rgb(201, 188, 171);
   border: 1px solid black;
@@ -80,7 +80,7 @@ h3 {
 }
 
 .submitTweet {
-  margin-left: 76%;
+  margin-left: 8%;
   background: $slytherin_silver;
   color: white;
 }
@@ -90,8 +90,12 @@ h3 {
   color: white;
 }
 
-.gif {
-    margin-left: 70%;
+.show_gif {
+    margin-left: 40%;
+}
+
+.hide_gif {
+    margin-left: 40%;
 }
 
 @media (max-width: 500px) {
