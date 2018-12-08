@@ -1,52 +1,53 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import firebase from 'firebase';
+// import './App.css';
 import axios from 'axios';
 
 class Chat extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      conversation: '',
-      wizard: {},
-      text: '',
-      messages: [],
-      user: { email: 'eebravo1@gmail.com', wizard_id: 1 }
-    };
-  }
-  componentDidMount() {
-    var config = {
-      apiKey: process.env.REACT_APP_APIKEY,
-      authDomain: process.env.REACT_APP_AUTHDOMAIN,
-      databaseURL: process.env.REACT_APP_DATABASEURL,
-      projectId: process.env.REACT_APP_PROJECTID,
-      storageBucket: process.env.REACT_APP_STORAGEBUCKET,
-      messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID
-    };
-    firebase.initializeApp(config);
-    axios
-      .get(`http://localhost:3001/api/user/${this.props.match.params.id}`)
-      .then(result =>
-        this.setState({ wizard: result.data[0] }, () => this.findConversation())
-      );
-  }
+	constructor(props) {
+		super(props);
+		this.state = {
+			conversation: '',
+			wizard: {},
+			text: '',
+			messages: [],
+			user: { email: 'eebravo1@gmail.com', wizard_id: 1 }
+		};
+	}
+	componentDidMount() {
+		var config = {
+			apiKey: process.env.REACT_APP_APIKEY,
+			authDomain: process.env.REACT_APP_AUTHDOMAIN,
+			databaseURL: process.env.REACT_APP_DATABASEURL,
+			projectId: process.env.REACT_APP_PROJECTID,
+			storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+			messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID
+		};
+		firebase.initializeApp(config);
+		axios
+			.get(`/api/user/${this.props.match.params.id}`)
+			.then((result) =>
+				this.setState({ wizard: result.data[0] }, () => this.findConversation())
+			);
+	}
 
-  onSubmit = event => {
-    if (event.charCode === 13 && this.state.text.trim() !== '') {
-      this.writeMessageToDB(this.state.text);
-      this.setState({ text: '' }, () => this.scrollToBottom());
-    }
-  };
-  //.ref(`messages/${this.state.user.wizard_id}to${this.props.match.params.id}`)
-  writeMessageToDB = message => {
-    firebase
-      .database()
-      .ref(`messages/${this.state.conversation}`)
-      .push({
-        user: 'eebravo1@gmail.com',
-        text: message
-      });
-  };
+	onSubmit = (event) => {
+		if (event.charCode === 13 && this.state.text.trim() !== '') {
+			this.writeMessageToDB(this.state.text);
+			this.setState({ text: '' }, () => this.scrollToBottom());
+		}
+	};
+	//.ref(`messages/${this.state.user.wizard_id}to${this.props.match.params.id}`)
+	writeMessageToDB = (message) => {
+		firebase
+			.database()
+			.ref(`messages/${this.state.conversation}`)
+			.push({
+				user: this.props.user.email,
+				text: message
+			});
+	};
 
   scrollToBottom() {
     this.bottomSpan.scrollIntoView();
