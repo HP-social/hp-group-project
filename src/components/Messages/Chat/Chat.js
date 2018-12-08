@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import firebase from 'firebase';
-import './App.css';
+// import './App.css';
 import axios from 'axios';
 
 class Chat extends Component {
@@ -26,7 +26,7 @@ class Chat extends Component {
 		};
 		firebase.initializeApp(config);
 		axios
-			.get(`http://localhost:3001/api/user/${this.props.match.params.id}`)
+			.get(`/api/user/${this.props.match.params.id}`)
 			.then((result) =>
 				this.setState({ wizard: result.data[0] }, () => this.findConversation())
 			);
@@ -44,7 +44,7 @@ class Chat extends Component {
 			.database()
 			.ref(`messages/${this.state.conversation}`)
 			.push({
-				user: 'eebravo1@gmail.com',
+				user: this.props.user.email,
 				text: message
 			});
 	};
