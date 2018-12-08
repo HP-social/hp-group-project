@@ -126,7 +126,7 @@ app.get('/api/forum/posts/:id', getPosts); //likes comes in as a string
 app.get('/api/likes/:postid', getLikes); //likes comes in as a string
 
 // ***** Forum Endpoints ****
-app.post('/api/post/:postid', makePost);
+app.post('/api/post/', makePost);
 app.put('/api/post/:postid', updatePost);
 app.delete('/api/post/:postid', deletePost);
 

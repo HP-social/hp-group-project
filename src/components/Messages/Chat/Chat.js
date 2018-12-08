@@ -24,7 +24,9 @@ class Chat extends Component {
 			storageBucket: process.env.REACT_APP_STORAGEBUCKET,
 			messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID
 		};
-		firebase.initializeApp(config);
+		if (!firebase.apps.length) {
+			firebase.initializeApp(config);
+		}
 		axios
 			.get(`/api/wizard/${this.props.match.params.id}`)
 			.then((result) =>
