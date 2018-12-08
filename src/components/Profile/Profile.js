@@ -16,11 +16,9 @@ class Profile extends Component {
     axios
       .get(`/api/user/${this.props.match.params.id}`)
       .then(results => this.setState({ userInfo: results.data[0] }));
-    // .then(results => console.log(results.data[0]));
   }
 
   render() {
-    // console.log(this.state);
     let cards = ['One', 'Two', 'Three'].map((e, i) => {
       return (
         <div key={i} className='card'>
@@ -43,7 +41,7 @@ class Profile extends Component {
               <div className='top_right'>
                 <h1>Harry Potter</h1>
                 <div className='bottom_right'>
-                  <h3>Followers 9 &#190;{this.props.followers}</h3>
+                  <h3>Followers 9{this.props.followers}</h3>
                   <h3>&#9961;</h3>
                   <h3>Following 10{this.props.following} </h3>
                 </div>
@@ -53,10 +51,10 @@ class Profile extends Component {
           <div className='bottom'>
             <div className='trio'>
               <img
-                src={'https://image.flaticon.com/icons/svg/281/281769.svg'}
-                alt='email icon'
+                src={'https://image.flaticon.com/icons/svg/149/149071.svg'}
+                alt='user icon'
               />
-              <h2> harrypottz@gmail.com {this.props.email}</h2>
+              <h2>Student{this.props.role}</h2>
             </div>
             <div className='trio'>
               <img
@@ -67,13 +65,13 @@ class Profile extends Component {
             </div>
             <div className='trio'>
               <img
-                src={'https://image.flaticon.com/icons/svg/149/149071.svg'}
-                alt='user icon'
+                src={'https://image.flaticon.com/icons/svg/281/281769.svg'}
+                alt='email icon'
               />
-              <h2>Student{this.props.role}</h2>
+              <h2> harrypottz@gmail.com {this.props.email}</h2>
             </div>
           </div>
-          <div />
+          <div/>
         </div>
         <div className='inner_div_right'>
           <div className='right_bookmarks'>

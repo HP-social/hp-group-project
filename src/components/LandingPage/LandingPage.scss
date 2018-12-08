@@ -31,22 +31,6 @@
     border-top: 1px solid #686868;
   }
 
-  // .img_overlay {
-  //   height: 90%;
-  //   width: 100%;
-  //   background: #151414ee; /* fallback for old browsers */
-  //   position: absolute;
-  // }
-  // .top_castle {
-  //   background-image: url("https://s3.us-east-2.amazonaws.com/hpsocial/castle.jpg");
-  //   height: 29%; /* You must set a specified height */
-  //   background-position: center; /* Center the image */
-  //   background-repeat: no-repeat; /* Do not repeat the image */
-  //   background-size: contain; /* Resize the background image to cover the entire container */
-  //   background-attachment: fixed; /* Parallax */
-  //   opacity: 0.35;
-  // }
-
   .mid_container {
     height: 60vh;
     width: 100%;
@@ -87,7 +71,7 @@
     background-image: url(https://images.unsplash.com/photo-1542270370-694e6a9a1f9e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80);
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: contain; /* Resize the background image to cover the entire container */
+    background-size: cover; /* Resize the background image to cover the entire container */
     background-attachment: fixed; /* Parallax */
 
     h1 {
