@@ -9,7 +9,7 @@ import axios from 'axios';
     super(props);
 
     this.state = {
-      tweet: '',
+      tweet: 'Write your tweet here',
       forum_id: 0,
       gif: '',
       title: ''
@@ -45,6 +45,7 @@ changeHandler(e, name) {
                 />
                 <input 
                     placeholder='GIF'
+                    value = {this.state.gif}
                     type='text'
                     className='gif'
                     onChange={(e) => this.changeHandler(e, 'gif')}></input>
