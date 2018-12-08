@@ -18,7 +18,7 @@ class Messages extends Component {
 
 	render() {
 		let friends = this.state.friends.map((friend, i) => (
-			<Link key={i} to={`/messages/${friend.followed_id}`}>
+			<Link key={i} to={`/chat/${friend.followed_id}`}>
 				<div className='message_friend'>
 					<img
 						className='avatar'
