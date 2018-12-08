@@ -1,12 +1,6 @@
 module.exports = {
 	getUser: (req, res, next) => {
-		req.app
-			.get('db')
-			.query(`select * from wizards where wizard_id=${req.params.id}`)
-			.then((result) => {
-				res.status(200).json(result);
-			})
-			.catch((err) => res.status(500).send(err));
+		res.status(200).json(req.session.user[0]);
 	},
 	getNews: (req, res, next) => {
 		req.app
@@ -18,6 +12,15 @@ module.exports = {
 					req.params.id
 				} order by forum_post.time, like_table.likes desc`
 			)
+			.then((result) => {
+				res.status(200).json(result);
+			})
+			.catch((err) => res.status(500).send(err));
+	},
+	getWizard: (req, res, next) => {
+		req.app
+			.get('db')
+			.query(`select * from wizards where wizard_id=${req.params.id}`)
 			.then((result) => {
 				res.status(200).json(result);
 			})
