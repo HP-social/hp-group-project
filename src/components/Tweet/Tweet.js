@@ -22,7 +22,7 @@ class Tweet extends Component {
   submitTweet() {
     const {tweet, title, typeInGif} = this.state
     axios
-      .post(`/api/post/:postid`, {tweet, title, typeInGif})
+      .post(`/api/post/:postid`, {tweet, title, typeInGif}).then(results => console.log(results))
   }
 
 
@@ -35,7 +35,6 @@ class Tweet extends Component {
   }
 
   render() {
-    console.log('props', this.props)
     return (
       <div>
         <div className='confirmWhiteout' />
