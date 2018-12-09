@@ -8,6 +8,14 @@
     font-family: 'lumos';
     src: url('../../../LUMOS.TTF') format('truetype');
   }
+$slytherin_green: #1a472a;
+$slytherin_silver: #5d5d5d;
+$gryffindor_red: #740001;
+$gryffindor_gold: #d3a625;
+$ravenclaw_blue: #0e1a40;
+$ravenclaw_bronze: #946b2d;
+$hufflepuff_black: #372e29;
+$hufflepuff_yellow: #ecb939;
 
 
   .theQuiz {
@@ -70,7 +78,7 @@
     margin-top: 10vh;
     margin-left: 40%;
     margin-right: 40%;
-    z-index: 100;
+    z-index: 8;
   }
   
   .sortingHatQuestion {
@@ -102,6 +110,23 @@
     cursor: pointer;
   }
   
+  .tweetButton {
+    position: fixed;
+    right: 2%;
+    bottom: 2%;
+    img {
+      filter: invert(100%);
+      width: 50px;
+      height: 66px;
+    }
+    width: 100px;
+    height: 100px;
+    margin-left: 80vw;
+    background: $slytherin_green;
+    border: 1px solid $slytherin_silver;
+    float: left;
+    border-radius: 50%;
+  }
   
   
   

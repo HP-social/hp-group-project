@@ -4,6 +4,7 @@ import { setUser } from '../../../ducks/reducer';
 import './SortingHat.scss';
 import axios from 'axios';
 import swal from 'sweetalert2';
+import Tweet from '../../Tweet/Tweet';
 
 class SortingHat extends Component {
   constructor() {
@@ -25,8 +26,11 @@ class SortingHat extends Component {
       answers: [],
       winning_house: [],
       crest: [],
-      gif: []
+      gif: [],
+      makeATweet: false
     };
+
+    this.tweet = this.tweet.bind(this);
   }
 
   componentDidMount() {
@@ -136,6 +140,14 @@ class SortingHat extends Component {
     console.log('window dot location', window.location);
     window.location.pathname =
       `/profile/${this.props.user.wizard_id}` && '/profile/1';
+<<<<<<< HEAD
+=======
+  };
+
+  tweet = () => {
+    this.setState({ makeATweet: !this.state.makeATweet });
+    console.log(this.state.makeATweet);
+>>>>>>> master
   };
 
   render() {
@@ -174,6 +186,12 @@ class SortingHat extends Component {
           <div className='sortingHatAnswers'>
             {this.state.index < 18 && answers}
           </div>
+          <button className='tweetButton' onClick={() => this.tweet()}>
+            <img src='https://image.flaticon.com/icons/svg/1305/1305386.svg' />
+          </button>
+          {this.state.makeATweet === true ? (
+            <Tweet newTweetStatus={this.tweet} />
+          ) : null}
         </div>
       </div>
     );
