@@ -8,7 +8,7 @@ class Tweet extends Component {
     super(props);
 
     this.state = {
-      tweet: 'Write your tweet here',
+      post: 'Write your tweet here',
       forum_id: 0,
       gif: '',
       title: 'Title',
@@ -17,17 +17,15 @@ class Tweet extends Component {
     };
   }
 
-
-
-  submitTweet() {
-    const {tweet, title, typeInGif} = this.state
+  submitTweet = () => {
+    const { post, title, typeInGif } = this.state;
     axios
-      .post(`/api/post/:postid`, {tweet, title, typeInGif}).then(results => console.log(results))
-  }
-
+      .post(`/api/post/:postid`, { post, title, typeInGif })
+      .then(results => console.log(results));
+  };
 
   showGif() {
-      this.setState({showGif : !this.state.showGif})
+    this.setState({ showGif: !this.state.showGif });
   }
 
   changeHandler(e, name) {
@@ -40,7 +38,6 @@ class Tweet extends Component {
         <div className='confirmWhiteout' />
         <div className='newReview'>
           {/* <h3>{this.props.user.username.toUpperCase()}</h3> */}
-          
 
           <input
             placeholder='Title'
@@ -54,15 +51,15 @@ class Tweet extends Component {
             placeholder='What is on your mind?'
             type='text'
             className={this.state.gif === '' ? 'tweet' : 'tweetWithGif'}
-            onChange={e => this.changeHandler(e, 'tweet')}
-            value={this.state.tweet}
+            onChange={e => this.changeHandler(e, 'post')}
+            value={this.state.post}
           />
           <div className='reviewButtonContainer'>
             <button
               onClick={() => this.props.newTweetStatus()}
               className='cancelTweet'
             >
-              <img src='https://image.flaticon.com/icons/svg/1214/1214428.svg'></img>
+              <img src='https://image.flaticon.com/icons/svg/1214/1214428.svg' />
             </button>
             <input
               placeholder='TYPE IN GIF URL'
