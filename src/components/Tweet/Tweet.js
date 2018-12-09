@@ -12,16 +12,19 @@ class Tweet extends Component {
       forum_id: 0,
       gif: '',
       title: 'Title',
-      showGif: false
+      showGif: false,
+      typeInGif: null
     };
   }
 
+
+
   submitTweet() {
+    const {tweet, title, typeInGif} = this.state
     axios
-      .post('/api/wizard/tweet', this.state)
-      .then(() => this.props.getTweets(parseInt(this.props.tweet_id)));
-    this.props.newTweetStatus();
+      .post(`/api/post/:postid`, {tweet, title, typeInGif})
   }
+
 
   showGif() {
       this.setState({showGif : !this.state.showGif})
@@ -32,12 +35,13 @@ class Tweet extends Component {
   }
 
   render() {
+    console.log('props', this.props)
     return (
       <div>
         <div className='confirmWhiteout' />
         <div className='newReview'>
           {/* <h3>{this.props.user.username.toUpperCase()}</h3> */}
-          <h3 id='screen_name'>RonStoppable</h3>
+          
 
           <input
             placeholder='Title'
@@ -59,11 +63,11 @@ class Tweet extends Component {
               onClick={() => this.props.newTweetStatus()}
               className='cancelTweet'
             >
-              Cancel
+              <img src='https://image.flaticon.com/icons/svg/1214/1214428.svg'></img>
             </button>
             <input
-              placeholder='GIF'
-              value={this.state.gif}
+              placeholder='TYPE IN GIF URL'
+              value={this.state.typeInGif}
               type='text'
               className={this.state.showGif === true ? 'show_gif' : 'hide_gif'}
               onChange={e => this.changeHandler(e, 'gif')}

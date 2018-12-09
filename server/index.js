@@ -15,7 +15,7 @@ const {
 } = require('./controllers/favoritesController');
 const { getPosts, getLikes } = require('./controllers/forumController');
 const { getQuestions, getAnswers } = require('./controllers/quizController');
-const { getUser, getNews } = require('./controllers/userController');
+const { getUser, getNews, getWizard } = require('./controllers/userController');
 const { getFriends, checkFriends } = require('./controllers/messageController');
 const {
 	makePost,
@@ -89,21 +89,11 @@ app.get(
 app.get('/success', (req, res, next) => {
 	req.app
 		.get('db')
-		.gamer.where(`email=$1`, req.user._json.email)
+		.wizards.where(`email=$1`, req.user._json.email)
 		.then((result) => {
 			req.session.user = result;
-			let obj = Object.assign({}, result[0]);
-			let arr = [];
-			for (let i = 0; i < 15; i++) {
-				for (let x in obj) {
-					if (obj[x] === i && x !== 'lvl' && x !== 'gamer_id') {
-						arr.push(x);
-					}
-				}
-				req.session.user[0]['profile'] = arr;
-			}
 
-			res.redirect(`${process.env.REACT_APP_FRONTEND}/dashboard`);
+			res.redirect(`${process.env.REACT_APP_FRONTEND}/sortinghat`);
 		})
 		.catch((err) => console.log(err));
 });
@@ -113,12 +103,17 @@ app.get('/api/logout', (req, res, next) => {
 	res.status(200).json('So long, muggle!');
 });
 
+app.get('/api/test', (req, res, next) => {
+	res.status(200).json(req.session);
+});
+
 // ***** Quiz Endpoints ****
 app.get('/api/quiz/questions', getQuestions);
 app.get('/api/quiz/answers', getAnswers);
 
 // ***** User Endpoints ****
-app.get('/api/user/:id', getUser);
+app.get('/api/user', getUser);
+app.get('/api/wizard/:id', getWizard);
 app.get('/api/news/:id', getNews);
 
 // ***** Favorites Endpoints ****
