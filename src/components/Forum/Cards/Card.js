@@ -78,7 +78,7 @@ class Card extends Component {
     const bottomDiv = ['Likes', 'Comments', 'Bookmarks'].map((e, i) => {
       return (
         <div className='card' key={i}>
-          <img src={bottomIcon[i]} />
+          <img src={bottomIcon[i]} alt='icons'/>
           <h3>{e}</h3>
         </div>
       );
@@ -96,14 +96,14 @@ class Card extends Component {
               </div>
               <div className='top_right'>
                 <h3>
-                  <img src='https://image.flaticon.com/icons/svg/66/66163.svg' />
+                  <img src='https://image.flaticon.com/icons/svg/66/66163.svg' alt='icons'/>
                   {duration} Hours Ago
                 </h3>
               </div>
             </div>
             <div className='mid_title'>{e[i].title}</div>
             <div className='media_container'>
-              <img src={e[i].gif} />
+              <img src={e[i].gif} alt='icons'/>
             </div>
             <p className='text_area'>{e[i].post}</p>
             <div className='bottom_container'>{bottomDiv}</div>

@@ -128,13 +128,14 @@ class SortingHat extends Component {
         imageAlt: 'house crest',
         confirmButtonText: 'I Accept',
         background: '#fff url()'
-      }).then((result) => this.sendToHouse(result));
+      }).then(result => this.sendToHouse(result));
     };
   }
 
   sendToHouse = () => {
-    console.log('window dot location', window.location)
-    window.location.pathname = `/profile/${this.props.user.wizard_id}` && '/profile/1';
+    console.log('window dot location', window.location);
+    window.location.pathname =
+      `/profile/${this.props.user.wizard_id}` && '/profile/1';
   };
 
   render() {

@@ -24,11 +24,11 @@
       border: 1px solid grey;
       border-radius: 1%;
 
-      img {
-        height: 15vh;
-        width: 15vh;
+      sigil {
+        height:20vh;
+        width:20vh;
         border: 1px solid black;
-        border-radius: 10%;
+        // border-radius: 10%;
       }
     }
 
@@ -78,14 +78,17 @@
     }
   }
 
+  .inner_div_left{}
+
   .inner_div_right {
+    background: lightseagreen;
     .right_bookmarks {
       display: flex;
       flex-direction: row;
       flex-wrap: nowrap;
       justify-content: center;
       align-items: center;
-      height: 30%;
+      height: 15%;
       background: lightsalmon;
 
       h1 {
@@ -100,13 +103,13 @@
       height: 70%;
       flex-direction: column;
       justify-content: space-evenly;
-      background: plum;
+      // background: plum;
     }
 
     .card {
       height: 25%;
       padding: 2%;
-      background: lightblue;
+      // background: lightblue;
       border: 1px solid grey;
       border-radius: 1%;
       border-radius: 3px;

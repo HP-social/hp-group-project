@@ -18,12 +18,17 @@ class Profile extends Component {
       .then(results => this.setState({ userInfo: results.data[0] }));
   }
 
+  sendNewPassword(){
+    // alert('Twerks!')
+    // axios.post('/api/sendEmail1')
+    // axios.post('/api/sendEmail1', {e})
+  }
+
   render() {
     let cards = ['One', 'Two', 'Three'].map((e, i) => {
       return (
         <div key={i} className='card'>
           Title: {e}
-          {/* Content: lasfjsaf laksjfs ljkljwpa asflja */}
         </div>
       );
     });
@@ -32,10 +37,7 @@ class Profile extends Component {
         <div className='inner_div_left'>
           <div className='top_left'>
             <>
-              <img
-                src='https://i.pinimg.com/originals/2d/0b/32/2d0b32de425b8b06be204f148d146849.png'
-                alt='Harry Potter'
-              />
+            <sigil className='gryffindor sm' />
             </>
             <>
               <div className='top_right'>
@@ -70,7 +72,11 @@ class Profile extends Component {
               />
               <h2> harrypottz@gmail.com {this.props.email}</h2>
             </div>
+
           </div>
+            <div className='admin_controls'>
+              <button onClick={ () => {this.sendNewPassword()}}>Send Email</button>
+            </div>
           <div/>
         </div>
         <div className='inner_div_right'>
