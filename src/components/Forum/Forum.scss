@@ -1,11 +1,126 @@
-.poop {
-    color: white;
-    font-style: white;
-    background: black;
-    width: 1270px;
-    height: 550px;
-    font-size: 25px;
-    .forum_post {
-        background: green;
+@font-face {
+  font-family: 'harryp';
+  src: url('../../HARRYP__.TTF') format('truetype');
+}
+
+@font-face {
+  font-family: 'lumos';
+  src: url('../../LUMOS.TTF') format('truetype');
+}
+
+@font-face {
+  font-family: 'parselto';
+  src: url('../../PARSELTO.TTF') format('truetype');
+}
+
+$slytherin_green: #1a472a;
+$slytherin_silver: #5d5d5d;
+$gryffindor_red: #740001;
+$gryffindor_gold: #d3a625;
+$ravenclaw_blue: #0e1a40;
+$ravenclaw_bronze: #946b2d;
+$hufflepuff_black: #372e29;
+$hufflepuff_yellow: #ecb939;
+
+.everything {
+  color: white;
+  font-style: white;
+  background: black;
+  width: 100%;
+  height: 85.5vh;
+  font-size: 2em;
+//   margin-left: 100px;
+//   margin-right: 100px;
+  display: flex;
+  flex-direction: column;
+
+  .forum_title {
+    display: flex;
+    background: green;
+    justify-content: center;
+    font-size: 50px;
+    font-family: 'parselto';
+    height: 10%;
+  }
+  .forum_post {
+    height: 30%;
+    display: flex;
+    background: $slytherin_green;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    border: 2px solid purple;
+    position: relative;
+    #wizard_name {
+        position: absolute;
+        left: 8vw;
+        top: 2vh;
     }
+    #wizard_avi {
+        width: 75px;
+        height: 75px;
+        position: absolute;
+        left: 1vw;
+        top: 1vh;
+        border-radius: 50%;
+    }
+    #time_of_post {
+        background: $slytherin_green;
+        opacity: .66;
+        width: 150px;
+        height: 30px;
+        position: absolute;
+        right: 2vw;
+        top: 1vh;
+        color: black;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+    }
+    #star-five {
+      height: 20px;
+      width: 20px;
+      position: absolute;
+      left: 2vw;
+      bottom: 2vh;
+      border-radius: 50%;
+      border: 1px solid black;
+    }
+    #star-five:hover {
+      background: red;
+    }
+    #star-five_number {
+        position: absolute;
+        left: 4.2vw;
+        bottom: 2.5vh;
+    }
+    #comment {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      left: 8vw;
+      bottom: 2vh;
+      border: 1px solid black;
+    }
+    #comment:hover {
+      background: paleturquoise;
+    }
+    #comment_number {
+        position: absolute;
+        left: 10vw;
+        bottom: 2.5vh;
+    }
+    #triangle {
+      width: 20px;
+      height: 20px;
+      border: 1px solid black;
+      position: absolute;
+      right: 2vw;
+      bottom: 2vh;
+    }
+    #triangle:hover{
+        background: yellow;
+    }
+  }
 }

@@ -8,10 +8,10 @@ class Tweet extends Component {
     super(props);
 
     this.state = {
-      post: 'Write your tweet here',
+      post: '',
       forum_id: 0,
       gif: '',
-      title: 'Title',
+      title: '',
       showGif: false,
       typeInGif: null
     };
