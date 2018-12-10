@@ -4,11 +4,16 @@ import { setUser } from '../../../ducks/reducer';
 import './Card.scss';
 import moment from 'moment';
 import HouseHeader from '../../Tools/HouseHeader/HouseHeader';
+import axios from 'axios';
 class Card extends Component {
-  constructor() {
-    super();
-    this.state = {};
+  constructor(props) {
+    super(props);
+    this.state = {
+      forum: {}
+    };
   }
+
+  
 
   render() {
     const posts = [
@@ -78,7 +83,7 @@ class Card extends Component {
     const bottomDiv = ['Likes', 'Comments', 'Bookmarks'].map((e, i) => {
       return (
         <div className='card' key={i}>
-          <img src={bottomIcon[i]} alt='icons'/>
+          <img src={bottomIcon[i]} alt='icons' />
           <h3>{e}</h3>
         </div>
       );
@@ -92,18 +97,23 @@ class Card extends Component {
             <div className='top_username'>
               <div className='top_left'>
                 <sigil className='gryffindor sm' />
-                <h1>{e[i].username}</h1>
+                <h3>{e[i].username}</h3>
+                
               </div>
               <div className='top_right'>
+              
                 <h3>
-                  <img src='https://image.flaticon.com/icons/svg/66/66163.svg' alt='icons'/>
+                  <img
+                    src='https://image.flaticon.com/icons/svg/66/66163.svg'
+                    alt='icons'
+                  />
                   {duration} Hours Ago
                 </h3>
               </div>
             </div>
-            <div className='mid_title'>{e[i].title}</div>
+            <div className='mid_title'>{e[i].title}<div className='triangle'></div></div>
             <div className='media_container'>
-              <img src={e[i].gif} alt='icons'/>
+              <img src={e[i].gif} alt='icons' />
             </div>
             <p className='text_area'>{e[i].post}</p>
             <div className='bottom_container'>{bottomDiv}</div>
@@ -111,9 +121,10 @@ class Card extends Component {
         </>
       );
     });
-return (
+    return (
       <>
         {/* <HouseHeader house={'gryffindor'}/> */}
+        {/* <HouseHeader house={this.state.user.house ==== 'gryffindor' ? 'gryffindor' :}/> */}
         <>{dynamicCard}</>
       </>
     );
