@@ -1,17 +1,24 @@
+$slytherin_green: #1a472a;
+$slytherin_silver: #5d5d5d;
+$gryffindor_red: #740001;
+$gryffindor_gold: #d3a625;
+$ravenclaw_blue: #0e1a40;
+$ravenclaw_bronze: #946b2d;
+$hufflepuff_black: #372e29;
+$hufflepuff_yellow: #ecb939;
+
 .chat {
 	display: flex;
 	flex-direction: column;
 	align-self: center;
 	text-align: center;
 	margin-bottom: 40px;
-	margin-left: 100px;
 	z-index: 100;
 	width: 80vw;
 }
 
 .message_container {
 	display: flex;
-	margin-left: 100px;
 
 	flex-direction: column;
 	margin-bottom: 50px;
@@ -39,7 +46,6 @@
 	bottom: 5px;
 	left: 5px;
 	right: 5px;
-	margin-left: 100px;
 }
 
 .user_message {
@@ -76,4 +82,16 @@
 	align-content: center;
 	align-self: flex-start;
 	margin: 10px;
+}
+
+.sm {
+	width: 100px;
+	height: 115px;
+}
+
+.chatHeader {
+	width: 100%;
+	border-bottom: 1px solid black;
+	position: fixed;
+	top: 50;
 }
