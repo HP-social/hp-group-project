@@ -2,33 +2,34 @@ const nodemailer = require('nodemailer');
 const sesTransport = require('nodemailer-ses-transport');
 const transporter = nodemailer.createTransport(
   sesTransport({
-    accessKeyId: `${process.env.ACCESS_KEY_ID}`,
-    secretAccessKey: `${process.env.SECRET_ACCESS_KEY}`
+    // ASK PAT FOR ENV FILE
+    accessKeyId: process.env.ACCESS_KEY_ID,
+    secretAccessKey: process.env.SECRET_ACCESS_KEY
   })
 );
 
 module.exports = {
   sendEmail1: (req, res, next) => {
-    console.log('@#$%#@ EMAIL 1 HIT');
-    // console.log("NODEMAILER >>>>", req.body);
+    console.log("NODEMAILER >>>>", req.body.passphrase);
     // console.log(typeof(process.env.ADMIN_EMAIL));
-    // const { forum, user_email, emailMessage } = req.body.e;
-    // transporter
-    //   .sendMail({
-    //     from: process.env.ADMIN_EMAIL,
-    //     to: user_email,
-    //     subject: `${forum} Password Has Changed`,
-    //     text: emailMessage
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //     res.status(500).send(err);
-    //   });
+    // console.log(process.env.ADMIN_EMAIL);
+    const { passphrase } = req.body;
+    transporter
+      .sendMail({
+        from: process.env.ADMIN_EMAIL,
+        to: 'pskhiev@gmail.com',
+        subject: "House (Insert) Phrase Has Changed",
+        text: `Your House passphrase was compromised. The new passphrase is ${passphrase}`
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).send(err);
+      });
   },
 
   sendEmail2: (req, res, next) => {
     // console.log('****sendmail2 ***', req.body.e.obj.user_email);
-    console.log('****sendmail2 ***');
+    // console.log('****sendmail2 ***');
     // const { emailMessage } = req.body.e;
     // const { first_name, user_email } = req.body.e.obj;
     // transporter

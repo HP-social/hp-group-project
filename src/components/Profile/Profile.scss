@@ -25,8 +25,8 @@
       border-radius: 1%;
 
       sigil {
-        height:20vh;
-        width:20vh;
+        height: 20vh;
+        width: 20vh;
         border: 1px solid black;
         // border-radius: 10%;
       }
@@ -76,9 +76,26 @@
         }
       }
     }
+
+    .admin_controls {
+      padding: 2%;
+      border: 1px solid grey;
+      h1{
+        text-align: center;
+        font-size: 1.5em;
+        padding: 1%;
+      }
+      input{
+        width: 80%;
+      }
+      .admin_bottom{
+        display: flex;
+        justify-content: space-between;
+      }
+    }
   }
 
-  .inner_div_left{}
+  // .inner_div_left{}
 
   .inner_div_right {
     background: lightseagreen;
