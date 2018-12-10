@@ -12,26 +12,23 @@ class Forum extends Component {
     this.state = {
       post: [],
       makeATweet: false,
-      user: { email: 'aestesc@gmail.com', wizard_id: 3, username: 'ronstoppable', house: 'slytherin', profile_img: 'https://d36tnp772eyphs.cloudfront.net/blogs/1/2016/01/BENH9926-Edit.jpg' },
+      user: {
+        email: 'aestesc@gmail.com',
+        wizard_id: 3,
+        username: 'ronstoppable',
+        house: 'slytherin',
+        profile_img:
+          'https://d36tnp772eyphs.cloudfront.net/blogs/1/2016/01/BENH9926-Edit.jpg'
+      },
       forum: {}
     };
   }
 
   componentDidMount() {
     axios.get(`/api/forum/${this.props.match.params.id}`).then(result => {
-      this.setState({ forum: result.data });
+      this.setState({ forum: result.data[0] });
     });
   }
-
-  // componentDidUpdate() {
-  //   console.log('hi');
-  //   axios.get(`/api/forum/posts/${this.match.params.id}`).then(results => {
-  //     this.setState({
-  //       post: results.data
-  //     });
-  //     console.log('params');
-  //   });
-  // }
 
   tweet = () => {
     this.setState({ makeATweet: !this.state.makeATweet });
@@ -43,7 +40,16 @@ class Forum extends Component {
     return (
       <div className='everything'>
         <h1 className='forum_title'>Slytherin Commons</h1>
-        <div className='forum_card'><Card /></div>
+        <div className='forum_card'>
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+        </div>
         {/* <Card /> */}
         {/* <div className='forum_post'>
           Ron is the best wizard

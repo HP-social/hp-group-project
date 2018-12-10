@@ -97,9 +97,11 @@ class Card extends Component {
             <div className='top_username'>
               <div className='top_left'>
                 <sigil className='gryffindor sm' />
-                <h1>{e[i].username}</h1>
+                <h3>{e[i].username}</h3>
+                
               </div>
               <div className='top_right'>
+              
                 <h3>
                   <img
                     src='https://image.flaticon.com/icons/svg/66/66163.svg'
@@ -109,7 +111,7 @@ class Card extends Component {
                 </h3>
               </div>
             </div>
-            <div className='mid_title'>{e[i].title}</div>
+            <div className='mid_title'>{e[i].title}<div className='triangle'></div></div>
             <div className='media_container'>
               <img src={e[i].gif} alt='icons' />
             </div>
