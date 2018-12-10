@@ -8,7 +8,8 @@ class Profile extends Component {
   constructor() {
     super();
     this.state = {
-      userInfo: {}
+      userInfo: {},
+      default_message: 'Enter New Passphrase...'
     };
   }
 
@@ -18,13 +19,14 @@ class Profile extends Component {
       .then(results => this.setState({ userInfo: results.data[0] }));
   }
 
-  sendNewPassword(){
-    // alert('Twerks!')
-    // axios.post('/api/sendEmail1')
-    // axios.post('/api/sendEmail1', {e})
+  sendNewPassword(passphrase) {
+    console.log(passphrase)
+    // axios.post('/api/sendEmail1');
+    axios.post('/api/sendEmail1', {passphrase})
   }
 
   render() {
+    console.log(this.state);
     let cards = ['One', 'Two', 'Three'].map((e, i) => {
       return (
         <div key={i} className='card'>
@@ -37,7 +39,7 @@ class Profile extends Component {
         <div className='inner_div_left'>
           <div className='top_left'>
             <>
-            <sigil className='gryffindor sm' />
+              <sigil className='gryffindor sm' />
             </>
             <>
               <div className='top_right'>
@@ -72,12 +74,22 @@ class Profile extends Component {
               />
               <h2> harrypottz@gmail.com {this.props.email}</h2>
             </div>
-
           </div>
-            <div className='admin_controls'>
-              <button onClick={ () => {this.sendNewPassword()}}>Send Email</button>
+          <div className='admin_controls'>
+            <h1>Notify House Members</h1>
+            <div className='admin_bottom'>
+              <input
+                placeholder={this.state.default_message}
+                onChange={e =>
+                  this.setState({ default_message: e.target.value })
+                }
+              />
+              <button onClick={() => {this.sendNewPassword(this.state.default_message)}}>
+                Send Email
+              </button>
             </div>
-          <div/>
+          </div>
+          <div />
         </div>
         <div className='inner_div_right'>
           <div className='right_bookmarks'>

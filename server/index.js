@@ -24,10 +24,10 @@ const {
 } = require('./controllers/postController');
 
 // //**** Nodemailer ****
-// const {
-//   sendEmail1,
-//   sendEmail2
-// } = require('./controllers/nodemailerController');
+const {
+  sendEmail1,
+  sendEmail2
+} = require('./controllers/nodemailerController');
 
 const session = require('express-session');
 
@@ -141,7 +141,7 @@ app.get('/api/message/friends/:userid/:wizardid', checkFriends);
 app.get('/api/message/allfriends/:id', getFriends);
 
 // ***** Nodemailer Endpoints ****
-// app.post('/api/sendEmail1', sendEmail1);
+app.post('/api/sendEmail1', sendEmail1);
 // app.post('/api/sendEmail2', sendEmail2);
 
 app.listen(port, () => {
