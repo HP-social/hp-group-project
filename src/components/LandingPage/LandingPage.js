@@ -9,8 +9,8 @@ class LandingPage extends Component {
     this.state = {};
   }
 
-  login = () => {
-    alert('Send This Wizard To The Sorting Hat!');
+  loginRedirect = () => {
+    window.location.href = `${process.env.REACT_APP_SERVER}/login`;
   };
   render() {
     const icon = [
@@ -48,7 +48,7 @@ class LandingPage extends Component {
         </div>
         <div className='mid_container'>{cardTitle}</div>
         <div className='bottom_container'>
-          <h1 onClick={() => this.login()}>Start</h1>
+          <h1 onClick={() => this.loginRedirect()}>Start</h1>
         </div>
       </div>
     );
