@@ -37,5 +37,57 @@ module.exports = {
 				res.status(200).json(result);
 			})
 			.catch((err) => res.status(500).send(err));
+	},
+	isLiked: (req, res, next) => {
+		req.app
+			.get('db')
+			.query(
+				`select * from subscribe join forum on subscribe.forum_id=forum.forum_id where subscribe.wizard_id=${
+					req.params.id
+				}`
+			)
+			.then((result) => {
+				res.status(200).json(result);
+			})
+			.catch((err) => res.status(500).send(err));
+	},
+	isBookmarked: (req, res, next) => {
+		req.app
+			.get('db')
+			.query(
+				`select * from subscribe join forum on subscribe.forum_id=forum.forum_id where subscribe.wizard_id=${
+					req.params.id
+				}`
+			)
+			.then((result) => {
+				res.status(200).json(result);
+			})
+			.catch((err) => res.status(500).send(err));
+	},
+	likeNumber: (req, res, next) => {
+		req.app
+			.get('db')
+			.query(
+				`select count(*)as likesNumber from likes where post_id=${
+					req.params.id
+				}`
+			)
+			.then((result) => {
+				res.status(200).json(result);
+			})
+			.catch((err) => res.status(500).send(err));
+	},
+	commentNumber: (req, res, next) => {
+		req.app
+			.get('db')
+			.query(
+				`select * from subscribe join forum on subscribe.forum_id=forum.forum_id where subscribe.wizard_id=${
+					req.params.id
+				}`
+			)
+			.then((result) => {
+				res.status(200).json(result);
+			})
+			.catch((err) => res.status(500).send(err));
 	}
 };
