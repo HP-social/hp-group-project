@@ -13,7 +13,8 @@ class App extends Component {
         <BrowserRouter>
           <div className="App">
             {window.location.pathname !== "/" && <Navigation />}
-            {routes}
+            <div className='routes'>{routes}</div>
+            
           </div>
         </BrowserRouter>
       </Provider>

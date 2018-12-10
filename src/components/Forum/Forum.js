@@ -15,15 +15,15 @@ class Forum extends Component {
     };
   }
 
-  componentDidUpdate() {
-    console.log('hi');
-    axios.get(`/api/forum/posts/${this.match.params.id}`).then(results => {
-      this.setState({
-        post: results.data
-      });
-      console.log('params');
-    });
-  }
+  // componentDidUpdate() {
+  //   console.log('hi');
+  //   axios.get(`/api/forum/posts/${this.match.params.id}`).then(results => {
+  //     this.setState({
+  //       post: results.data
+  //     });
+  //     console.log('params');
+  //   });
+  // }
 
   tweet = () => {
     this.setState({ makeATweet: !this.state.makeATweet });

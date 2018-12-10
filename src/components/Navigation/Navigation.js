@@ -37,6 +37,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import FollowIcon from '@material-ui/icons/GroupAdd';
 import SubscribeIcon from '@material-ui/icons/AddToPhotos';
 import DailyProphetIcon from '@material-ui/icons/LibraryBooks';
+import LogoutIcon from '@material-ui/icons/RemoveCircle';
 
 const drawerWidth = 400;
 
@@ -171,6 +172,10 @@ class Navigation extends React.Component {
     value: 0
   };
 
+  componentDidMount() {
+    this.props.setUser();
+  }
+
   handleDrawerOpen = () => {
     this.setState({ open: true });
   };
@@ -252,13 +257,26 @@ class Navigation extends React.Component {
             <IconButton color='inherit'>
               <Badge
                 badgeContent={`${this.props.mentionsCount}` && 14}
-                color='secondary'>
+                color='secondary'
+              >
                 <MentionsIcon />
               </Badge>
             </IconButton>
             <p>Mentions</p>
           </MenuItem>
         </Link>
+        <div
+          onClick={() =>
+            window.open(`${process.env.REACT_APP_SERVER}/api/logout`, '_self')
+          }
+        >
+          <MenuItem>
+            <IconButton color='inherit'>
+              <LogoutIcon />
+            </IconButton>
+            <p>Logout</p>
+          </MenuItem>
+        </div>
       </Menu>
     );
 
@@ -345,10 +363,22 @@ class Navigation extends React.Component {
                   color='secondary'
                 >
                   <Link to={'/thequibbler'}>
-                    <MentionsIcon />{' '}
+                    <MentionsIcon />
                   </Link>
                 </Badge>
               </IconButton>
+              <div
+                onClick={() =>
+                  window.open(
+                    `${process.env.REACT_APP_SERVER}/api/logout`,
+                    '_self'
+                  )
+                }
+              >
+                <IconButton color='inherit'>
+                  <LogoutIcon />
+                </IconButton>
+              </div>
             </div>
             <div className={classes.sectionMobile}>
               <IconButton
