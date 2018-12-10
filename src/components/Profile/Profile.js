@@ -8,21 +8,28 @@ class Profile extends Component {
   constructor() {
     super();
     this.state = {
-      userInfo: {},
+      userInfo: {
+        wizard_id: 1,
+        email: 'eebravo1@gmail.com',
+        username: 'patientzero',
+        house: 'ravenclaw',
+        role: 'student'
+      },
       default_message: 'Enter New Passphrase...'
     };
   }
 
   componentDidMount() {
+    console.log(this.state.userInfo);
     axios
-      .get(`/api/user/${this.props.match.params.id}`)
+      .get(`/api/wizard/${this.props.match.params.id}`)
       .then(results => this.setState({ userInfo: results.data[0] }));
   }
 
   sendNewPassword(passphrase) {
-    console.log(passphrase)
+    console.log(passphrase);
     // axios.post('/api/sendEmail1');
-    axios.post('/api/sendEmail1', {passphrase})
+    axios.post('/api/sendEmail1', { passphrase });
   }
 
   render() {
@@ -43,7 +50,7 @@ class Profile extends Component {
             </>
             <>
               <div className='top_right'>
-                <h1>Harry Potter</h1>
+                <h1>{this.state.userInfo.username}</h1>
                 <div className='bottom_right'>
                   <h3>Followers 9{this.props.followers}</h3>
                   <h3>&#9961;</h3>
@@ -58,25 +65,25 @@ class Profile extends Component {
                 src={'https://image.flaticon.com/icons/svg/149/149071.svg'}
                 alt='user icon'
               />
-              <h2>Student{this.props.role}</h2>
+              <h2>ROLE: {this.state.userInfo.role.toUpperCase()}</h2>
             </div>
             <div className='trio'>
               <img
                 src={'https://image.flaticon.com/icons/svg/859/859170.svg'}
                 alt='house logo'
               />
-              <h2>Gryffindor {this.props.house}</h2>
+              <h2>HOUSE: {this.state.userInfo.house.toUpperCase()}</h2>
             </div>
             <div className='trio'>
               <img
                 src={'https://image.flaticon.com/icons/svg/281/281769.svg'}
                 alt='email icon'
               />
-              <h2> harrypottz@gmail.com {this.props.email}</h2>
+              <h2>EMAIL: {this.state.userInfo.email.toUpperCase()}</h2>
             </div>
           </div>
           <div className='admin_controls'>
-            <h1>Notify House Members</h1>
+            <h1>Change House Passphrase</h1>
             <div className='admin_bottom'>
               <input
                 placeholder={this.state.default_message}
@@ -84,7 +91,11 @@ class Profile extends Component {
                   this.setState({ default_message: e.target.value })
                 }
               />
-              <button onClick={() => {this.sendNewPassword(this.state.default_message)}}>
+              <button
+                onClick={() => {
+                  this.sendNewPassword(this.state.default_message);
+                }}
+              >
                 Send Email
               </button>
             </div>
