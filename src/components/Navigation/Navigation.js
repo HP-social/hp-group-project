@@ -265,14 +265,18 @@ class Navigation extends React.Component {
             <p>Mentions</p>
           </MenuItem>
         </Link>
-        <Link to={'/logout'}>
+        <div
+          onClick={() =>
+            window.open(`${process.env.REACT_APP_SERVER}/api/logout`, '_self')
+          }
+        >
           <MenuItem>
             <IconButton color='inherit'>
               <LogoutIcon />
             </IconButton>
             <p>Logout</p>
           </MenuItem>
-        </Link>
+        </div>
       </Menu>
     );
 
@@ -356,24 +360,32 @@ class Navigation extends React.Component {
               <IconButton color='inherit'>
                 <Badge
                   badgeContent={`${this.props.mentionsCount}` && 14}
-                  color='secondary'>
+                  color='secondary'
+                >
                   <Link to={'/thequibbler'}>
                     <MentionsIcon />
                   </Link>
                 </Badge>
               </IconButton>
-              {/* Eman Here You Go */}
-              <IconButton color='inherit'>
-                  <Link to={'/logout'}>
-                    <LogoutIcon />
-                  </Link>
-              </IconButton>
+              <div
+                onClick={() =>
+                  window.open(
+                    `${process.env.REACT_APP_SERVER}/api/logout`,
+                    '_self'
+                  )
+                }
+              >
+                <IconButton color='inherit'>
+                  <LogoutIcon />
+                </IconButton>
+              </div>
             </div>
             <div className={classes.sectionMobile}>
               <IconButton
                 aria-haspopup='true'
                 onClick={this.handleMobileMenuOpen}
-                color='inherit'>
+                color='inherit'
+              >
                 <MoreIcon />
               </IconButton>
             </div>
