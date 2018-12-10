@@ -15,25 +15,35 @@ class Profile extends Component {
         house: 'ravenclaw',
         role: 'student'
       },
-      default_message: 'Enter New Passphrase...'
+      default_message: 'Enter New Passphrase...',
+      houseStudents: []
     };
   }
 
   componentDidMount() {
-    console.log(this.state.userInfo);
     axios
       .get(`/api/wizard/${this.props.match.params.id}`)
       .then(results => this.setState({ userInfo: results.data[0] }));
   }
 
-  sendNewPassword(passphrase) {
-    console.log(passphrase);
-    // axios.post('/api/sendEmail1');
-    axios.post('/api/sendEmail1', { passphrase });
-  }
+  sendNewPassword = async () => {
+    const { default_message, houseStudents } = this.state;
+    await axios
+      .get(`/api/emails?house=${this.state.userInfo.house}`)
+      .then(res =>
+        this.setState({
+          houseStudents: res.data.map(email => {
+            return email.email;
+          })
+        })
+      );
+    await axios.post('/api/sendEmail1', {
+      passphrase: default_message,
+      houseStudents: this.state.houseStudents.join(', ')
+    });
+  };
 
   render() {
-    console.log(this.state);
     let cards = ['One', 'Two', 'Three'].map((e, i) => {
       return (
         <div key={i} className='card'>
@@ -93,7 +103,7 @@ class Profile extends Component {
               />
               <button
                 onClick={() => {
-                  this.sendNewPassword(this.state.default_message);
+                  this.sendNewPassword();
                 }}
               >
                 Send Email
