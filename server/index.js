@@ -20,7 +20,8 @@ const {
 const {
 	getPosts,
 	getLikes,
-	getForums
+	getForums,
+	getForum
 } = require('./controllers/forumController');
 const { getQuestions, getAnswers } = require('./controllers/quizController');
 const { getUser, getNews, getWizard } = require('./controllers/userController');
@@ -148,6 +149,7 @@ app.post('/api/post/', makePost);
 app.put('/api/post/:postid', updatePost);
 app.delete('/api/post/:postid', deletePost);
 app.get('/api/forums', getForums);
+app.get('/api/forum/:id', getForum);
 
 // ***** Message Endpoints ****
 app.get('/api/message/friends/:userid/:wizardid', checkFriends);
