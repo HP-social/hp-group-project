@@ -12,8 +12,15 @@ class Forum extends Component {
     this.state = {
       post: [],
       makeATweet: false,
-      user: { email: 'aestesc@gmail.com', wizard_id: 3, username: 'ronstoppable', house: 'slytherin', profile_img: 'https://d36tnp772eyphs.cloudfront.net/blogs/1/2016/01/BENH9926-Edit.jpg' }
+      user: { email: 'aestesc@gmail.com', wizard_id: 3, username: 'ronstoppable', house: 'slytherin', profile_img: 'https://d36tnp772eyphs.cloudfront.net/blogs/1/2016/01/BENH9926-Edit.jpg' },
+      forum: {}
     };
+  }
+
+  componentDidMount() {
+    axios.get(`/api/forum/${this.props.match.params.id}`).then(result => {
+      this.setState({ forum: result.data });
+    });
   }
 
   // componentDidUpdate() {

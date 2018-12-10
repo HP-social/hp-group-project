@@ -6,18 +6,14 @@ import moment from 'moment';
 import HouseHeader from '../../Tools/HouseHeader/HouseHeader';
 import axios from 'axios';
 class Card extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       forum: {}
     };
   }
 
-  componentDidMount() {
-    axios.get(`/api/forum/${this.props.match.params.id}`).then(result => {
-      this.setState({ forum: result.data });
-    });
-  }
+  
 
   render() {
     const posts = [
