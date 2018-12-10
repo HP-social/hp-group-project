@@ -17,7 +17,7 @@ module.exports = {
       .sendMail({
         from: process.env.ADMIN_EMAIL,
         to: houseStudents,
-        subject: 'House (Insert) Phrase Has Changed',
+        subject: `House ${req.session.user.house} Phrase Has Changed`,
         text: `Your House passphrase was compromised. The new passphrase is ${passphrase}`
       })
       .catch(err => {
