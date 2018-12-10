@@ -42,8 +42,8 @@ module.exports = {
 		req.app
 			.get('db')
 			.query(
-				`select * from subscribe join forum on subscribe.forum_id=forum.forum_id where subscribe.wizard_id=${
-					req.params.id
+				`select * from likes where post_id=${req.params.id} and wizard_id=${
+					req.session.user.wizard_id
 				}`
 			)
 			.then((result) => {
@@ -55,8 +55,8 @@ module.exports = {
 		req.app
 			.get('db')
 			.query(
-				`select * from subscribe join forum on subscribe.forum_id=forum.forum_id where subscribe.wizard_id=${
-					req.params.id
+				`select * from bookmarks where post_id=${req.params.id} and wizard_id=${
+					req.session.user.wizard_id
 				}`
 			)
 			.then((result) => {

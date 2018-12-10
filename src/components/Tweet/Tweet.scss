@@ -47,8 +47,14 @@ $hufflepuff_yellow: #ecb939;
 .tweet,
 .title,
 .submitTweet,
-.cancelTweet {
+.cancelTweet,
+.drop_down {
   border: 2px solid black;
+}
+
+.drop_down {
+  margin-top: 1vh;
+  background: $slytherin_silver;
 }
 
 #screen_name {

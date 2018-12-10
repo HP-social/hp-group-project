@@ -40,6 +40,7 @@ class Forum extends Component {
     return (
       <div className='everything'>
         <h1 className='forum_title'>Slytherin Commons</h1>
+        {/* <Tweet /> */}
         <div className='forum_card'>
           <Card />
           <Card />
