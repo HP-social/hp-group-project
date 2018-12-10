@@ -4,6 +4,7 @@ import { setUser } from '../../ducks/reducer';
 import axios from 'axios';
 import './Forum.scss';
 import Tweet from '../Tweet/Tweet';
+import Card from './Cards/Card';
 
 class Forum extends Component {
   constructor(props) {
@@ -35,7 +36,9 @@ class Forum extends Component {
     return (
       <div className='everything'>
         <h1 className='forum_title'>Slytherin Commons</h1>
-        <div className='forum_post'>
+        <div className='forum_card'><Card /></div>
+        {/* <Card /> */}
+        {/* <div className='forum_post'>
           Ron is the best wizard
           <img id='wizard_avi'src={this.state.user.profile_img}></img>
           <div id='wizard_name'>{this.state.user.username}</div>
@@ -45,7 +48,7 @@ class Forum extends Component {
           <div id='comment' />
           <div id ='comment_number'>8</div>
           <div id='triangle' />
-        </div>
+        </div> */}
 
         <button className='tweetButton' onClick={() => this.tweet()}>
           <img src='https://image.flaticon.com/icons/svg/1305/1305386.svg' />

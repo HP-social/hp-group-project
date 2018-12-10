@@ -4,10 +4,19 @@ import { setUser } from '../../../ducks/reducer';
 import './Card.scss';
 import moment from 'moment';
 import HouseHeader from '../../Tools/HouseHeader/HouseHeader';
+import axios from 'axios';
 class Card extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      forum: {}
+    };
+  }
+
+  componentDidMount() {
+    axios.get(`/api/forum/${this.props.match.params.id}`).then(result => {
+      this.setState({ forum: result.data });
+    });
   }
 
   render() {
@@ -78,7 +87,7 @@ class Card extends Component {
     const bottomDiv = ['Likes', 'Comments', 'Bookmarks'].map((e, i) => {
       return (
         <div className='card' key={i}>
-          <img src={bottomIcon[i]} alt='icons'/>
+          <img src={bottomIcon[i]} alt='icons' />
           <h3>{e}</h3>
         </div>
       );
@@ -96,14 +105,17 @@ class Card extends Component {
               </div>
               <div className='top_right'>
                 <h3>
-                  <img src='https://image.flaticon.com/icons/svg/66/66163.svg' alt='icons'/>
+                  <img
+                    src='https://image.flaticon.com/icons/svg/66/66163.svg'
+                    alt='icons'
+                  />
                   {duration} Hours Ago
                 </h3>
               </div>
             </div>
             <div className='mid_title'>{e[i].title}</div>
             <div className='media_container'>
-              <img src={e[i].gif} alt='icons'/>
+              <img src={e[i].gif} alt='icons' />
             </div>
             <p className='text_area'>{e[i].post}</p>
             <div className='bottom_container'>{bottomDiv}</div>
@@ -111,9 +123,10 @@ class Card extends Component {
         </>
       );
     });
-return (
+    return (
       <>
         {/* <HouseHeader house={'gryffindor'}/> */}
+        {/* <HouseHeader house={this.state.user.house ==== 'gryffindor' ? 'gryffindor' :}/> */}
         <>{dynamicCard}</>
       </>
     );
