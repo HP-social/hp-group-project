@@ -51,110 +51,110 @@ class Chat extends Component {
 			});
 	};
 
-	scrollToBottom() {
-		this.bottomSpan.scrollIntoView();
-	}
+  scrollToBottom() {
+    this.bottomSpan.scrollIntoView();
+  }
 
-	findConversation() {
-		if (
-			parseInt(this.state.wizard.wizard_id) >
-			parseInt(this.props.user.wizard_id)
-		) {
-			this.setState(
-				{
-					conversation: `${this.props.user.wizard_id}to${
-						this.state.wizard.wizard_id
-					}`
-				},
-				() => this.getMessages()
-			);
-		} else {
-			this.setState(
-				{
-					conversation: `${this.state.wizard.wizard_id}to${
-						this.props.user.wizard_id
-					}`
-				},
-				() => this.getMessages()
-			);
-		}
-	}
+  findConversation() {
+    if (
+      parseInt(this.state.wizard.wizard_id) >
+      parseInt(this.props.user.wizard_id)
+    ) {
+      this.setState(
+        {
+          conversation: `${this.props.user.wizard_id}to${
+            this.state.wizard.wizard_id
+          }`
+        },
+        () => this.getMessages()
+      );
+    } else {
+      this.setState(
+        {
+          conversation: `${this.state.wizard.wizard_id}to${
+            this.props.user.wizard_id
+          }`
+        },
+        () => this.getMessages()
+      );
+    }
+  }
 
-	getMessages = () => {
-		var messagesDB = firebase
-			.database()
-			.ref(`messages/${this.state.conversation}`)
-			.limitToLast(500);
-		messagesDB.on('value', (snapshot) => {
-			let newMessages = [];
-			snapshot.forEach((child) => {
-				var message = child.val();
-				newMessages.push({
-					id: child.key,
-					email: message.user,
-					text: message.text
-				});
-			});
-			this.setState({ messages: newMessages });
-			this.bottomSpan.scrollIntoView({ behavior: 'smooth' });
-		});
-	};
+  getMessages = () => {
+    var messagesDB = firebase
+      .database()
+      .ref(`messages/${this.state.conversation}`)
+      .limitToLast(500);
+    messagesDB.on('value', snapshot => {
+      let newMessages = [];
+      snapshot.forEach(child => {
+        var message = child.val();
+        newMessages.push({
+          id: child.key,
+          email: message.user,
+          text: message.text
+        });
+      });
+      this.setState({ messages: newMessages });
+      this.bottomSpan.scrollIntoView({ behavior: 'smooth' });
+    });
+  };
 
-	renderMessages = () => {
-		return this.state.messages.map((message, i) => {
-			if (message.email === this.props.user.email) {
-				return (
-					<div key={i} className='user_outer'>
-						<img
-							className='avatar'
-							alt='avatar'
-							src={this.props.user.profile_img}
-						/>
-						<div className='user_message'>{message.text}</div>
-						<br />
-					</div>
-				);
-			} else {
-				return (
-					<div key={i} className='friend_outer'>
-						<div className='friend_message'>{message.text}</div>
-						<img
-							className='avatar'
-							alt='avatar'
-							src={this.state.wizard.profile_img}
-						/>
-						<br />
-					</div>
-				);
-			}
-		});
-	};
+  renderMessages = () => {
+    return this.state.messages.map((message, i) => {
+      if (message.email === this.props.user.email) {
+        return (
+          <div key={i} className='user_outer'>
+            <img
+              className='avatar'
+              alt='avatar'
+              src={this.props.user.profile_img}
+            />
+            <div className='user_message'>{message.text}</div>
+            <br />
+          </div>
+        );
+      } else {
+        return (
+          <div key={i} className='friend_outer'>
+            <div className='friend_message'>{message.text}</div>
+            <img
+              className='avatar'
+              alt='avatar'
+              src={this.state.wizard.profile_img}
+            />
+            <br />
+          </div>
+        );
+      }
+    });
+  };
 
-	render() {
-		return (
-			<div className='chat'>
-				{this.renderMessages()}
-				<textarea
-					className='chat_input'
-					autoFocus={true}
-					rowsmax={3}
-					placeholder='Type something..'
-					onChange={(event) => this.setState({ text: event.target.value })}
-					value={this.state.text}
-					onKeyPress={this.onSubmit}
-					style={{ width: '98vw', overflow: 'hidden' }}
-				/>
-				<span ref={(el) => (this.bottomSpan = el)} />
-			</div>
-		);
-	}
+  render() {
+    return (
+      <div className='chat'>
+        {this.renderMessages()}
+        <textarea
+          className='chat_input'
+          autoFocus={true}
+          rowsmax={3}
+          placeholder='Type something..'
+          onChange={event => this.setState({ text: event.target.value })}
+          value={this.state.text}
+          onKeyPress={this.onSubmit}
+          style={{ width: '98vw', overflow: 'hidden' }}
+        />
+        <span ref={el => (this.bottomSpan = el)} />
+      </div>
+    );
+  }
 }
 
 function mapStateToProps(state) {
-	const { user } = state;
-	return {
-		user
-	};
+  const { user } = state;
+  return {
+    user
+  };
 }
 
 export default connect(mapStateToProps)(Chat);

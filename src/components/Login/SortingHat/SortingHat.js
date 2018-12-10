@@ -140,11 +140,14 @@ class SortingHat extends Component {
     console.log('window dot location', window.location);
     window.location.pathname =
       `/profile/${this.props.user.wizard_id}` && '/profile/1';
+<<<<<<< HEAD
+=======
   };
 
   tweet = () => {
     this.setState({ makeATweet: !this.state.makeATweet });
     console.log(this.state.makeATweet);
+>>>>>>> master
   };
 
   render() {

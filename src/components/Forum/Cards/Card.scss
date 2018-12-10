@@ -1,5 +1,6 @@
 .card_main {
   display: flex;
+  width: 75%;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
@@ -17,29 +18,31 @@
     justify-content: space-between;
     height: auto;
     width: 100%;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
     // background: #f4d6a0;
 
     .top_left {
       display: flex;
       align-items: center;
       h1 {
-        font-size: 3em;
-        margin-left: 4%;
+        font-size: 2.1em;
+        padding-left: 10%;
       }
       .gryffindor {
-        height: 9vw;
-        width: 8vw;
+        height: 8vw;
+        width: 7vw;
       }
     }
 
-    .top_right{
+    .top_right {
       padding-right: 5%;
-      h3{
-        font-size: 1.2em;
+      h3 {
+        font-size: 1em;
       }
 
-      img{
-        height: 3vh;
+      img {
+        height: 2.5vh;
       }
     }
   }
@@ -73,18 +76,21 @@
     align-items: center;
     height: 10vh;
     width: 100%;
+    border-top: 1px solid grey;
     // background: rgb(160, 77, 160);
     .card {
-      width: 10%;
+      width: 100%;
       display: flex;
-      justify-content: space-around;
+      justify-content: center;
       align-items: center;
-      // background: rgb(184, 183, 184);
+      margin: 1%;
+
       h3 {
-        font-size: 1.5em;
+        font-size: 1em;
       }
       img {
-        height: 6vh;
+        height: 4vh;
+        padding-right: 2%;
       }
     }
   }

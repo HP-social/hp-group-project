@@ -171,6 +171,10 @@ class Navigation extends React.Component {
     value: 0
   };
 
+  componentDidMount(){
+    this.props.setUser()
+  }
+
   handleDrawerOpen = () => {
     this.setState({ open: true });
   };
