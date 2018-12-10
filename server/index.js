@@ -21,7 +21,9 @@ const {
 	getPosts,
 	getLikes,
 	getForums,
-	getForum
+	getForum,
+	getPost
+	// getHouseEmails
 } = require('./controllers/forumController');
 const { getQuestions, getAnswers } = require('./controllers/quizController');
 const { getUser, getNews, getWizard } = require('./controllers/userController');
@@ -35,7 +37,8 @@ const {
 // //**** Nodemailer ****
 const {
 	sendEmail1,
-	sendEmail2
+	sendEmail2,
+	getHouseEmails
 } = require('./controllers/nodemailerController');
 
 const session = require('express-session');
@@ -106,7 +109,7 @@ app.get('/success', (req, res, next) => {
 		.get('db')
 		.wizards.where(`email=$1`, req.user._json.email)
 		.then((result) => {
-			req.session.user = result;
+			req.session.user = result[0];
 
 			res.redirect(`${process.env.REACT_APP_FRONTEND}/sortinghat`);
 		})
@@ -145,6 +148,7 @@ app.get('/api/forum/posts/:id', getPosts); //likes comes in as a string
 app.get('/api/likes/:postid', getLikes); //likes comes in as a string
 
 // ***** Forum Endpoints ****
+app.get('/api/post/:postid', getPost);
 app.post('/api/post/', makePost);
 app.put('/api/post/:postid', updatePost);
 app.delete('/api/post/:postid', deletePost);
@@ -157,6 +161,7 @@ app.get('/api/message/allfriends/:id', getFriends);
 
 // ***** Nodemailer Endpoints ****
 app.post('/api/sendEmail1', sendEmail1);
+app.get('/api/emails', getHouseEmails);
 // app.post('/api/sendEmail2', sendEmail2);
 
 app.listen(port, () => {
