@@ -3,9 +3,9 @@ module.exports = {
 		req.app
 			.get('db')
 			.query(
-				`select * from (select count(*) as likes,post_id from likes group by post_id) as super join forum_post on super.post_id=forum_post.post_id join wizards on wizards.wizard_id=forum_post.wizard_id where forum_post.forum_id=${
+				`select * from (select count(*) as likes,post_id from likes group by post_id) as super right join forum_post on super.post_id=forum_post.post_id join wizards on wizards.wizard_id=forum_post.wizard_id where forum_post.forum_id=${
 					req.params.id
-				} order by time,likes desc`
+				} order by time desc,likes desc`
 			)
 			.then((result) => {
 				res.status(200).json(result);
