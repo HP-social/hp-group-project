@@ -4,38 +4,59 @@ import { setUser } from '../../ducks/reducer';
 import axios from 'axios';
 import './Forum.scss';
 import Tweet from '../Tweet/Tweet';
+import Card from './Cards/Card';
 
 class Forum extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      post: [],
+      posts: [],
       makeATweet: false,
-      user: { email: 'aestesc@gmail.com', wizard_id: 3, username: 'ronstoppable', house: 'slytherin', profile_img: 'https://d36tnp772eyphs.cloudfront.net/blogs/1/2016/01/BENH9926-Edit.jpg' }
+      user: {
+        email: 'aestesc@gmail.com',
+        wizard_id: 3,
+        username: 'ronstoppable',
+        house: 'slytherin',
+        profile_img:
+          'https://d36tnp772eyphs.cloudfront.net/blogs/1/2016/01/BENH9926-Edit.jpg'
+      },
+      forum: {}
     };
   }
 
-  // componentDidUpdate() {
-  //   console.log('hi');
-  //   axios.get(`/api/forum/posts/${this.match.params.id}`).then(results => {
-  //     this.setState({
-  //       post: results.data
-  //     });
-  //     console.log('params');
-  //   });
-  // }
+  componentDidMount() {
+    axios.get(`/api/forum/${this.props.match.params.id}`).then(result => {
+      this.setState({ forum: result.data[0] });
+    });
+    axios.get('/api/forum/posts/:id').then(results => {
+      this.setState({posts: results.data})
+    })
+    
+  }
 
   tweet = () => {
     this.setState({ makeATweet: !this.state.makeATweet });
   };
 
   render() {
-    console.log(this.props);
+    console.log(this.state)
 
     return (
       <div className='everything'>
         <h1 className='forum_title'>Slytherin Commons</h1>
-        <div className='forum_post'>
+        {/* <Tweet /> */}
+        <div className='forum_card'>
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+        </div>
+        {/* <Card /> */}
+        {/* <div className='forum_post'>
           Ron is the best wizard
           <img id='wizard_avi'src={this.state.user.profile_img}></img>
           <div id='wizard_name'>{this.state.user.username}</div>
@@ -45,7 +66,7 @@ class Forum extends Component {
           <div id='comment' />
           <div id ='comment_number'>8</div>
           <div id='triangle' />
-        </div>
+        </div> */}
 
         <button className='tweetButton' onClick={() => this.tweet()}>
           <img src='https://image.flaticon.com/icons/svg/1305/1305386.svg' />

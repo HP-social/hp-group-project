@@ -9,18 +9,25 @@ class Tweet extends Component {
 
     this.state = {
       post: '',
-      forum_id: 0,
+      forum_id: 1,
       gif: '',
       title: '',
       showGif: false,
-      typeInGif: null
-    };
+      typeInGif: null,
+      forum: []    };
+  }
+  componentDidMount() {
+    axios
+      .get('/api/forums')
+      .then(result => this.setState({ forum: result.data }));
   }
 
   submitTweet = () => {
-    const { post, title, typeInGif } = this.state;
+    const { post, title, gif, forum_id } = this.state;
+
+    let newPost = Object.assign({},{ post, title, gif, forum_id },{wizard_id:this.props.user.wizard_id})
     axios
-      .post(`/api/post/:postid`, { post, title, typeInGif })
+      .post(`/api/post/`, newPost)
       .then(results => console.log(results));
   };
 
@@ -33,6 +40,13 @@ class Tweet extends Component {
   }
 
   render() {
+    let options = this.state.forum.map((elem, i) => {
+      return (
+        <option key={i} value={elem.forum_id}>
+          {elem.location}
+        </option>
+      );
+    });
     return (
       <div>
         <div className='confirmWhiteout' />
@@ -46,7 +60,7 @@ class Tweet extends Component {
             onChange={e => this.changeHandler(e, 'title')}
             value={this.state.title}
           />
-
+          <select className='drop_down' name='forum' onChange={(e) => this.changeHandler(e, 'selected_forum')}>{options}</select>
           <textarea
             placeholder='What is on your mind?'
             type='text'
