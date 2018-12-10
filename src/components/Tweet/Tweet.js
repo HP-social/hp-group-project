@@ -9,14 +9,12 @@ class Tweet extends Component {
 
     this.state = {
       post: '',
-      forum_id: 0,
+      forum_id: 1,
       gif: '',
       title: '',
       showGif: false,
       typeInGif: null,
-      forum: [],
-      selected_forum: 1
-    };
+      forum: []    };
   }
   componentDidMount() {
     axios
@@ -25,9 +23,11 @@ class Tweet extends Component {
   }
 
   submitTweet = () => {
-    const { post, title, typeInGif, selected_forum } = this.state;
+    const { post, title, gif, forum_id } = this.state;
+
+    let newPost = Object.assign({},{ post, title, gif, forum_id },{wizard_id:this.props.user.wizard_id})
     axios
-      .post(`/api/post/:postid`, { post, title, typeInGif, selected_forum })
+      .post(`/api/post/`, newPost)
       .then(results => console.log(results));
   };
 

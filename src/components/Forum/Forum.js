@@ -10,7 +10,7 @@ class Forum extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      post: [],
+      posts: [],
       makeATweet: false,
       user: {
         email: 'aestesc@gmail.com',
@@ -28,6 +28,10 @@ class Forum extends Component {
     axios.get(`/api/forum/${this.props.match.params.id}`).then(result => {
       this.setState({ forum: result.data[0] });
     });
+    axios.get('/api/forum/posts/:id').then(results => {
+      this.setState({posts: results.data})
+    })
+    
   }
 
   tweet = () => {
@@ -35,7 +39,7 @@ class Forum extends Component {
   };
 
   render() {
-    console.log(this.props);
+    console.log(this.state)
 
     return (
       <div className='everything'>
