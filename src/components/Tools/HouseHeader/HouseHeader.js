@@ -2,25 +2,25 @@ import React from 'react';
 import './HouseHeader.scss';
 
 function HouseHeader(props) {
-	if (props.house === 'gryffindor') {
+	if (props.house.indcludes('gryffindor')) {
 		return (
 			<nav className='topper griff'>
 				<sigil className='gryffindor img-responsive' />
 			</nav>
 		);
-	} else if (props.house === 'ravenclaw') {
+	} else if (props.house.includes('ravenclaw')) {
 		return (
 			<nav className='topper rave'>
 				<sigil className='ravenclaw img-responsive' />
 			</nav>
 		);
-	} else if (props.house === 'hufflepuff') {
+	} else if (props.house.includes('hufflepuff')) {
 		return (
 			<nav className='topper huff'>
 				<sigil className='hufflepuff img-responsive' />
 			</nav>
 		);
-	} else if (props.house === 'slytherin') {
+	} else if (props.house.includes('slytherin')) {
 		return (
 			<nav className='topper slyth'>
 				<sigil className='slytherin img-responsive' />
