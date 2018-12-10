@@ -28,10 +28,11 @@ class Forum extends Component {
     axios.get(`/api/forum/${this.props.match.params.id}`).then(result => {
       this.setState({ forum: result.data[0] });
     });
-    axios.get('/api/forum/posts/:id').then(results => {
-      this.setState({posts: results.data})
-    })
-    
+    axios
+      .get(`/api/forum/posts/${this.props.match.params.id}`)
+      .then(results => {
+        this.setState({ posts: results.data });
+      });
   }
 
   tweet = () => {
@@ -39,22 +40,14 @@ class Forum extends Component {
   };
 
   render() {
-    console.log(this.state)
-
+    let posts = this.state.posts.map((elem, i) => {
+      return <Card post={elem} />;
+    });
     return (
       <div className='everything'>
         <h1 className='forum_title'>Slytherin Commons</h1>
         {/* <Tweet /> */}
-        <div className='forum_card'>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-        </div>
+        <div className='forum_card'>{posts} </div>
         {/* <Card /> */}
         {/* <div className='forum_post'>
           Ron is the best wizard
