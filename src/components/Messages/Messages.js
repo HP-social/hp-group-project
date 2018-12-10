@@ -13,14 +13,9 @@ class Messages extends Component {
 		};
 	}
 	componentDidMount() {
-		this.props.setUser();
-		setTimeout(
-			() =>
-				axios
-					.get(`/api/message/allfriends/${this.props.user.wizard_id}`)
-					.then((result) => this.setState({ friends: result.data })),
-			5000
-		);
+		axios
+			.get(`/api/message/allfriends/${this.props.user.wizard_id}`)
+			.then((result) => this.setState({ friends: result.data }));
 	}
 
 	render() {
