@@ -1,6 +1,6 @@
 module.exports = {
 	getUser: (req, res, next) => {
-		res.status(200).json(req.session.user[0]);
+		res.status(200).json(req.session.user);
 	},
 	getNews: (req, res, next) => {
 		req.app
