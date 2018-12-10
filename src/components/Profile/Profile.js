@@ -28,15 +28,7 @@ class Profile extends Component {
 
   sendNewPassword = async () => {
     const { default_message, houseStudents } = this.state;
-    await axios
-      .get(`/api/emails?house=${this.state.userInfo.house}`)
-      .then(res =>
-        this.setState({
-          houseStudents: res.data.map(email => {
-            return email.email;
-          })
-        })
-      );
+    await axios.get(`/api/emails?house=${this.state.userInfo.house}`).then(res => this.setState({houseStudents: res.data.map(email => {return email.email;})}));
     await axios.post('/api/sendEmail1', {
       passphrase: default_message,
       houseStudents: this.state.houseStudents.join(', ')
