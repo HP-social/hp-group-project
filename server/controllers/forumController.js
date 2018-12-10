@@ -42,5 +42,14 @@ module.exports = {
 				res.status(200).json(result);
 			})
 			.catch((err) => res.status(500).send(err));
+	},
+	getPost: (req, res, next) => {
+		req.app
+			.get('db')
+			.query(`select * from forum_post where post_id=${req.params.postid}`)
+			.then((result) => {
+				res.status(200).json(result);
+			})
+			.catch((err) => res.status(500).send(err));
 	}
 };
