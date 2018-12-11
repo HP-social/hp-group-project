@@ -133,7 +133,7 @@ class Forum extends Component {
 		);
 	}
 >>>>>>> master
-}
+
 
 function mapStateToProps(state) {
 	const { user } = state;
