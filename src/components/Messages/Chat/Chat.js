@@ -35,6 +35,18 @@ class Chat extends Component {
 			);
 	}
 
+	componentDidUpdate(prevProps) {
+		if (prevProps.match.params.id !== this.props.match.params.id) {
+			axios
+				.get(`/api/wizard/${this.props.match.params.id}`)
+				.then((result) =>
+					this.setState({ wizard: result.data[0] }, () =>
+						this.findConversation()
+					)
+				);
+		}
+	}
+
 	onSubmit = (event) => {
 		if (event.charCode === 13 && this.state.text.trim() !== '') {
 			this.writeMessageToDB(this.state.text);

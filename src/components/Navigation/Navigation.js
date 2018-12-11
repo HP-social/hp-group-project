@@ -38,6 +38,7 @@ import FollowIcon from '@material-ui/icons/GroupAdd';
 import SubscribeIcon from '@material-ui/icons/AddToPhotos';
 import DailyProphetIcon from '@material-ui/icons/LibraryBooks';
 import LogoutIcon from '@material-ui/icons/RemoveCircle';
+import axios from 'axios';
 
 const drawerWidth = 400;
 
@@ -176,9 +177,15 @@ class Navigation extends React.Component {
 		value: 0
 	};
 
-	componentDidMount() {
-		this.props.setUser();
-	}
+	componentDidMount = async () => {
+		await this.props.setUser();
+		await axios.get('/api/user').then((result) => {
+			if (!result.data.house && window.location.pathname !== `/sortinghat`) {
+				// this.props.history.push('/sortinghat');
+				window.location.href = `${process.env.REACT_APP_FRONTEND}/sortinghat`;
+			}
+		});
+	};
 
 	handleDrawerOpen = () => {
 		this.setState({ open: true });

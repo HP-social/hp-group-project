@@ -12,11 +12,13 @@ $hufflepuff_yellow: #ecb939;
 	display: flex;
 	position: fixed;
 	/*     flex-direction:row; */
-	justify-content: center;
+	justify-content: space-around;
+	align-items: center;
 	top: 60px;
-	height: 60px;
+	// height: 60px;
 	background: #191919;
-	width: 100%;
+	color: white;
+	width: calc(100% - 70px);
 	z-index: 10;
 }
 
@@ -35,7 +37,7 @@ $hufflepuff_yellow: #ecb939;
 
 .img-responsive {
 	padding: 0px 0px 0px 0px;
-	margin-bottom: -105px;
+	margin-bottom: 0px;
 	margin-top: 0px;
 }
 
@@ -80,4 +82,9 @@ sigil.hufflepuff {
 	background-image: url('http://s6830.storage.proboards.com/6396830/i/QFq0Eoz2xBWttk7uVWzv.png');
 	background-position: center;
 	background-size: cover;
+}
+
+.font {
+	font-family: 'parselto';
+	color: white;
 }

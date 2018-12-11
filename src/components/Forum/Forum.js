@@ -18,16 +18,23 @@ class Forum extends Component {
 		};
 	}
 
-	componentDidMount() {
-		axios.get(`/api/forum/${this.props.match.params.id}`).then((result) => {
-			this.setState({ forum: result.data[0] });
-		});
-		axios
+	componentDidMount = async () => {
+		// await axios.get('/api/user').then((result) => {
+		// 	if (!result.data.house) {
+		// 		this.props.history.push('/sortinghat');
+		// 	}
+		// });
+		await axios
+			.get(`/api/forum/${this.props.match.params.id}`)
+			.then((result) => {
+				this.setState({ forum: result.data[0] });
+			});
+		await axios
 			.get(`/api/forum/posts/${this.props.match.params.id}`)
 			.then((results) => {
 				this.setState({ posts: results.data });
 			});
-	}
+	};
 
 	tweet = () => {
 		this.setState({ makeATweet: !this.state.makeATweet });
@@ -40,9 +47,11 @@ class Forum extends Component {
 		return (
 			<div className='everything'>
 				{this.state.forum.location && (
-					<HouseHeader house={this.state.forum.location} />
+					<HouseHeader house={this.state.forum.location}>
+						{this.state.forum.location.toUpperCase()}
+					</HouseHeader>
 				)}
-				<h1 className='forum_title'>{this.state.forum.location}</h1>
+				{/* <h1 className='forum_title'>{this.state.forum.location}</h1> */}
 				{/* <Tweet /> */}
 				<div className='card_main'>
 					<div className='top_username'>
@@ -51,10 +60,16 @@ class Forum extends Component {
 							<h3>{this.props.user.username}</h3>
 						</div>
 					</div>
-					<input placeholder='Title' />
-					<textarea placeholder='Text here' />
+					<input placeholder='Title' className='title' />
+					<textarea className='tweet' placeholder='Text here' />
 					<input placeholder='gif link' />
-					<button>Cancel</button> <button>Submit</button>
+					<button className='cancelTweet'>Cancel</button>
+					<>
+						<button onClick={() => this.submitTweet()} className='submitTweet'>
+							<img src='https://image.flaticon.com/icons/svg/1305/1305386.svg' />
+						</button>
+						<button>Submit</button>
+					</>
 				</div>
 				<div className='forum_card'>{posts} </div>
 				{/* <Card /> */}

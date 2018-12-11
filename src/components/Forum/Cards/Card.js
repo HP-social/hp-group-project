@@ -71,7 +71,7 @@ class Card extends Component {
 			return (
 				<>
 					<div className='card_main' key={i}>
-						<div className='top_username'>
+						<div className={e.house + '_top_bottom' + ' top_username'}>
 							<div className='top_left'>
 								<sigil className={e.house + ' sm'} />
 								<h3>{e.username}</h3>

@@ -1,3 +1,12 @@
+$slytherin_green: #1a472a;
+$slytherin_silver: #5d5d5d;
+$gryffindor_red: #740001;
+$gryffindor_gold: #d3a625;
+$ravenclaw_blue: #0e1a40;
+$ravenclaw_bronze: #946b2d;
+$hufflepuff_black: #372e29;
+$hufflepuff_yellow: #ecb939;
+
 .card_main {
 	position: relative;
 	display: flex;
@@ -24,8 +33,7 @@
 		// justify-content: space-between;
 		height: auto;
 		width: 100%;
-		border-top: 1px solid grey;
-		border-bottom: 1px solid grey;
+
 		// background: #f4d6a0;
 
 		.top_left {
@@ -128,4 +136,21 @@
 
 .hidden-class {
 	display: none;
+}
+
+.slytherin_top_bottom {
+	border-top: 1px solid $slytherin_silver;
+	border-bottom: 1px solid $slytherin_silver;
+}
+.gryffindor_top_bottom {
+	border-top: 1px solid $gryffindor_gold;
+	border-bottom: 1px solid $gryffindor_gold;
+}
+.hufflepuff_top_bottom {
+	border-top: 1px solid $hufflepuff_black;
+	border-bottom: 1px solid $hufflepuff_black;
+}
+.ravenclaw_top_bottom {
+	border-top: 1px solid $ravenclaw_bronze;
+	border-bottom: 1px solid $ravenclaw_bronze;
 }
