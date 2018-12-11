@@ -1,11 +1,11 @@
 @font-face {
-	font-family: 'harryp';
-	src: url('../../../HARRYP__.TTF') format('truetype');
+  font-family: 'harryp';
+  src: url('../../../HARRYP__.TTF') format('truetype');
 }
 
 @font-face {
-	font-family: 'lumos';
-	src: url('../../../LUMOS.TTF') format('truetype');
+  font-family: 'lumos';
+  src: url('../../../LUMOS.TTF') format('truetype');
 }
 $slytherin_green: #1a472a;
 $slytherin_silver: #5d5d5d;
@@ -17,108 +17,94 @@ $hufflepuff_black: #372e29;
 $hufflepuff_yellow: #ecb939;
 
 .theQuiz {
-	margin-top: -80px;
-	width: 100%;
-	height: 100%;
-	position: absolute;
+  background-image: url('https://vignette.wikia.nocookie.net/harrypotter/images/b/bd/High_Table_PS.png/revision/latest?cb=20161120225850');
+  background-position: center;
+  background-size: cover;
+  height: 92vh;
+  margin-top: 80px;
+  margin-left: -73px;
+  padding-bottom: 80px;
 
-	.greatHallBackground {
-		width: 100%;
-		height: 100%;
-		position: absolute;
-	}
+  .sortingHatQuestionBox {
+    display: flex;
+    flex-direction: column;
+    color: white;
 
-	.sortingHatQuestionBox {
-		margin-top: -80px;
-		display: flex;
-		flex-direction: column;
-		position: absolute;
-		color: white;
-		background: rgba(31, 28, 28, 0.39);
-		top: 15vh;
-		min-width: 100%;
-
-		#quiz_name {
-			font-size: 40px;
-			display: flex;
-			left: 41.5vw;
-			font-family: 'harryp';
-			justify-content: center;
-			position: absolute;
-			margin-bottom: 10vh;
-			border-bottom: 5px solid rgba(90, 46, 28, 0.424);
-		}
-	}
+    #quiz_name {
+      font-size: 60px;
+      display: flex;
+      margin: 50px;
+      font-family: 'harryp';
+      justify-content: center;
+    }
+  }
 }
 
 .answer {
-	border-bottom: 0.5px solid black;
-	padding-bottom: 2vh;
+  border-bottom: 0.5px solid black;
+  padding-bottom: 2vh;
 }
 
 .answer:hover {
-	cursor: pointer;
-	background: rgba(153, 153, 173, 0.58);
+  cursor: pointer;
+  background: rgba(153, 153, 173, 0.58);
 }
 
 .answer:active {
-	cursor: pointer;
-	background: rgba(66, 66, 71, 0.58);
+  cursor: pointer;
+  background: rgba(66, 66, 71, 0.58);
 }
 
 .sortingHatPicture {
-	justify-content: center;
-	width: 20%;
-	height: 20%;
-	margin-top: 10vh;
-	margin-left: 40%;
-	margin-right: 40%;
-	z-index: 8;
+  justify-content: center;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .sortingHatQuestion {
-	font-family: 'lumos';
-	display: flex;
-	justify-content: center;
-	margin-top: 3.5vh;
-	font-size: 28px;
-	margin-left: 28vw;
-	margin-right: 25vw;
+  font-family: 'lumos';
+  display: flex;
+  justify-content: center;
+  margin-top: 3.5vh;
+  font-size: 28px;
+  margin-left: 28vw;
+  margin-right: 25vw;
 }
 
 .sortingHatAnswers {
-	margin-top: 5vh;
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	width: 47%;
-	margin-left: 28%;
-	margin-right: 40%;
-	font-size: 20px;
-	border-top: 0.5px solid black;
-	border-left: 0.5px solid black;
-	border-right: 0.5px solid black;
-	font-family: 'lumos';
+  margin-top: 5%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 47%;
+  margin-left: 28%;
+  margin-right: 40%;
+  font-size: 20px;
+  border-top: 0.5px solid black;
+  border-left: 0.5px solid black;
+  border-right: 0.5px solid black;
+  font-family: 'lumos';
 }
 
 .sortingHatAnswers hover {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .tweetButton {
-	position: fixed;
-	right: 2%;
-	bottom: 2%;
-	img {
-		filter: invert(100%);
-		width: 50px;
-		height: 66px;
-	}
-	width: 70px;
-	height: 70px;
-	margin-left: 80vw;
-	background: $slytherin_green;
-	border: 1px solid $slytherin_silver;
-	float: left;
-	border-radius: 50%;
+  position: fixed;
+  right: 2%;
+  bottom: 2%;
+  img {
+    filter: invert(100%);
+    width: 50px;
+    height: 66px;
+  }
+  width: 70px;
+  height: 70px;
+  margin-left: 80vw;
+  background: $slytherin_green;
+  border: 1px solid $slytherin_silver;
+  float: left;
+  border-radius: 50%;
 }
