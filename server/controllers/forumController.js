@@ -46,7 +46,20 @@ module.exports = {
 	getPost: (req, res, next) => {
 		req.app
 			.get('db')
-			.query(`select * from forum_post where post_id=${req.params.postid}`)
+			.query(
+				`select * from forum_post join forum on forum_post.forum_id=forum.forum_id where post_id=${
+					req.params.postid
+				}`
+			)
+			.then((result) => {
+				res.status(200).json(result);
+			})
+			.catch((err) => res.status(500).send(err));
+	},
+	getComments: (req, res, next) => {
+		req.app
+			.get('db')
+			.query(`select * from comment where post_id=${req.params.id}`)
 			.then((result) => {
 				res.status(200).json(result);
 			})

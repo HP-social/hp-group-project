@@ -11,10 +11,7 @@ class Card extends Component {
 		this.state = {
 			isLiked: false,
 			isBookmarked: false,
-			post: {},
-			likeNumber: 0,
-			commentNumber: 0,
-			className: 'hidden-class'
+			likeNumber: 0
 		};
 	}
 
@@ -110,9 +107,6 @@ class Card extends Component {
 		});
 		return (
 			<>
-				{/* <HouseHeader house={'gryffindor'}/> */}
-				{/* <HouseHeader house={this.state.user.house ==== 'gryffindor' ? 'gryffindor' :}/> */}
-
 				<>{dynamicCard}</>
 			</>
 		);

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { setUser } from '../../ducks/reducer';
 import './Messages.scss';
 import axios from 'axios';
+import HouseHeader from '../Tools/HouseHeader/HouseHeader';
 
 class Messages extends Component {
 	constructor(props) {
@@ -27,7 +28,15 @@ class Messages extends Component {
 				</div>
 			</Link>
 		));
-		return <div className='message_container'>{friends}</div>;
+
+		return (
+			<div className='message_container'>
+				{/* {this.props.match.params.id && (
+					<HouseHeader house={selected.house}>{selected.username}</HouseHeader>
+				)} */}
+				{friends}
+			</div>
+		);
 	}
 }
 
