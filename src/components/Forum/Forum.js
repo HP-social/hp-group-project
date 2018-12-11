@@ -62,7 +62,7 @@ class Forum extends Component {
         </div> */}
 
         <button className='tweetButton' onClick={() => this.tweet()}>
-          <img src='https://image.flaticon.com/icons/svg/1305/1305386.svg' />
+          <img src='https://image.flaticon.com/icons/svg/1305/1305386.svg' alt='tweet button' />
         </button>
         {this.state.makeATweet === true ? (
           <Tweet newTweetStatus={this.tweet} />
