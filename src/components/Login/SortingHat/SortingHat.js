@@ -164,11 +164,6 @@ class SortingHat extends Component {
 		console.log('the winning house is', this.state.winning_house);
 		return (
 			<div className='theQuiz'>
-				<img
-					className='greatHallBackground'
-					src='https://vignette.wikia.nocookie.net/harrypotter/images/b/bd/High_Table_PS.png/revision/latest?cb=20161120225850'
-					alt='great hall'
-				/>
 				<div className='sortingHatQuestionBox'>
 					<div id='quiz_name'>Sorting Hat Quiz</div>
 					<img
@@ -183,12 +178,6 @@ class SortingHat extends Component {
 					<div className='sortingHatAnswers'>
 						{this.state.index < 18 && answers}
 					</div>
-					<button className='tweetButton' onClick={() => this.tweet()}>
-						<img src='https://image.flaticon.com/icons/svg/1305/1305386.svg' alt='the quill' />
-					</button>
-					{this.state.makeATweet === true ? (
-						<Tweet newTweetStatus={this.tweet} />
-					) : null}
 				</div>
 			</div>
 		);
