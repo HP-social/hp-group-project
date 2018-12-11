@@ -20,7 +20,7 @@ class Post extends Component {
 	}
 
 	componentDidMount() {
-		axios.get(`/api/comments/${this.props.match.params.id}`).then((result) => {
+		axios.get(`/api/comment/${this.props.match.params.id}`).then((result) => {
 			this.setState({ comments: result.data });
 		});
 		axios.get(`/api/post/${this.props.match.params.id}`).then((results) => {
@@ -40,7 +40,15 @@ class Post extends Component {
 		this.setState({ [name]: e.target.value });
 	}
 
-	newPost = async () => {
+	setComments() {
+		axios
+			.get(`/api/comment/${this.props.match.params.id}`)
+			.then((result) =>
+				this.setState({ comments: result.data }, () => this.cleanState())
+			);
+	}
+
+	newPost() {
 		let newPost = Object.assign(
 			{},
 			{
@@ -49,13 +57,8 @@ class Post extends Component {
 				post_id: this.state.post[0].post_id
 			}
 		);
-		axios.post('/api/comment', newPost);
-		await axios
-			.get(`/api/comments/${this.props.match.params.id}`)
-			.then((result) =>
-				this.setState({ comments: result.data }, () => this.cleanState())
-			);
-	};
+		axios.post('/api/comment', newPost).then(() => this.setComments());
+	}
 
 	render() {
 		let post = this.state.post.map((elem, i) => {
