@@ -27,7 +27,7 @@ class Profile extends Component {
   }
 
   sendNewPassword = async () => {
-    const { default_message, houseStudents } = this.state;
+    const { default_message } = this.state;
     await axios
       .get(`/api/emails?house=${this.state.userInfo.house}`)
       .then(res =>
@@ -94,7 +94,7 @@ class Profile extends Component {
             </div>
           </div>
           <br />
-          { this.state.userInfo.role !== 'student' &&
+          {this.state.userInfo.role !== 'student' && (
             <div className='admin_controls'>
               <h1>Change House Passphrase</h1>
               <br />
@@ -114,7 +114,7 @@ class Profile extends Component {
                 </button>
               </div>
             </div>
-          }
+          )}
           <div />
         </div>
         <div className='inner_div_right'>
