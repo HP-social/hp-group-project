@@ -47,9 +47,9 @@ module.exports = {
 		req.app
 			.get('db')
 			.query(
-				`select * from forum_post join forum on forum_post.forum_id=forum.forum_id where post_id=${
+				`select * from forum_post join forum on forum_post.forum_id=forum.forum_id join wizards on wizards.wizard_id=forum_post.wizard_id where post_id=${
 					req.params.postid
-				}`
+				} order by time`
 			)
 			.then((result) => {
 				res.status(200).json(result);
@@ -59,10 +59,40 @@ module.exports = {
 	getComments: (req, res, next) => {
 		req.app
 			.get('db')
-			.query(`select * from comment where post_id=${req.params.id}`)
+			.query(
+				`select * from comment join wizards on comment.wizard_id=wizards.wizard_id where post_id=${
+					req.params.id
+				} order by time`
+			)
 			.then((result) => {
 				res.status(200).json(result);
 			})
+			.catch((err) => res.status(500).send(err));
+	},
+	makeComment: (req, res, next) => {
+		req.app
+			.get('db')
+			.comment.insert(req.body)
+			.then((result) => {
+				res.status(200).json(result);
+			})
+			.catch((err) => res.status(500).send(err));
+	},
+	deleteComment: (req, res, next) => {
+		req.app
+			.get('db')
+			.query(`delete from comment where comment_id=${req.params.id}`)
+			.then((result) => {
+				res.status(200).json(result);
+			})
+			.catch((err) => res.status(500).send(err));
+	},
+	updateComment: (req, res, next) => {
+		// console.log(req.body);
+		req.app
+			.get('db')
+			.comment.save(req.body)
+			.then((response) => res.status(200).json(response))
 			.catch((err) => res.status(500).send(err));
 	}
 };

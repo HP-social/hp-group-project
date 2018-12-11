@@ -6,6 +6,7 @@ import '../../Forum/Forum.scss';
 import Tweet from '../../Tweet/Tweet';
 import Card from '../Cards/Card';
 import HouseHeader from '../../Tools/HouseHeader/HouseHeader';
+import Comment from '../Cards/Comment';
 
 class Post extends Component {
 	constructor(props) {
@@ -31,16 +32,37 @@ class Post extends Component {
 		this.setState({ makeATweet: !this.state.makeATweet });
 	};
 
+	cleanState() {
+		this.setState({ comment: '' });
+	}
+
 	changeHandler(e, name) {
 		this.setState({ [name]: e.target.value });
 	}
+
+	newPost = async () => {
+		let newPost = Object.assign(
+			{},
+			{
+				comment: this.state.comment,
+				wizard_id: this.props.user.wizard_id,
+				post_id: this.state.post[0].post_id
+			}
+		);
+		axios.post('/api/comment', newPost);
+		await axios
+			.get(`/api/comments/${this.props.match.params.id}`)
+			.then((result) =>
+				this.setState({ comments: result.data }, () => this.cleanState())
+			);
+	};
 
 	render() {
 		let post = this.state.post.map((elem, i) => {
 			return <Card post={elem} />;
 		});
 		let comments = this.state.comments.map((elem, i) => {
-			return <Card post={elem} />;
+			return <Comment post={elem} />;
 		});
 		return (
 			<div className='everything'>
@@ -58,12 +80,13 @@ class Post extends Component {
 						</div>
 					</div>
 					<textarea
-						onChange={(e) => this.changeHandler(e, 'post')}
+						onChange={(e) => this.changeHandler(e, 'comment')}
 						className='new_tweet'
 						placeholder='Text here'
+						value={this.state.comment}
 					/>
 					<div className='new_buttons'>
-						<button onClick={() => this.submitTweet()} className='submitTweet'>
+						<button onClick={() => this.newPost()} className='submitTweet'>
 							<img src='https://image.flaticon.com/icons/svg/1305/1305386.svg' />
 						</button>
 					</div>

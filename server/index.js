@@ -15,7 +15,8 @@ const {
 	isLiked,
 	isBookmarked,
 	likeNumber,
-	commentNumber
+	commentNumber,
+	FollowerNumber
 } = require('./controllers/favoritesController');
 const {
 	getPosts,
@@ -23,7 +24,10 @@ const {
 	getForums,
 	getForum,
 	getPost,
-	getComments
+	getComments,
+	makeComment,
+	deleteComment,
+	updateComment
 	// getHouseEmails
 } = require('./controllers/forumController');
 const { getQuestions, getAnswers } = require('./controllers/quizController');
@@ -143,19 +147,25 @@ app.get('/api/isliked/:id', isLiked);
 app.get('/api/isbookmarked/:id', isBookmarked);
 app.get('/api/likenumber/:id', likeNumber);
 app.get('/api/postnumber/:id', commentNumber);
+app.get('/api/follwernumber/:id', FollowerNumber);
 
 // ***** Forum Endpoints ****
 app.get('/api/forum/posts/:id', getPosts); //likes comes in as a string
-app.get('/api/likes/:postid', getLikes); //likes comes in as a string
+app.get('/api/forums', getForums);
+app.get('/api/forum/:id', getForum);
 
-// ***** Forum Endpoints ****
+// ***** Post Endpoints ****
 app.get('/api/post/:postid', getPost);
 app.post('/api/post/', makePost);
 app.put('/api/post/:postid', updatePost);
 app.delete('/api/post/:postid', deletePost);
-app.get('/api/forums', getForums);
-app.get('/api/forum/:id', getForum);
+app.get('/api/likes/:postid', getLikes); //likes comes in as a string
+
+// ***** Comment Endpoints ****
 app.get('/api/comments/:id', getComments);
+app.post('/api/comment', makeComment);
+app.put('/api/comment/:id', updateComment);
+app.delete('/api/comment/:id', deleteComment);
 
 // ***** Message Endpoints ****
 app.get('/api/message/friends/:userid/:wizardid', checkFriends);
