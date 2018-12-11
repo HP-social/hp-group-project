@@ -8,92 +8,90 @@ import Card from './Cards/Card';
 import HouseHeader from '../Tools/HouseHeader/HouseHeader';
 
 class Forum extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			posts: [],
-			makeATweet: false,
-			user: {},
-			forum: {},
-			title: '',
-			gif: '',
-			post: ''
-		};
-	}
+  constructor(props) {
+    super(props);
+    this.state = {
+      posts: [],
+      makeATweet: false,
+      user: {},
+      forum: {},
+      title: '',
+      gif: '',
+      post: ''
+    };
+  }
 
-	componentDidMount = async () => {
-		// await axios.get('/api/user').then((result) => {
-		// 	if (!result.data.house) {
-		// 		this.props.history.push('/sortinghat');
-		// 	}
-		// });
-		await axios
-			.get(`/api/forum/${this.props.match.params.id}`)
-			.then((result) => {
-				this.setState({ forum: result.data[0] });
-			});
-		await axios
-			.get(`/api/forum/posts/${this.props.match.params.id}`)
-			.then((results) => {
-				this.setState({ posts: results.data });
-			});
-	};
+  componentDidMount = async () => {
+    // await axios.get('/api/user').then((result) => {
+    // 	if (!result.data.house) {
+    // 		this.props.history.push('/sortinghat');
+    // 	}
+    // });
+    await axios.get(`/api/forum/${this.props.match.params.id}`).then(result => {
+      this.setState({ forum: result.data[0] });
+    });
+    await axios
+      .get(`/api/forum/posts/${this.props.match.params.id}`)
+      .then(results => {
+        this.setState({ posts: results.data });
+      });
+  };
 
-	tweet = () => {
-		this.setState({ makeATweet: !this.state.makeATweet });
-	};
+  tweet = () => {
+    this.setState({ makeATweet: !this.state.makeATweet });
+  };
 
-	changeHandler(e, name) {
-		this.setState({ [name]: e.target.value });
-	}
+  changeHandler(e, name) {
+    this.setState({ [name]: e.target.value });
+  }
 
-	render() {
-		let posts = this.state.posts.map((elem, i) => {
-			return <Card post={elem} />;
-		});
-		return (
-			<div className='everything'>
-				{this.state.forum.location && (
-					<HouseHeader house={this.state.forum.location}>
-						{this.state.forum.location.toUpperCase()}
-					</HouseHeader>
-				)}
-				{/* <h1 className='forum_title'>{this.state.forum.location}</h1> */}
-				{/* <Tweet /> */}
-				<div className='new_post_main'>
-					<div className='new_username'>
-						<div className='top_left'>
-							<sigil className={this.props.user.house + ' sm'} />
-							<h3>{this.props.user.username}</h3>
-						</div>
-					</div>
-					<input
-						onChange={(e) => this.changeHandler(e, 'title')}
-						placeholder='Title'
-						className='new_title'
-					/>
-					{this.state.gif.length > 1 && (
-						<img className='gif' src={this.state.gif} />
-					)}
-					<textarea
-						onChange={(e) => this.changeHandler(e, 'post')}
-						className='new_tweet'
-						placeholder='Text here'
-					/>
-					<input
-						className='gif_input'
-						onChange={(e) => this.changeHandler(e, 'gif')}
-						placeholder='gif link'
-					/>
-					<div className='new_buttons'>
-						<button onClick={() => this.submitTweet()} className='submitTweet'>
-							<img src='https://image.flaticon.com/icons/svg/1305/1305386.svg' />
-						</button>
-					</div>
-				</div>
-				<div className='forum_card'>{posts} </div>
-				{/* <Card /> */}
-				{/* <div className='forum_post'>
+  render() {
+    let posts = this.state.posts.map((elem, i) => {
+      return <Card post={elem} />;
+    });
+    return (
+      <div className='everything'>
+        {this.state.forum.location && (
+          <HouseHeader house={this.state.forum.location}>
+            {this.state.forum.location.toUpperCase()}
+          </HouseHeader>
+        )}
+        {/* <h1 className='forum_title'>{this.state.forum.location}</h1> */}
+        {/* <Tweet /> */}
+        <div className='new_post_main'>
+          <div className='new_username'>
+            <div className='top_left'>
+              <sigil className={this.props.user.house + ' sm'} />
+              <h3>{this.props.user.username}</h3>
+            </div>
+          </div>
+          <input
+            onChange={e => this.changeHandler(e, 'title')}
+            placeholder='Title'
+            className='new_title'
+          />
+          {this.state.gif.length > 1 && (
+            <img className='gif' src={this.state.gif} />
+          )}
+          <textarea
+            onChange={e => this.changeHandler(e, 'post')}
+            className='new_tweet'
+            placeholder='Text here'
+          />
+          <input
+            className='gif_input'
+            onChange={e => this.changeHandler(e, 'gif')}
+            placeholder='gif link'
+          />
+          <div className='new_buttons'>
+            <button onClick={() => this.submitTweet()} className='submitTweet'>
+              <img src='https://image.flaticon.com/icons/svg/1305/1305386.svg' />
+            </button>
+          </div>
+        </div>
+        <div className='forum_card'>{posts} </div>
+        {/* <Card /> */}
+        {/* <div className='forum_post'>
           Ron is the best wizard
           <img id='wizard_avi'src={this.state.user.profile_img}></img>
           <div id='wizard_name'>{this.state.user.username}</div>
@@ -105,10 +103,11 @@ class Forum extends Component {
           <div id='triangle' />
         </div> */}
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <button className='tweetButton' onClick={() => this.tweet()}>
-          <img src='https://image.flaticon.com/icons/svg/1305/1305386.svg' alt='tweet button' />
+        <button
+          className={this.props.user.house + '_color' + ' tweetButton'}
+          onClick={() => this.tweet()}
+        >
+          <img src='https://image.flaticon.com/icons/svg/1305/1305386.svg' />
         </button>
         {this.state.makeATweet === true ? (
           <Tweet newTweetStatus={this.tweet} />
@@ -116,33 +115,16 @@ class Forum extends Component {
       </div>
     );
   }
-=======
-				<button className='tweetButton' onClick={() => this.tweet()}>
-=======
-				<button
-					className={this.props.user.house + '_color' + ' tweetButton'}
-					onClick={() => this.tweet()}
-				>
->>>>>>> master
-					<img src='https://image.flaticon.com/icons/svg/1305/1305386.svg' />
-				</button>
-				{this.state.makeATweet === true ? (
-					<Tweet newTweetStatus={this.tweet} />
-				) : null}
-			</div>
-		);
-	}
->>>>>>> master
-
+}
 
 function mapStateToProps(state) {
-	const { user } = state;
-	return {
-		user
-	};
+  const { user } = state;
+  return {
+    user
+  };
 }
 
 export default connect(
-	mapStateToProps,
-	{ setUser }
+  mapStateToProps,
+  { setUser }
 )(Forum);
