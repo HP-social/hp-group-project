@@ -14,7 +14,10 @@ class Forum extends Component {
 			posts: [],
 			makeATweet: false,
 			user: {},
-			forum: {}
+			forum: {},
+			title: '',
+			gif: '',
+			post: ''
 		};
 	}
 
@@ -40,6 +43,10 @@ class Forum extends Component {
 		this.setState({ makeATweet: !this.state.makeATweet });
 	};
 
+	changeHandler(e, name) {
+		this.setState({ [name]: e.target.value });
+	}
+
 	render() {
 		let posts = this.state.posts.map((elem, i) => {
 			return <Card post={elem} />;
@@ -53,23 +60,36 @@ class Forum extends Component {
 				)}
 				{/* <h1 className='forum_title'>{this.state.forum.location}</h1> */}
 				{/* <Tweet /> */}
-				<div className='card_main'>
-					<div className='top_username'>
+				<div className='new_post_main'>
+					<div className='new_username'>
 						<div className='top_left'>
 							<sigil className={this.props.user.house + ' sm'} />
 							<h3>{this.props.user.username}</h3>
 						</div>
 					</div>
-					<input placeholder='Title' className='title' />
-					<textarea className='tweet' placeholder='Text here' />
-					<input placeholder='gif link' />
-					<button className='cancelTweet'>Cancel</button>
-					<>
+					<input
+						onChange={(e) => this.changeHandler(e, 'title')}
+						placeholder='Title'
+						className='new_title'
+					/>
+					{this.state.gif.length > 1 && (
+						<img className='gif' src={this.state.gif} />
+					)}
+					<textarea
+						onChange={(e) => this.changeHandler(e, 'post')}
+						className='new_tweet'
+						placeholder='Text here'
+					/>
+					<input
+						className='gif_input'
+						onChange={(e) => this.changeHandler(e, 'gif')}
+						placeholder='gif link'
+					/>
+					<div className='new_buttons'>
 						<button onClick={() => this.submitTweet()} className='submitTweet'>
 							<img src='https://image.flaticon.com/icons/svg/1305/1305386.svg' />
 						</button>
-						<button>Submit</button>
-					</>
+					</div>
 				</div>
 				<div className='forum_card'>{posts} </div>
 				{/* <Card /> */}
@@ -86,6 +106,7 @@ class Forum extends Component {
         </div> */}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         <button className='tweetButton' onClick={() => this.tweet()}>
           <img src='https://image.flaticon.com/icons/svg/1305/1305386.svg' alt='tweet button' />
         </button>
@@ -97,6 +118,12 @@ class Forum extends Component {
   }
 =======
 				<button className='tweetButton' onClick={() => this.tweet()}>
+=======
+				<button
+					className={this.props.user.house + '_color' + ' tweetButton'}
+					onClick={() => this.tweet()}
+				>
+>>>>>>> master
 					<img src='https://image.flaticon.com/icons/svg/1305/1305386.svg' />
 				</button>
 				{this.state.makeATweet === true ? (

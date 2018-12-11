@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setUser } from '../../ducks/reducer';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 //******  MATERIAL UI *******
 import PropTypes from 'prop-types';
@@ -11,7 +12,6 @@ import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -38,7 +38,13 @@ import FollowIcon from '@material-ui/icons/GroupAdd';
 import SubscribeIcon from '@material-ui/icons/AddToPhotos';
 import DailyProphetIcon from '@material-ui/icons/LibraryBooks';
 import LogoutIcon from '@material-ui/icons/RemoveCircle';
-import axios from 'axios';
+
+// **** MUI THEMES ***
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+import SlytherinTheme from '../../muiThemes/SlytherinThemes';
+import GryffindorTheme from '../../muiThemes/GryffindorThemes';
+import RavenclawTheme from '../../muiThemes/RavenclawThemes';
+import HufflepuffTheme from '../../muiThemes/HufflepuffThemes';
 
 const drawerWidth = 400;
 
@@ -174,7 +180,8 @@ class Navigation extends React.Component {
 		open: false,
 		anchorEl: null,
 		mobileMoreAnchorEl: null,
-		value: 0
+		value: 0,
+		theme: 'griffindor'
 	};
 
 	componentDidMount = async () => {
@@ -185,6 +192,7 @@ class Navigation extends React.Component {
 				window.location.href = `${process.env.REACT_APP_FRONTEND}/sortinghat`;
 			}
 		});
+		await this.setState({ theme: this.props.user.house });
 	};
 
 	handleDrawerOpen = () => {
@@ -211,6 +219,21 @@ class Navigation extends React.Component {
 	};
 
 	render() {
+		const gryffindor = GryffindorTheme;
+		const slytherin = SlytherinTheme;
+		const ravenclaw = RavenclawTheme;
+		const hufflepuff = HufflepuffTheme;
+
+		if (this.props.user.house === 'slytherin') {
+			const theme = slytherin;
+		} else if (this.props.user.house === 'gryffindor') {
+			const theme = gryffindor;
+		} else if (this.props.user.house === 'ravenclaw') {
+			const theme = ravenclaw;
+		} else if (this.props.user.house === 'hufflepuff') {
+			const theme = hufflepuff;
+		}
+
 		const { classes, theme } = this.props;
 		const { anchorEl, mobileMoreAnchorEl } = this.state;
 		const isMenuOpen = Boolean(anchorEl);
@@ -313,95 +336,109 @@ class Navigation extends React.Component {
 
 		return (
 			<div className={classes.root}>
-				<CssBaseline />
-				<AppBar
-					position='fixed'
-					className={classNames(classes.appBar, {
-						[classes.appBarShift]: this.state.open
-					})}
+				<MuiThemeProvider
+					theme={
+						this.state.theme === 'hufflepuff'
+							? HufflepuffTheme
+							: this.state.theme === 'gryffindor'
+							? GryffindorTheme
+							: this.state.theme === 'slytherin'
+							? SlytherinTheme
+							: RavenclawTheme
+					}
 				>
-					<Toolbar disableGutters={!this.state.open}>
-						<IconButton
-							color='inherit'
-							aria-label='Open drawer'
-							onClick={this.handleDrawerOpen}
-							className={classNames(classes.menuButton, {
-								[classes.hide]: this.state.open
-							})}
-						>
-							<MenuIcon />
-						</IconButton>
-						<IconButton
-							aria-owns={isMenuOpen ? 'material-appbar' : undefined}
-							aria-haspopup='true'
-							// onClick={this.handleProfileMenuOpen}
-							color='inherit'
-						/>
-						<div className={classes.search}>
-							<div className={classes.searchIcon}>
-								<SearchIcon />
-							</div>
-							<InputBase
-								// placeholder="Search…"
-								classes={{ root: classes.inputRoot, input: classes.inputInput }}
-							/>
-						</div>
-						<div className={classes.grow} />
-						<div className={classes.sectionDesktop}>
-							<IconButton color='inherit'>
-								<Badge
-									badgeContent={`${this.props.dailyProphetCount}` && 5}
-									color='secondary'
-								>
-									<Link to={'/dailyprophet'}>
-										<DailyProphetIcon />{' '}
-									</Link>
-								</Badge>
-							</IconButton>
-							<IconButton color='inherit'>
-								<Badge
-									badgeContent={`${this.props.messagesCount}` && 2}
-									color='secondary'
-								>
-									<Link to={'/messages'}>
-										<MessagesIcon />
-									</Link>
-								</Badge>
-							</IconButton>
-							<IconButton color='inherit'>
-								<Badge
-									badgeContent={`${this.props.mentionsCount}` && 14}
-									color='secondary'
-								>
-									<Link to={'/thequibbler'}>
-										<MentionsIcon />
-									</Link>
-								</Badge>
-							</IconButton>
-							<div
-								onClick={() =>
-									window.open(
-										`${process.env.REACT_APP_SERVER}/api/logout`,
-										'_self'
-									)
-								}
+					<AppBar
+						position='fixed'
+						className={classNames(classes.appBar, {
+							[classes.appBarShift]: this.state.open
+						})}
+					>
+						<Toolbar disableGutters={!this.state.open}>
+							<IconButton
+								color='inherit'
+								aria-label='Open drawer'
+								onClick={this.handleDrawerOpen}
+								className={classNames(classes.menuButton, {
+									[classes.hide]: this.state.open
+								})}
 							>
+								<MenuIcon />
+							</IconButton>
+							<IconButton
+								aria-owns={isMenuOpen ? 'material-appbar' : undefined}
+								aria-haspopup='true'
+								// onClick={this.handleProfileMenuOpen}
+								color='inherit'
+							/>
+							<div className={classes.search}>
+								<div className={classes.searchIcon}>
+									<SearchIcon />
+								</div>
+								<InputBase
+									// placeholder="Search…"
+									classes={{
+										root: classes.inputRoot,
+										input: classes.inputInput
+									}}
+								/>
+							</div>
+							<div className={classes.grow} />
+							<div className={classes.sectionDesktop}>
 								<IconButton color='inherit'>
-									<LogoutIcon />
+									<Badge
+										badgeContent={`${this.props.dailyProphetCount}` && 5}
+										color='secondary'
+									>
+										<Link to={'/dailyprophet'}>
+											<DailyProphetIcon />{' '}
+										</Link>
+									</Badge>
+								</IconButton>
+								<IconButton color='inherit'>
+									<Badge
+										badgeContent={`${this.props.messagesCount}` && 2}
+										color='secondary'
+									>
+										<Link to={'/messages'}>
+											<MessagesIcon />
+										</Link>
+									</Badge>
+								</IconButton>
+								<IconButton color='inherit'>
+									<Badge
+										badgeContent={`${this.props.mentionsCount}` && 14}
+										color='secondary'
+									>
+										<Link to={'/thequibbler'}>
+											<MentionsIcon />
+										</Link>
+									</Badge>
+								</IconButton>
+								<div
+									onClick={() =>
+										window.open(
+											`${process.env.REACT_APP_SERVER}/api/logout`,
+											'_self'
+										)
+									}
+								>
+									<IconButton color='inherit'>
+										<LogoutIcon />
+									</IconButton>
+								</div>
+							</div>
+							<div className={classes.sectionMobile}>
+								<IconButton
+									aria-haspopup='true'
+									onClick={this.handleMobileMenuOpen}
+									color='inherit'
+								>
+									<MoreIcon />
 								</IconButton>
 							</div>
-						</div>
-						<div className={classes.sectionMobile}>
-							<IconButton
-								aria-haspopup='true'
-								onClick={this.handleMobileMenuOpen}
-								color='inherit'
-							>
-								<MoreIcon />
-							</IconButton>
-						</div>
-					</Toolbar>
-				</AppBar>
+						</Toolbar>
+					</AppBar>
+				</MuiThemeProvider>
 				{renderMenu}
 				{renderMobileMenu}
 				<Drawer
