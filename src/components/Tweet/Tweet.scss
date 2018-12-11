@@ -8,7 +8,7 @@ $hufflepuff_black: #372e29;
 $hufflepuff_yellow: #ecb939;
 
 .noTweet {
-    display: none;
+  display: none;
 }
 .confirmWhiteout {
   position: fixed;
@@ -52,6 +52,13 @@ $hufflepuff_yellow: #ecb939;
   border: 2px solid black;
 }
 
+.title::placeholder {
+  color: white;
+}
+.tweet::placeholder {
+  color: white;
+}
+
 .drop_down {
   margin-top: 1vh;
   background: $slytherin_silver;
@@ -89,20 +96,20 @@ $hufflepuff_yellow: #ecb939;
 }
 
 .submitGif {
-    margin-left: 65%;
-    background: $slytherin_silver;
-    color: white;
-    height: 47.5px;
-    width: 47.5px;
-    border-radius: 50%;
-    margin-bottom: 1vh;
-    border: 2px solid black;
-    img {
-      filter: invert(100%);
-      width: 30px;
-      height: 25px;
-    }
+  margin-left: 65%;
+  background: $slytherin_silver;
+  color: white;
+  height: 47.5px;
+  width: 47.5px;
+  border-radius: 50%;
+  margin-bottom: 1vh;
+  border: 2px solid black;
+  img {
+    filter: invert(100%);
+    width: 30px;
+    height: 25px;
   }
+}
 
 .submitTweet {
   margin-left: 1%;
@@ -117,7 +124,6 @@ $hufflepuff_yellow: #ecb939;
     width: 25px;
     height: 28px;
   }
-  
 }
 
 .cancelTweet {
@@ -132,22 +138,20 @@ $hufflepuff_yellow: #ecb939;
     width: 25px;
     height: 28px;
   }
-
 }
 
 .show_gif {
   left: 14vw;
   bottom: 1vh;
-    width: 200px;
-    height: 25px;
-    position: absolute;
-    background: $slytherin_silver;
-    border: 2px solid black;
-    
+  width: 200px;
+  height: 25px;
+  position: absolute;
+  background: $slytherin_silver;
+  border: 2px solid black;
 }
 
 .hide_gif {
-    display: none;
+  display: none;
 }
 
 @media (max-width: 500px) {

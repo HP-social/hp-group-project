@@ -14,7 +14,8 @@ class Tweet extends Component {
       title: '',
       showGif: false,
       typeInGif: null,
-      forum: []    };
+      forum: []
+    };
   }
   componentDidMount() {
     axios
@@ -25,10 +26,12 @@ class Tweet extends Component {
   submitTweet = () => {
     const { post, title, gif, forum_id } = this.state;
 
-    let newPost = Object.assign({},{ post, title, gif, forum_id },{wizard_id:this.props.user.wizard_id})
-    axios
-      .post(`/api/post/`, newPost)
-      .then(results => console.log(results));
+    let newPost = Object.assign(
+      {},
+      { post, title, gif, forum_id },
+      { wizard_id: this.props.user.wizard_id }
+    );
+    axios.post(`/api/post/`, newPost).then(results => console.log(results));
   };
 
   showGif() {
@@ -50,21 +53,33 @@ class Tweet extends Component {
     return (
       <div>
         <div className='confirmWhiteout' />
-        <div className='newReview'>
+        <div className={this.props.user.house + '_color' + ' newReview'}>
           {/* <h3>{this.props.user.username.toUpperCase()}</h3> */}
 
           <input
             placeholder='Title'
             type='text'
-            className='title'
+            className={this.props.user.house + '_secondary_color' + ' title'}
             onChange={e => this.changeHandler(e, 'title')}
             value={this.state.title}
           />
-          <select className='drop_down' name='forum' onChange={(e) => this.changeHandler(e, 'selected_forum')}>{options}</select>
+          <select
+            className={
+              this.props.user.house + '_secondary_color' + ' drop_down'
+            }
+            name='forum'
+            onChange={e => this.changeHandler(e, 'selected_forum')}
+          >
+            {options}
+          </select>
           <textarea
             placeholder='What is on your mind?'
             type='text'
-            className={this.state.gif === '' ? 'tweet' : 'tweetWithGif'}
+            className={
+              this.state.gif === ''
+                ? this.props.user.house + '_secondary_color' + ' tweet'
+                : 'tweetWithGif'
+            }
             onChange={e => this.changeHandler(e, 'post')}
             value={this.state.post}
           />
@@ -73,21 +88,39 @@ class Tweet extends Component {
               onClick={() => this.props.newTweetStatus()}
               className='cancelTweet'
             >
-              <img src='https://image.flaticon.com/icons/svg/1214/1214428.svg' alt='cancel post' />
+              <img
+                src='https://image.flaticon.com/icons/svg/1214/1214428.svg'
+                alt='cancel post'
+              />
             </button>
             <input
               placeholder='TYPE IN GIF URL'
               value={this.state.typeInGif}
               type='text'
-              className={this.state.showGif === true ? 'show_gif' : 'hide_gif'}
+              className={
+                this.state.showGif === true
+                  ? this.props.user.house + '_secondary_color' + ' show_gif'
+                  : 'hide_gif'
+              }
               onChange={e => this.changeHandler(e, 'gif')}
             />
             <button onClick={() => this.showGif()} className='submitGif'>
-              <img src='https://media.giphy.com/media/12CuGF71hZulOg/giphy.gif' alt="show gif input" />
+              <img
+                src='https://media.giphy.com/media/12CuGF71hZulOg/giphy.gif'
+                alt='show gif input'
+              />
             </button>
 
-            <button onClick={() => this.submitTweet()} className='submitTweet'>
-              <img src='https://image.flaticon.com/icons/svg/1305/1305386.svg' alt='send post' />
+            <button
+              onClick={() => this.submitTweet()}
+              className={
+                this.props.user.house + '_secondary_color' + ' submitTweet'
+              }
+            >
+              <img
+                src='https://image.flaticon.com/icons/svg/1305/1305386.svg'
+                alt='send post'
+              />
             </button>
           </div>
         </div>
