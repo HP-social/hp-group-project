@@ -167,7 +167,7 @@ class SortingHat extends Component {
 				<img
 					className='greatHallBackground'
 					src='https://vignette.wikia.nocookie.net/harrypotter/images/b/bd/High_Table_PS.png/revision/latest?cb=20161120225850'
-					alt='background photo'
+					alt='great hall'
 				/>
 				<div className='sortingHatQuestionBox'>
 					<div id='quiz_name'>Sorting Hat Quiz</div>
@@ -184,7 +184,7 @@ class SortingHat extends Component {
 						{this.state.index < 18 && answers}
 					</div>
 					<button className='tweetButton' onClick={() => this.tweet()}>
-						<img src='https://image.flaticon.com/icons/svg/1305/1305386.svg' />
+						<img src='https://image.flaticon.com/icons/svg/1305/1305386.svg' alt='the quill' />
 					</button>
 					{this.state.makeATweet === true ? (
 						<Tweet newTweetStatus={this.tweet} />
