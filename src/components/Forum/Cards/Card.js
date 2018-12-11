@@ -105,7 +105,9 @@ class Card extends Component {
 						<div className={this.state.className}>
 							<div className='text_area'>{e.post}</div>
 						</div>
-						<div className='bottom_container'>{bottomDiv}</div>
+						<div className={e.house + '_top_bottom' + ' bottom_container'}>
+							{bottomDiv}
+						</div>
 					</div>
 				</>
 			);
