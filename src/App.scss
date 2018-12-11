@@ -84,12 +84,12 @@ time,
 mark,
 audio,
 video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -103,35 +103,35 @@ hgroup,
 menu,
 nav,
 section {
-  display: block;
+	display: block;
 }
 body {
-  line-height: 1;
+	line-height: 1;
 }
 ol,
 ul {
-  list-style: none;
+	list-style: none;
 }
 blockquote,
 q {
-  quotes: none;
+	quotes: none;
 }
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: '';
-  content: none;
+	content: '';
+	content: none;
 }
 table {
-  border-collapse: collapse;
-  border-spacing: 0;
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 
 * {
-  // TO REMOVE TEXT DECORATION IN NAVBAR
-  text-decoration: none;
-  color: inherit;
+	// TO REMOVE TEXT DECORATION IN NAVBAR
+	text-decoration: none;
+	color: inherit;
 }
 
 // SCSS VARIABLES TO BE USED THROUGHOUT PROJECT
@@ -145,7 +145,12 @@ $hufflepuff_black: #372e29;
 $hufflepuff_yellow: #ecb939;
 
 .routes {
-  margin-left: 73px;
-  margin-top: -80px;
-  background: pink;
+	margin-left: 73px;
+	margin-top: -80px;
+	// background: pink;
+}
+@media (max-width: 600px) {
+	.routes {
+		margin-left: 55px;
+	}
 }

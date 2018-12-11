@@ -111,7 +111,7 @@ app.get('/success', (req, res, next) => {
 		.then((result) => {
 			req.session.user = result[0];
 
-			res.redirect(`${process.env.REACT_APP_FRONTEND}/sortinghat`);
+			res.redirect(`${process.env.REACT_APP_FRONTEND}/forum/1`);
 		})
 		.catch((err) => console.log(err));
 });
