@@ -77,10 +77,12 @@ class Card extends Component {
 				<>
 					<div className='card_main' key={i}>
 						<div className={e.house + '_top_bottom' + ' top_username'}>
-							<div className='top_left'>
-								<sigil className={e.house + ' sm'} />
-								<h3>{e.username}</h3>
-							</div>
+							<Link to={`/profile/${e.wizard_id}`}>
+								<div className='top_left'>
+									<sigil className={e.house + ' sm'} />
+									<h3>{e.username}</h3>
+								</div>
+							</Link>
 							<div className='top_right'>
 								<h3>
 									<img
@@ -101,9 +103,11 @@ class Card extends Component {
 							)}
 						</div>
 						<div className={this.state.className}>
-							<p className='text_area'>{e.post}</p>
+							<div className='text_area'>{e.post}</div>
 						</div>
-						<div className='bottom_container'>{bottomDiv}</div>
+						<div className={e.house + '_top_bottom' + ' bottom_container'}>
+							{bottomDiv}
+						</div>
 					</div>
 				</>
 			);
