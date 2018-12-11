@@ -73,7 +73,7 @@ class Tweet extends Component {
               onClick={() => this.props.newTweetStatus()}
               className='cancelTweet'
             >
-              <img src='https://image.flaticon.com/icons/svg/1214/1214428.svg' />
+              <img src='https://image.flaticon.com/icons/svg/1214/1214428.svg' alt='cancel post' />
             </button>
             <input
               placeholder='TYPE IN GIF URL'
@@ -83,11 +83,11 @@ class Tweet extends Component {
               onChange={e => this.changeHandler(e, 'gif')}
             />
             <button onClick={() => this.showGif()} className='submitGif'>
-              <img src='https://media.giphy.com/media/12CuGF71hZulOg/giphy.gif' />
+              <img src='https://media.giphy.com/media/12CuGF71hZulOg/giphy.gif' alt="show gif input" />
             </button>
 
             <button onClick={() => this.submitTweet()} className='submitTweet'>
-              <img src='https://image.flaticon.com/icons/svg/1305/1305386.svg' />
+              <img src='https://image.flaticon.com/icons/svg/1305/1305386.svg' alt='send post' />
             </button>
           </div>
         </div>
