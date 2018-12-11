@@ -1,116 +1,156 @@
+$slytherin_green: #1a472a;
+$slytherin_silver: #5d5d5d;
+$gryffindor_red: #740001;
+$gryffindor_gold: #d3a625;
+$ravenclaw_blue: #0e1a40;
+$ravenclaw_bronze: #946b2d;
+$hufflepuff_black: #372e29;
+$hufflepuff_yellow: #ecb939;
+
 .card_main {
-  display: flex;
-  margin-left: 1vw;
-  margin-top: 1vh;
-  margin-right: 1vw;
-  width: 98%;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  // margin-top: -80px;
-  // margin-left: 80px;
-  height: auto;
-  padding: 1%;
-  background: #e9e7d3;
-  border-bottom: 2px solid lightgrey;
-  border-left: 2px solid lightgrey;
-  color: black;
+	position: relative;
+	display: flex;
+	margin-left: 1vw;
+	margin-top: 1vh;
+	margin-right: 1vw;
+	width: 98%;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	// margin-top: -80px;
+	// margin-left: 80px;
+	height: auto;
+	padding: 1%;
+	background: #e9e7d3;
+	border-bottom: 2px solid lightgrey;
+	border-left: 2px solid lightgrey;
+	color: black;
 
-  .top_username {
-    display: flex;
-    align-items: center;
-    // justify-content: space-between;
-    height: auto;
-    width: 100%;
-    border-top: 1px solid grey;
-    border-bottom: 1px solid grey;
-    // background: #f4d6a0;
+	.top_username {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		// justify-content: space-between;
+		height: auto;
+		width: 100%;
 
-    .top_left {
-      display: flex;
-      align-items: center;
-      h3 {
-        font-size: 0.5em;
-        font-weight: bold;
-        padding-left: 4%;
-      }
-      
-      .gryffindor {
-        height: 2vw;
-        width: 1.7vw;
-      }
-    }
+		// background: #f4d6a0;
 
-    .top_right {
-      padding-left: 1%;
-      h3 {
-        font-size: 0.5em;
-        color: grey;
-      }
+		.top_left {
+			display: flex;
+			align-items: center;
+			h3 {
+				font-size: 0.5em;
+				font-weight: bold;
+				padding-left: 4%;
+			}
 
-      img {
-        height: 2.5vh;
-      }
-    }
-  }
-  .mid_title {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    width: auto;
-    height: auto;
-    // background: lightgoldenrodyellow;
-    font-size: 1em;
-    .triangle {
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-width: 20px 15px 0 15px;
-      border-color: #007bff transparent transparent transparent;
-    }
-  }
-  .media_container {
-    height: auto;
-    width: auto;
-    // background: #c5f5c5;
-  }
-  p {
-    display: flex;
-    flex-wrap: wrap;
-    font-size: 0.5em;
-    height: auto;
-    width: 100vw;
-    margin-left: 10vw;
-    // background: lightskyblue;
-    // border-top: 2px solid black;
-  }
-  .bottom_container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 5vh;
-    width: 85%;
-    border-top: 1px solid grey;
-    // background: rgb(160, 77, 160);
-    .card {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 1%;
-      width: auto;
-      h3 {
-        font-size: 0.5em;
-      }
-      img {
-        opacity: .5;
-        height: 3vh;
-        padding-right: 2%;
-      }
-      img:hover {
-        background: red;
-      }
-    }
-  }
+			.gryffindor {
+				height: 60px;
+				width: 50px;
+			}
+		}
+
+		.top_right {
+			// position: absolute;
+			// top: 5px;
+			// right: 5px;
+			padding-left: 1%;
+			h3 {
+				font-size: 0.5em;
+				color: grey;
+			}
+
+			img {
+				height: 2.5vh;
+			}
+		}
+	}
+	.mid_title {
+		display: flex;
+		flex-wrap: wrap;
+		text-align: center;
+		justify-content: center;
+		align-items: center;
+		width: auto;
+		height: auto;
+		// background: lightgoldenrodyellow;
+		font-size: 1em;
+		.triangle {
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: 20px 15px 0 15px;
+			border-color: #007bff transparent transparent transparent;
+		}
+	}
+	.media_container {
+		height: auto;
+		width: auto;
+		// background: #c5f5c5;
+	}
+	p {
+		display: flex;
+		flex-wrap: wrap;
+		text-align: center;
+		font-size: 0.5em;
+		height: auto;
+		width: 80%;
+		margin-left: 10vw;
+		// background: lightskyblue;
+		// border-top: 2px solid black;
+	}
+	.bottom_container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: 5vh;
+		width: 85%;
+		border-top: 1px solid grey;
+		// background: rgb(160, 77, 160);
+		.card {
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin: 1%;
+			width: auto;
+			h3 {
+				font-size: 0.5em;
+			}
+			img {
+				opacity: 0.5;
+				height: 3vh;
+				padding-right: 2%;
+			}
+			img:hover {
+				background: red;
+			}
+		}
+	}
+}
+.expandable-body {
+	padding-left: 0.5em;
+	padding-bottom: 1em;
+}
+
+.hidden-class {
+	display: none;
+}
+
+.slytherin_top_bottom {
+	border-top: 1px solid $slytherin_silver;
+	border-bottom: 1px solid $slytherin_silver;
+}
+.gryffindor_top_bottom {
+	border-top: 1px solid $gryffindor_gold;
+	border-bottom: 1px solid $gryffindor_gold;
+}
+.hufflepuff_top_bottom {
+	border-top: 1px solid $hufflepuff_black;
+	border-bottom: 1px solid $hufflepuff_black;
+}
+.ravenclaw_top_bottom {
+	border-top: 1px solid $ravenclaw_bronze;
+	border-bottom: 1px solid $ravenclaw_bronze;
 }

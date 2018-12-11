@@ -1,47 +1,49 @@
 {
-  "proxy": "http://localhost:3001",
-  "name": "hp-server-practice",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@material-ui/core": "^3.6.1",
-    "@material-ui/icons": "^3.0.1",
-    "axios": "^0.18.0",
-    "body-parser": "^1.18.3",
-    "cors": "^2.8.5",
-    "dotenv": "^6.1.0",
-    "express": "^4.16.4",
-    "express-session": "^1.15.6",
-    "firebase": "^5.7.0",
-    "massive": "^5.6.0",
-    "moment": "^2.22.2",
-    "node-sass": "^4.10.0",
-    "nodemailer": "^4.7.0",
-    "nodemailer-ses-transport": "^1.5.1",
-    "passport": "^0.4.0",
-    "passport-auth0": "^1.1.0",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
-    "react-redux": "^5.1.1",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.1",
-    "redux": "^4.0.1",
-    "redux-promise-middleware": "^5.1.1",
-    "sweetalert2": "^7.30.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+	"proxy": "http://localhost:3001",
+	"name": "hp-server-practice",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"@material-ui/core": "^3.6.1",
+		"@material-ui/icons": "^3.0.1",
+		"axios": "^0.18.0",
+		"body-parser": "^1.18.3",
+		"concurrently": "^4.1.0",
+		"cors": "^2.8.5",
+		"dotenv": "^6.1.0",
+		"express": "^4.16.4",
+		"express-session": "^1.15.6",
+		"firebase": "^5.7.0",
+		"massive": "^5.6.0",
+		"moment": "^2.22.2",
+		"node-sass": "^4.10.0",
+		"nodemailer": "^4.7.0",
+		"nodemailer-ses-transport": "^1.5.1",
+		"passport": "^0.4.0",
+		"passport-auth0": "^1.1.0",
+		"react": "^16.6.3",
+		"react-dom": "^16.6.3",
+		"react-redux": "^5.1.1",
+		"react-router-dom": "^4.3.1",
+		"react-scripts": "2.1.1",
+		"redux": "^4.0.1",
+		"redux-promise-middleware": "^5.1.1",
+		"sweetalert2": "^7.30.0"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"both": "concurrently \"react-scripts start\" \"nodemon server/index.js --watch server\"",
+		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject"
+	},
+	"eslintConfig": {
+		"extends": "react-app"
+	},
+	"browserslist": [
+		">0.2%",
+		"not dead",
+		"not ie <= 11",
+		"not op_mini all"
+	]
 }
