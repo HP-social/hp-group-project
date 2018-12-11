@@ -50,17 +50,17 @@ class Tweet extends Component {
     return (
       <div>
         <div className='confirmWhiteout' />
-        <div className='newReview'>
+        <div className={this.props.user.house + '_color' + ' newReview'}>
           {/* <h3>{this.props.user.username.toUpperCase()}</h3> */}
 
           <input
             placeholder='Title'
             type='text'
-            className='title'
+            className={this.props.user.house + 'secondary_color' + ' title'}
             onChange={e => this.changeHandler(e, 'title')}
             value={this.state.title}
           />
-          <select className='drop_down' name='forum' onChange={(e) => this.changeHandler(e, 'selected_forum')}>{options}</select>
+          <select className={this.props.user.house + 'secondary_color' + ' drop_down'} name='forum' onChange={(e) => this.changeHandler(e, 'selected_forum')}>{options}</select>
           <textarea
             placeholder='What is on your mind?'
             type='text'
@@ -79,14 +79,14 @@ class Tweet extends Component {
               placeholder='TYPE IN GIF URL'
               value={this.state.typeInGif}
               type='text'
-              className={this.state.showGif === true ? 'show_gif' : 'hide_gif'}
+              className={this.state.showGif === true ? (this.props.user.house+'_secondary_color'+' show_gif') : 'hide_gif'}
               onChange={e => this.changeHandler(e, 'gif')}
             />
             <button onClick={() => this.showGif()} className='submitGif'>
               <img src='https://media.giphy.com/media/12CuGF71hZulOg/giphy.gif' alt="show gif input" />
             </button>
 
-            <button onClick={() => this.submitTweet()} className='submitTweet'>
+            <button onClick={() => this.submitTweet()} className={this.props.user.house + 'secondary_color' + ' submitTweet'}>
               <img src='https://image.flaticon.com/icons/svg/1305/1305386.svg' alt='send post' />
             </button>
           </div>
