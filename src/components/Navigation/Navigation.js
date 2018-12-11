@@ -304,12 +304,7 @@ class Navigation extends React.Component {
 			'/subscriptions',
 			'/follows'
 		];
-		const dynamicLinkBottom = [
-			'/forum/:id',
-			'/maps',
-			'/bookmarks',
-			'/lasfkjaf'
-		];
+		const dynamicLinkBottom = ['/forum/1', '/maps', '/bookmarks', '/lasfkjaf'];
 
 		return (
 			<div className={classes.root}>
