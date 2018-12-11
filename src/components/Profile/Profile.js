@@ -28,7 +28,15 @@ class Profile extends Component {
 
   sendNewPassword = async () => {
     const { default_message, houseStudents } = this.state;
-    await axios.get(`/api/emails?house=${this.state.userInfo.house}`).then(res => this.setState({houseStudents: res.data.map(email => {return email.email;})}));
+    await axios
+      .get(`/api/emails?house=${this.state.userInfo.house}`)
+      .then(res =>
+        this.setState({
+          houseStudents: res.data.map(email => {
+            return email.email;
+          })
+        })
+      );
     await axios.post('/api/sendEmail1', {
       passphrase: default_message,
       houseStudents: this.state.houseStudents.join(', ')
@@ -60,7 +68,8 @@ class Profile extends Component {
                 </div>
               </div>
             </>
-          </div>
+          </div>{' '}
+          <br />
           <div className='bottom'>
             <div className='trio'>
               <img
@@ -84,24 +93,28 @@ class Profile extends Component {
               <h2>EMAIL: {this.state.userInfo.email.toUpperCase()}</h2>
             </div>
           </div>
-          <div className='admin_controls'>
-            <h1>Change House Passphrase</h1>
-            <div className='admin_bottom'>
-              <input
-                placeholder={this.state.default_message}
-                onChange={e =>
-                  this.setState({ default_message: e.target.value })
-                }
-              />
-              <button
-                onClick={() => {
-                  this.sendNewPassword();
-                }}
-              >
-                Send Email
-              </button>
+          <br />
+          { this.state.userInfo.role !== 'student' &&
+            <div className='admin_controls'>
+              <h1>Change House Passphrase</h1>
+              <br />
+              <div className='admin_bottom'>
+                <input
+                  placeholder={this.state.default_message}
+                  onChange={e =>
+                    this.setState({ default_message: e.target.value })
+                  }
+                />
+                <button
+                  onClick={() => {
+                    this.sendNewPassword();
+                  }}
+                >
+                  Send Email
+                </button>
+              </div>
             </div>
-          </div>
+          }
           <div />
         </div>
         <div className='inner_div_right'>
