@@ -2,7 +2,7 @@ import React from 'react';
 import './HouseHeader.scss';
 
 function HouseHeader(props) {
-	if (props.house.indcludes('gryffindor')) {
+	if (props.house.includes('gryffindor')) {
 		return (
 			<nav className='topper griff'>
 				<sigil className='gryffindor img-responsive' />

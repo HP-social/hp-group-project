@@ -5,51 +5,60 @@ import axios from 'axios';
 import './Forum.scss';
 import Tweet from '../Tweet/Tweet';
 import Card from './Cards/Card';
+import HouseHeader from '../Tools/HouseHeader/HouseHeader';
 
 class Forum extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      posts: [],
-      makeATweet: false,
-      user: {
-        email: 'aestesc@gmail.com',
-        wizard_id: 3,
-        username: 'ronstoppable',
-        house: 'slytherin',
-        profile_img:
-          'https://d36tnp772eyphs.cloudfront.net/blogs/1/2016/01/BENH9926-Edit.jpg'
-      },
-      forum: {}
-    };
-  }
+	constructor(props) {
+		super(props);
+		this.state = {
+			posts: [],
+			makeATweet: false,
+			user: {},
+			forum: {}
+		};
+	}
 
-  componentDidMount() {
-    axios.get(`/api/forum/${this.props.match.params.id}`).then(result => {
-      this.setState({ forum: result.data[0] });
-    });
-    axios
-      .get(`/api/forum/posts/${this.props.match.params.id}`)
-      .then(results => {
-        this.setState({ posts: results.data });
-      });
-  }
+	componentDidMount() {
+		axios.get(`/api/forum/${this.props.match.params.id}`).then((result) => {
+			this.setState({ forum: result.data[0] });
+		});
+		axios
+			.get(`/api/forum/posts/${this.props.match.params.id}`)
+			.then((results) => {
+				this.setState({ posts: results.data });
+			});
+	}
 
-  tweet = () => {
-    this.setState({ makeATweet: !this.state.makeATweet });
-  };
+	tweet = () => {
+		this.setState({ makeATweet: !this.state.makeATweet });
+	};
 
-  render() {
-    let posts = this.state.posts.map((elem, i) => {
-      return <Card post={elem} />;
-    });
-    return (
-      <div className='everything'>
-        <h1 className='forum_title'>Slytherin Commons</h1>
-        {/* <Tweet /> */}
-        <div className='forum_card'>{posts} </div>
-        {/* <Card /> */}
-        {/* <div className='forum_post'>
+	render() {
+		let posts = this.state.posts.map((elem, i) => {
+			return <Card post={elem} />;
+		});
+		return (
+			<div className='everything'>
+				{this.state.forum.location && (
+					<HouseHeader house={this.state.forum.location} />
+				)}
+				<h1 className='forum_title'>{this.state.forum.location}</h1>
+				{/* <Tweet /> */}
+				<div className='card_main'>
+					<div className='top_username'>
+						<div className='top_left'>
+							<sigil className={this.props.user.house + ' sm'} />
+							<h3>{this.props.user.username}</h3>
+						</div>
+					</div>
+					<input placeholder='Title' />
+					<textarea placeholder='Text here' />
+					<input placeholder='gif link' />
+					<button>Cancel</button> <button>Submit</button>
+				</div>
+				<div className='forum_card'>{posts} </div>
+				{/* <Card /> */}
+				{/* <div className='forum_post'>
           Ron is the best wizard
           <img id='wizard_avi'src={this.state.user.profile_img}></img>
           <div id='wizard_name'>{this.state.user.username}</div>
@@ -61,25 +70,25 @@ class Forum extends Component {
           <div id='triangle' />
         </div> */}
 
-        <button className='tweetButton' onClick={() => this.tweet()}>
-          <img src='https://image.flaticon.com/icons/svg/1305/1305386.svg' />
-        </button>
-        {this.state.makeATweet === true ? (
-          <Tweet newTweetStatus={this.tweet} />
-        ) : null}
-      </div>
-    );
-  }
+				<button className='tweetButton' onClick={() => this.tweet()}>
+					<img src='https://image.flaticon.com/icons/svg/1305/1305386.svg' />
+				</button>
+				{this.state.makeATweet === true ? (
+					<Tweet newTweetStatus={this.tweet} />
+				) : null}
+			</div>
+		);
+	}
 }
 
 function mapStateToProps(state) {
-  const { user } = state;
-  return {
-    user
-  };
+	const { user } = state;
+	return {
+		user
+	};
 }
 
 export default connect(
-  mapStateToProps,
-  { setUser }
+	mapStateToProps,
+	{ setUser }
 )(Forum);

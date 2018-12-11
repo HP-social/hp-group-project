@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import firebase from 'firebase';
+import Messages from '../Messages';
 import './Chat.scss';
 import axios from 'axios';
 
@@ -111,14 +112,20 @@ class Chat extends Component {
               alt='avatar'
               src={this.props.user.house}
             /> */}
-						<div className='user_message'>{message.text}</div>
+						<div className={`${this.props.user.house}_color` + ' user_message'}>
+							{message.text}
+						</div>
 						<br />
 					</div>
 				);
 			} else {
 				return (
 					<div key={i} className='friend_outer'>
-						<div className='friend_message'>{message.text}</div>
+						<div
+							className={`${this.state.wizard.house}_color` + ' friend_message'}
+						>
+							{message.text}
+						</div>
 						<sigil className={this.state.wizard.house + ' sm'} />
 						{/* <img
 							className='avatar'
@@ -134,23 +141,21 @@ class Chat extends Component {
 
 	render() {
 		return (
-			<div className='chat'>
-				<div className='chatHeader'>
-					<sigil className={this.state.wizard.house + ' sm'} />
-					{this.state.wizard.username}
+			<div className='chat_envelope'>
+				<Messages />
+				<div className='chat'>
+					{this.renderMessages()}
+					<textarea
+						className='chat_input'
+						autoFocus={true}
+						rowsmax={3}
+						placeholder='Type something..'
+						onChange={(event) => this.setState({ text: event.target.value })}
+						value={this.state.text}
+						onKeyPress={this.onSubmit}
+					/>
+					<span ref={(el) => (this.bottomSpan = el)} />
 				</div>
-				{this.renderMessages()}
-				<textarea
-					className='chat_input'
-					autoFocus={true}
-					rowsmax={3}
-					placeholder='Type something..'
-					onChange={(event) => this.setState({ text: event.target.value })}
-					value={this.state.text}
-					onKeyPress={this.onSubmit}
-					style={{ width: '98vw', overflow: 'hidden' }}
-				/>
-				<span ref={(el) => (this.bottomSpan = el)} />
 			</div>
 		);
 	}

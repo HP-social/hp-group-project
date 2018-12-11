@@ -6,6 +6,11 @@ $ravenclaw_blue: #0e1a40;
 $ravenclaw_bronze: #946b2d;
 $hufflepuff_black: #372e29;
 $hufflepuff_yellow: #ecb939;
+.chat_envelope {
+	margin-top: 60px;
+	display: flex;
+	flex-direction: row;
+}
 
 .chat {
 	display: flex;
@@ -13,17 +18,26 @@ $hufflepuff_yellow: #ecb939;
 	align-self: center;
 	text-align: center;
 	margin-bottom: 40px;
-	z-index: 100;
-	width: 80vw;
+	margin-top: 60px;
+	margin-left: 200px;
+	// z-index: 100;
+	width: 100%;
+}
+@media (max-width: 600px) {
+	.chat_envelope {
+		margin-left: -30px;
+	}
 }
 
+.selected {
+	background: gray;
+}
 .message_container {
 	display: flex;
-
+	position: fixed;
 	flex-direction: column;
-	margin-bottom: 50px;
 	width: 200px;
-	height: auto;
+	height: 86vh;
 	border: 1px solid black;
 }
 
@@ -32,20 +46,15 @@ $hufflepuff_yellow: #ecb939;
 	flex-direction: row;
 	justify-content: space-around;
 	align-items: center;
-	border: 1px solid black;
-}
-
-.avatar {
-	width: 50px;
-	height: 50px;
-	border-radius: 50%;
+	// top: 0;
+	// border: 1px solid black;
 }
 
 .chat_input {
 	position: fixed;
-	bottom: 5px;
-	left: 5px;
-	right: 5px;
+	bottom: 0px;
+	width: 66%;
+	margin: 5px;
 }
 
 .user_message {
@@ -54,7 +63,6 @@ $hufflepuff_yellow: #ecb939;
 	align-self: flex-start;
 	padding: 10px;
 	border-radius: 15px;
-	background-color: darkblue;
 	color: white;
 }
 
@@ -65,8 +73,20 @@ $hufflepuff_yellow: #ecb939;
 	padding: 10px;
 
 	border-radius: 15px;
-	background-color: green;
 	color: white;
+}
+
+.slytherin_color {
+	background: $slytherin_green;
+}
+.gryffindor_color {
+	background: $gryffindor_red;
+}
+.hufflepuff_color {
+	background: $hufflepuff_yellow;
+}
+.ravenclaw_color {
+	background: $ravenclaw_blue;
 }
 
 .friend_outer {
@@ -85,13 +105,16 @@ $hufflepuff_yellow: #ecb939;
 }
 
 .sm {
-	width: 100px;
-	height: 115px;
+	width: 50px;
+	height: 60px;
 }
 
 .chatHeader {
+	margin-top: -60px;
+	background: black;
 	width: 100%;
 	border-bottom: 1px solid black;
 	position: fixed;
 	top: 50;
+	z-index: 50;
 }

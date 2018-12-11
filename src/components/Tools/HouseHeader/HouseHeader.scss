@@ -14,8 +14,10 @@ $hufflepuff_yellow: #ecb939;
 	/*     flex-direction:row; */
 	justify-content: center;
 	top: 60px;
+	height: 60px;
 	background: #191919;
-	width: 100vw;
+	width: 100%;
+	z-index: 10;
 }
 
 .slyth {
@@ -38,17 +40,17 @@ $hufflepuff_yellow: #ecb939;
 }
 
 .hogwarts {
-	margin-left: 60px;
-	// width: 250px;
-	// height: 225px;
+	// margin-left: 60px;
+	width: 125px;
+	height: 113px;
 }
 /* //////////////////////
  */
 
 sigil {
 	// margin-left: 60px;
-	width: 200px;
-	height: 225px;
+	width: 100px;
+	height: 115px;
 	padding: 15px 0 10px;
 	vertical-align: middle;
 	color: #fff;
