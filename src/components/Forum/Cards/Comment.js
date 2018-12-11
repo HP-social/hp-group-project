@@ -52,15 +52,10 @@ class Card extends Component {
 
 		const bottomIcon = [
 			'https://image.flaticon.com/icons/svg/149/149217.svg',
-			'https://image.flaticon.com/icons/svg/134/134797.svg',
 			'https://image.flaticon.com/icons/svg/1174/1174410.svg'
 		];
 
-		const bottomDiv = [
-			'Likes',
-			<Link to={`/post/${this.props.post.post_id}`}>'Comments'</Link>,
-			'Bookmarks'
-		].map((e, i) => {
+		const bottomDiv = ['Likes', 'Bookmarks'].map((e, i) => {
 			return (
 				<div className='card' key={i}>
 					<img src={bottomIcon[i]} alt='icons' />
@@ -92,14 +87,8 @@ class Card extends Component {
 							{e.title}
 							{/* <div className='triangle' /> */}
 						</div>
-						<div className='media_container'>
-							{e.gif === null || e.gif === '' ? null : (
-								<img onClick={() => this.hide()} src={e.gif} alt='icons' />
-							)}
-						</div>
-						<div className={this.state.className}>
-							<p className='text_area'>{e.post}</p>
-						</div>
+
+						<div className='text_area'>{e.comment}</div>
 						<div className='bottom_container'>{bottomDiv}</div>
 					</div>
 				</>

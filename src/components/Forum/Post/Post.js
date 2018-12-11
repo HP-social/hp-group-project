@@ -6,6 +6,7 @@ import '../../Forum/Forum.scss';
 import Tweet from '../../Tweet/Tweet';
 import Card from '../Cards/Card';
 import HouseHeader from '../../Tools/HouseHeader/HouseHeader';
+import Comment from '../Cards/Comment';
 
 class Post extends Component {
 	constructor(props) {
@@ -40,7 +41,7 @@ class Post extends Component {
 			return <Card post={elem} />;
 		});
 		let comments = this.state.comments.map((elem, i) => {
-			return <Card post={elem} />;
+			return <Comment post={elem} />;
 		});
 		return (
 			<div className='everything'>
@@ -58,7 +59,7 @@ class Post extends Component {
 						</div>
 					</div>
 					<textarea
-						onChange={(e) => this.changeHandler(e, 'post')}
+						onChange={(e) => this.changeHandler(e, 'comment')}
 						className='new_tweet'
 						placeholder='Text here'
 					/>
