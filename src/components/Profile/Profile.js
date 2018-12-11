@@ -21,6 +21,7 @@ class Profile extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props.youFollow);
     axios
       .get(`/api/wizard/${this.props.match.params.id}`)
       .then(results => this.setState({ userInfo: results.data[0] }));
