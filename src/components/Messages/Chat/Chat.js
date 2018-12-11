@@ -4,6 +4,7 @@ import firebase from 'firebase';
 import Messages from '../Messages';
 import './Chat.scss';
 import axios from 'axios';
+import HouseHeader from '../../Tools/HouseHeader/HouseHeader';
 
 class Chat extends Component {
 	constructor(props) {
@@ -133,6 +134,9 @@ class Chat extends Component {
 			} else {
 				return (
 					<div key={i} className='friend_outer'>
+						{/* <HouseHeader house={this.state.wizard.house}>
+							{this.state.wizard.username}
+						</HouseHeader> */}
 						<div
 							className={`${this.state.wizard.house}_color` + ' friend_message'}
 						>
