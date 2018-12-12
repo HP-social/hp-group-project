@@ -9,15 +9,6 @@ const passport = require('passport');
 const AuthStrategy = require('passport-auth0');
 // ***** Import Server Controllers ****
 const {
-<<<<<<< HEAD
-  getFollowed,
-  getBookmarks,
-  getSubscriptions,
-  isLiked,
-  isBookmarked,
-  likeNumber,
-  commentNumber,
-=======
 	getFollowed,
 	getBookmarks,
 	getSubscriptions,
@@ -25,7 +16,6 @@ const {
 	isBookmarked,
 	likeNumber,
 	commentNumber,
->>>>>>> master
 	followerNumber,
 	followingNumber
 } = require('./controllers/favoritesController');
