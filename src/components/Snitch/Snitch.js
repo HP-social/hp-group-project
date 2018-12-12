@@ -1,10 +1,23 @@
 import React, { Component } from 'react';
 import './Snitch.scss';
+import axios from 'axios';
+import { connect } from 'react-redux';
+import { setUser } from '../../ducks/reducer';
 
 class Snitch extends Component {
-    snitch = () => {
-        alert('100 points for this.props.user.house!!!!')
-      }
+  constructor() {
+    super();
+
+    this.state = {
+      points: 0
+    };
+  }
+
+  snitch = () => {
+    alert(`100 points for ${this.props.user.house}!!!!`);
+    this.setState({ points: (this.state.points += 100) });
+  };
+
   render() {
     return (
       <div className='container'>
@@ -55,4 +68,16 @@ class Snitch extends Component {
   }
 }
 
-export default Snitch;
+function mapStateToProps(state) {
+  const { user, youFollow, followingYou } = state;
+  return {
+    user,
+    youFollow,
+    followingYou
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  { setUser }
+)(Snitch);

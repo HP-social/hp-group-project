@@ -1,7 +1,9 @@
 .container {
     margin-left: 0vw;
-    position: relative;
+    // position: relative;
     z-index: 0;
+    display: flex;
+    position: fixed;
    }
    
    
@@ -9,7 +11,7 @@
      margin-top: 20vh;
      animation: animate 4s infinite;
      animation-direction: alternate-reverse;
-     z-index: 1;
+     z-index: 1000;
      width: 100px;
      height: 100px;
      fill: gold;
@@ -22,6 +24,7 @@
    
      100% {
        transform: translate(80vw) rotateZ(90deg) scale(2);
+       
      }
    
      70% {
