@@ -21,30 +21,28 @@ class Forum extends Component {
 		};
 		this.setPosts = this.setPosts.bind(this);
 	}
-	componentDidUpdate(prevProps){
-		if(this.props.match.params.id !== prevProps.match.params.id){
-			this.setForum()
+	componentDidUpdate(prevProps) {
+		if (this.props.match.params.id !== prevProps.match.params.id) {
+			this.setForum();
 		}
 	}
 
 	componentDidMount = async () => {
-		this.setForum()
-	
-	
+		this.setForum();
 	};
 
-	setForum=async()=>{
+	setForum = async () => {
 		await axios
-		.get(`/api/forum/${this.props.match.params.id}`)
-		.then((result) => {
-			this.setState({ forum: result.data[0] });
-		});
-	await axios
-		.get(`/api/forum/posts/${this.props.match.params.id}`)
-		.then((results) => {
-			this.setState({ posts: results.data });
-		});
-	}
+			.get(`/api/forum/${this.props.match.params.id}`)
+			.then((result) => {
+				this.setState({ forum: result.data[0] });
+			});
+		await axios
+			.get(`/api/forum/posts/${this.props.match.params.id}`)
+			.then((results) => {
+				this.setState({ posts: results.data });
+			});
+	};
 
 	tweet = () => {
 		this.setState({ makeATweet: !this.state.makeATweet });
@@ -111,7 +109,7 @@ class Forum extends Component {
 						value={this.state.title}
 					/>
 					{this.state.gif.length > 1 && (
-						<img className='gif' src={this.state.gif} />
+						<img className='gif' src={this.state.gif} alt='currentGif' />
 					)}
 					<textarea
 						onChange={(e) => this.changeHandler(e, 'post')}
@@ -127,7 +125,10 @@ class Forum extends Component {
 					/>
 					<div className='new_buttons'>
 						<button onClick={() => this.newPost()} className='submitTweet'>
-							<img src='https://image.flaticon.com/icons/svg/1305/1305386.svg' />
+							<img
+								src='https://image.flaticon.com/icons/svg/1305/1305386.svg'
+								alt='submit'
+							/>
 						</button>
 					</div>
 				</div>
@@ -145,10 +146,13 @@ class Forum extends Component {
           <div id='triangle' />
         </div> */}
 				<button
-					className={this.props.user.house + '_color' + ' tweetButton'}
+					className={this.props.user.house + '_color tweetButton'}
 					onClick={() => this.tweet()}
 				>
-					<img src='https://image.flaticon.com/icons/svg/1305/1305386.svg' />
+					<img
+						src='https://image.flaticon.com/icons/svg/1305/1305386.svg'
+						alt='house'
+					/>
 				</button>
 				{this.state.makeATweet === true ? (
 					<Tweet newTweetStatus={this.tweet} />

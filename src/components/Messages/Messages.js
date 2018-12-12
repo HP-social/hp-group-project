@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { setUser } from '../../ducks/reducer';
 import './Messages.scss';
 import axios from 'axios';
-import HouseHeader from '../Tools/HouseHeader/HouseHeader';
+// import HouseHeader from '../Tools/HouseHeader/HouseHeader';
 
 class Messages extends Component {
 	constructor(props) {
@@ -24,7 +24,7 @@ class Messages extends Component {
 			<Link key={i} to={`/chat/${friend.followed_id}`}>
 				<div className='message_friend'>
 					<sigil className={friend.house + ' sm'} />
-					{friend.username}
+					<p>{friend.username}</p>
 				</div>
 			</Link>
 		));
