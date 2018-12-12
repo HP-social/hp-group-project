@@ -41,7 +41,7 @@ export function setUser() {
 export function peopleYouFollow(id) {
   return {
     type: PPL_YOU_FOLLOW,
-    payload: axios.get(`/api/follwernumber/${id}`).then(response => {
+    payload: axios.get(`/api/followernumber/${id}`).then(response => {
       return response.data[0];
     })
   };

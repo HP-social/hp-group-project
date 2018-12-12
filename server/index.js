@@ -148,8 +148,8 @@ app.get('/api/isliked/:id', isLiked);
 app.get('/api/isbookmarked/:id', isBookmarked);
 app.get('/api/likenumber/:id', likeNumber);
 app.get('/api/postnumber/:id', commentNumber);
-app.get('/api/follwernumber/:id', followerNumber);
-app.get('/api/follwingnumber/:id', followingNumber);
+app.get('/api/followernumber/:id', followerNumber);
+app.get('/api/followingnumber/:id', followingNumber);
 
 // ***** Forum Endpoints ****
 app.get('/api/forum/posts/:id', getPosts); //likes comes in as a string

@@ -469,7 +469,7 @@ class Navigation extends React.Component {
           <Divider />
           <List>
             {[
-              `${this.props.username}` && 'Username',
+              `${this.props.user.username}`,
               'Subscriptions',
               'Follow'
             ].map((text, index) => (
