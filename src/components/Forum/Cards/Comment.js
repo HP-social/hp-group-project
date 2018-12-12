@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setUser } from '../../../ducks/reducer';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import './Card.scss';
 import '../Forum.scss';
 import moment from 'moment';
 import axios from 'axios';
-class Card extends Component {
+class Comment extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -29,15 +29,12 @@ class Card extends Component {
 		// 		this.setState({ isBookmarked: true });
 		// 	}
 		// });
-		axios
-			.get(`/api/post/${this.props.post_id}`)
-			.then((result) => this.setState({ post: result.data }));
 		// axios
 		// 	.get(`/api/likes/${this.props.post_id}`)
 		// 	.then((result) => this.setState({ likeNumber: result.data }));
-		axios
-			.get(`/api/comments/${this.props.post_id}`)
-			.then((result) => this.setState({ commentNumber: result.data }));
+		// axios
+		// 	.get(`/api/comments/${this.props.post_id}`)
+		// 	.then((result) => this.setState({ commentNumber: result.data }));
 	}
 
 	changeHandler(e, name) {
@@ -96,7 +93,7 @@ class Card extends Component {
 					<div className='card_main' key={i}>
 						<div
 							onClick={() => this.editChanger()}
-							className={e.house + '_top_bottom' + ' top_username'}
+							className={e.house + '_top_bottom top_username'}
 						>
 							<div className='top_left'>
 								<sigil className={e.house + ' sm'} />
@@ -130,7 +127,10 @@ class Card extends Component {
 								/>
 							</button>
 							<button onClick={() => this.updatePost()} className='submitTweet'>
-								<img src='https://image.flaticon.com/icons/svg/1305/1305386.svg' />
+								<img
+									src='https://image.flaticon.com/icons/svg/1305/1305386.svg'
+									alt='submit'
+								/>
 							</button>
 						</div>
 					</div>
@@ -197,4 +197,4 @@ function mapStateToProps(state) {
 export default connect(
 	mapStateToProps,
 	{ setUser }
-)(Card);
+)(Comment);

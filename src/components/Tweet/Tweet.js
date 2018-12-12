@@ -53,20 +53,18 @@ class Tweet extends Component {
 		return (
 			<div>
 				<div className='confirmWhiteout' />
-				<div className={this.props.user.house + '_color' + ' newReview'}>
+				<div className={this.props.user.house + '_color newReview'}>
 					{/* <h3>{this.props.user.username.toUpperCase()}</h3> */}
 
 					<input
 						placeholder='Title'
 						type='text'
-						className={this.props.user.house + '_secondary_color' + ' title'}
+						className={this.props.user.house + '_secondary_color title'}
 						onChange={(e) => this.changeHandler(e, 'title')}
 						value={this.state.title}
 					/>
 					<select
-						className={
-							this.props.user.house + '_secondary_color' + ' drop_down'
-						}
+						className={this.props.user.house + '_secondary_color drop_down'}
 						name='forum'
 						onChange={(e) => this.changeHandler(e, 'forum_id')}
 					>
@@ -77,7 +75,7 @@ class Tweet extends Component {
 						type='text'
 						className={
 							this.state.gif === ''
-								? this.props.user.house + '_secondary_color' + ' tweet'
+								? this.props.user.house + '_secondary_color tweet'
 								: 'tweetWithGif'
 						}
 						onChange={(e) => this.changeHandler(e, 'post')}
@@ -99,7 +97,7 @@ class Tweet extends Component {
 							type='text'
 							className={
 								this.state.showGif === true
-									? this.props.user.house + '_secondary_color' + ' show_gif'
+									? this.props.user.house + '_secondary_color show_gif'
 									: 'hide_gif'
 							}
 							onChange={(e) => this.changeHandler(e, 'gif')}
@@ -113,9 +111,7 @@ class Tweet extends Component {
 
 						<button
 							onClick={() => this.submitTweet()}
-							className={
-								this.props.user.house + '_secondary_color' + ' submitTweet'
-							}
+							className={this.props.user.house + '_secondary_color submitTweet'}
 						>
 							<img
 								src='https://image.flaticon.com/icons/svg/1305/1305386.svg'
