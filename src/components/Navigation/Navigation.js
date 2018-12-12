@@ -1,6 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setUser, peopleYouFollow, peopleFollowingYou } from '../../ducks/reducer';
+import {
+  setUser,
+  peopleYouFollow,
+  peopleFollowingYou
+} from '../../ducks/reducer';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -181,8 +185,15 @@ class Navigation extends React.Component {
     anchorEl: null,
     mobileMoreAnchorEl: null,
     value: 0,
-    theme: 'griffindor'
+    theme: 'griffindor',
+    number: 0
   };
+
+//   componentDidUpdate(prevProps,prevState){
+//   	if(window.location.pathname===`/forum/${this.state.number}`){
+//   		this.randNum()
+//   	}
+//   }
 
   componentDidMount = async () => {
     await this.props.setUser();
@@ -195,6 +206,7 @@ class Navigation extends React.Component {
       }
     });
     await this.setState({ theme: this.props.user.house });
+    this.randNum();
   };
 
   handleDrawerOpen = () => {
@@ -220,7 +232,14 @@ class Navigation extends React.Component {
     this.setState({ mobileMoreAnchorEl: null });
   };
 
+  randNum = () => {
+    let stairwell = Math.floor(Math.random() * (17 - 1) + 1);
+    // this.setState({ number: stairwell });
+    return stairwell;
+  };
+
   render() {
+	const ranNumber=this.randNum()
     const gryffindor = GryffindorTheme;
     const slytherin = SlytherinTheme;
     const ravenclaw = RavenclawTheme;
@@ -333,7 +352,7 @@ class Navigation extends React.Component {
       '/forum/:id',
       '/maps',
       '/bookmarks',
-      '/lasfkjaf'
+      `/forum/${ranNumber}`
     ];
 
     return (
