@@ -11,7 +11,7 @@ class Subscriptions extends Component {
   render() {
     return (
       <div className='subs_main'>
-        {/* <HouseHeader>Subscriptions</HouseHeader> */}
+        <HouseHeader house={''}>Subscriptions</HouseHeader>
 				<h1>hello</h1>
       </div>
     );

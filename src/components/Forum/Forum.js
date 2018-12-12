@@ -6,6 +6,7 @@ import './Forum.scss';
 import Tweet from '../Tweet/Tweet';
 import Card from './Cards/Card';
 import HouseHeader from '../Tools/HouseHeader/HouseHeader';
+
 class Forum extends Component {
 	constructor(props) {
 		super(props);
