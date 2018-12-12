@@ -1,6 +1,7 @@
 const axios = require('axios');
 const SET_USER = 'SET_USER';
 const PPL_YOU_FOLLOW = 'PPL_YOU_FOLLOW';
+const FOLLOWING_YOU = 'FOLLOWING_YOU';
 
 const initialState = {
   user: {},
@@ -11,8 +12,8 @@ const initialState = {
   messagesCount: [],
   mentionsCount: [],
   //
-  youFollow: {count:0},
-  followingYou: {count:0},
+  youFollow: { count: 0 },
+  followingYou: { count: 0 }
 };
 
 function reducer(state = initialState, action) {
@@ -22,6 +23,8 @@ function reducer(state = initialState, action) {
       return { ...state, user: action.payload };
     case `${PPL_YOU_FOLLOW}_FULFILLED`:
       return { ...state, youFollow: action.payload };
+    case `${FOLLOWING_YOU}_FULFILLED`:
+      return { ...state, followingYou: action.payload };
     default:
       return state;
   }
@@ -39,6 +42,14 @@ export function peopleYouFollow(id) {
   return {
     type: PPL_YOU_FOLLOW,
     payload: axios.get(`/api/follwernumber/${id}`).then(response => {
+      return response.data[0];
+    })
+  };
+}
+export function peopleFollowingYou(id) {
+  return {
+    type: FOLLOWING_YOU,
+    payload: axios.get(`/api/followingnumber/${id}`).then(response => {
       return response.data[0];
     })
   };

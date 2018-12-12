@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setUser, peopleYouFollow } from '../../ducks/reducer';
+import { setUser, peopleYouFollow, peopleFollowingYou } from '../../ducks/reducer';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -187,6 +187,7 @@ class Navigation extends React.Component {
   componentDidMount = async () => {
     await this.props.setUser();
     await this.props.peopleYouFollow(this.props.user.wizard_id);
+    await this.props.peopleFollowingYou(this.props.user.wizard_id);
     await axios.get('/api/user').then(result => {
       if (!result.data.house && window.location.pathname !== `/sortinghat`) {
         // this.props.history.push('/sortinghat');
@@ -520,5 +521,5 @@ Navigation.propTypes = {
 
 export default connect(
   mapStateToProps,
-  { setUser, peopleYouFollow }
+  { setUser, peopleYouFollow, peopleFollowingYou }
 )(withStyles(styles, { withTheme: true })(Navigation));

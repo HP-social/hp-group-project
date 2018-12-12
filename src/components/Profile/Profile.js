@@ -62,9 +62,9 @@ class Profile extends Component {
               <div className='top_right'>
                 <h1>{this.state.userInfo.username}</h1>
                 <div className='bottom_right'>
-                  <h3>Followers {' '}{this.props.followingYou.count}</h3>
-                  <h3>&#9961;</h3>
-                  <h3>Following {' '}{this.props.youFollow.count} </h3>
+                  <h3>Followers {this.props.followingYou.count}</h3>
+                  <h3>&#9899;</h3>
+                  <h3>Following {this.props.youFollow.count} </h3>
                 </div>
               </div>
             </>
@@ -131,11 +131,11 @@ class Profile extends Component {
 }
 
 function mapStateToProps(state) {
-  const { user,youFollow, followingYou } = state;
+  const { user, youFollow, followingYou } = state;
   return {
     user,
-    youFollow, followingYou
-
+    youFollow,
+    followingYou
   };
 }
 
