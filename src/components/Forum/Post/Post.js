@@ -17,10 +17,11 @@ class Post extends Component {
 			makeATweet: false,
 			comment: ''
 		};
+		this.setComments = this.setComments.bind(this);
 	}
 
 	componentDidMount() {
-		axios.get(`/api/comments/${this.props.match.params.id}`).then((result) => {
+		axios.get(`/api/comment/${this.props.match.params.id}`).then((result) => {
 			this.setState({ comments: result.data });
 		});
 		axios.get(`/api/post/${this.props.match.params.id}`).then((results) => {
@@ -40,7 +41,15 @@ class Post extends Component {
 		this.setState({ [name]: e.target.value });
 	}
 
-	newPost = async () => {
+	setComments() {
+		axios
+			.get(`/api/comment/${this.props.match.params.id}`)
+			.then((result) =>
+				this.setState({ comments: result.data }, () => this.cleanState())
+			);
+	}
+
+	newPost() {
 		let newPost = Object.assign(
 			{},
 			{
@@ -49,20 +58,15 @@ class Post extends Component {
 				post_id: this.state.post[0].post_id
 			}
 		);
-		axios.post('/api/comment', newPost);
-		await axios
-			.get(`/api/comments/${this.props.match.params.id}`)
-			.then((result) =>
-				this.setState({ comments: result.data }, () => this.cleanState())
-			);
-	};
+		axios.post('/api/comment', newPost).then(() => this.setComments());
+	}
 
 	render() {
 		let post = this.state.post.map((elem, i) => {
 			return <Card post={elem} />;
 		});
 		let comments = this.state.comments.map((elem, i) => {
-			return <Comment post={elem} />;
+			return <Comment setComments={this.setComments} post={elem} />;
 		});
 		return (
 			<div className='everything'>
@@ -92,20 +96,6 @@ class Post extends Component {
 					</div>
 					<div className='forum_card'>{comments} </div>
 				</div>
-
-				{/* <Card /> */}
-				{/* <div className='forum_post'>
-          Ron is the best wizard
-          <img id='wizard_avi'src={this.state.user.profile_img}></img>
-          <div id='wizard_name'>{this.state.user.username}</div>
-          <div id='time_of_post'>2 hours ago</div>
-          <div id='star-five' />
-          <div id='star-five_number'>39</div>
-          <div id='comment' />
-          <div id ='comment_number'>8</div>
-          <div id='triangle' />
-        </div> */}
-
 				<button className='tweetButton' onClick={() => this.tweet()}>
 					<img src='https://image.flaticon.com/icons/svg/1305/1305386.svg' />
 				</button>

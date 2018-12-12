@@ -60,7 +60,7 @@ module.exports = {
 		req.app
 			.get('db')
 			.query(
-				`select * from comment join wizards on comment.wizard_id=wizards.wizard_id where post_id=${
+				`select * from wizard_comment join wizards on wizard_comment.wizard_id=wizards.wizard_id where post_id=${
 					req.params.id
 				} order by time`
 			)
@@ -72,7 +72,7 @@ module.exports = {
 	makeComment: (req, res, next) => {
 		req.app
 			.get('db')
-			.comment.insert(req.body)
+			.wizard_comment.insert(req.body)
 			.then((result) => {
 				res.status(200).json(result);
 			})
@@ -81,7 +81,7 @@ module.exports = {
 	deleteComment: (req, res, next) => {
 		req.app
 			.get('db')
-			.query(`delete from comment where comment_id=${req.params.id}`)
+			.query(`delete from wizard_comment where comment_id=${req.params.id}`)
 			.then((result) => {
 				res.status(200).json(result);
 			})
@@ -91,7 +91,7 @@ module.exports = {
 		// console.log(req.body);
 		req.app
 			.get('db')
-			.comment.save(req.body)
+			.wizard_comment.save(req.body)
 			.then((response) => res.status(200).json(response))
 			.catch((err) => res.status(500).send(err));
 	}

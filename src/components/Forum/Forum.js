@@ -18,6 +18,7 @@ class Forum extends Component {
 			gif: '',
 			post: ''
 		};
+		this.setPosts = this.setPosts.bind(this);
 	}
 	componentDidMount = async () => {
 		// await axios.get('/api/user').then((result) => {
@@ -46,6 +47,14 @@ class Forum extends Component {
 		this.setState({ gif: '', title: '', post: '' });
 	}
 
+	setPosts() {
+		axios
+			.get(`/api/forum/posts/${this.props.match.params.id}`)
+			.then((results) => {
+				this.setState({ posts: results.data });
+			});
+	}
+
 	newPost() {
 		let newPost = Object.assign(
 			{},
@@ -67,7 +76,7 @@ class Forum extends Component {
 	}
 	render() {
 		let posts = this.state.posts.map((elem, i) => {
-			return <Card post={elem} />;
+			return <Card setPosts={this.setPosts} post={elem} />;
 		});
 		return (
 			<div className='everything'>
