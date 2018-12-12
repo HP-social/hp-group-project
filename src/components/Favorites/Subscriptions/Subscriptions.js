@@ -13,6 +13,7 @@ class Subscriptions extends Component {
       <div className='subs_main'>
         <HouseHeader house={''}>Subscriptions</HouseHeader>
 				<h1>hello</h1>
+        <h2>dope</h2>
       </div>
     );
   }
