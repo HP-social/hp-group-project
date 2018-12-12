@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Snitch.scss';
 
 class Snitch extends Component {
     snitch = () => {

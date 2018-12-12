@@ -6,6 +6,7 @@ import './Forum.scss';
 import Tweet from '../Tweet/Tweet';
 import Card from './Cards/Card';
 import HouseHeader from '../Tools/HouseHeader/HouseHeader';
+import Snitch from '../../components/Snitch/Snitch';
 class Forum extends Component {
 	constructor(props) {
 		super(props);
@@ -102,6 +103,7 @@ class Forum extends Component {
 							<h3>{this.props.user.username}</h3>
 						</div>
 					</div>
+					<Snitch />
 					<input
 						onChange={(e) => this.changeHandler(e, 'title')}
 						placeholder='Title'
