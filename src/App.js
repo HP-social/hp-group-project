@@ -7,21 +7,21 @@ import Navigation from './components/Navigation/Navigation';
 import './App.scss';
 
 class App extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <BrowserRouter>
-          <div className='App'>
-            {window.location.pathname === '/' ||
-            window.location.pathname === '/sortinghat' ? null : (
-              <Navigation />
-            )}
-            <div className='routes'>{routes}</div>
-          </div>
-        </BrowserRouter>
-      </Provider>
-    );
-  }
+	render() {
+		return (
+			<Provider store={store}>
+				<BrowserRouter>
+					<div className='App'>
+						{window.location.pathname === '/' ||
+						window.location.pathname === '/sortinghat' ? null : (
+							<Navigation />
+						)}
+						<div className='routes'>{routes}</div>
+					</div>
+				</BrowserRouter>
+			</Provider>
+		);
+	}
 }
 
 export default App;
