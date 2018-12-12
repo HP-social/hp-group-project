@@ -26,6 +26,10 @@ $hufflepuff_yellow: #ecb939;
 	border-left: 2px solid lightgrey;
 	color: black;
 
+	img {
+		max-width: 300px;
+	}
+
 	.new_title {
 		margin: 10px;
 		display: flex;
