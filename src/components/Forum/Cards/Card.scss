@@ -26,6 +26,46 @@ $hufflepuff_yellow: #ecb939;
 	border-left: 2px solid lightgrey;
 	color: black;
 
+	.new_title {
+		margin: 10px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 80%;
+		align-self: center;
+		background: none;
+	}
+
+	.new_buttons {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+	}
+	.gif {
+		background: none;
+		max-width: 300px;
+		margin: 10px;
+		align-self: center;
+	}
+	.gif_input {
+		margin: 10px;
+
+		background: none;
+	}
+	.top_left {
+		display: flex;
+	}
+	.submit_tweet {
+		align-self: flex-end;
+	}
+
+	.new_tweet {
+		margin: 10px;
+		width: 80%;
+		background: none;
+		height: 150px;
+	}
+
 	.top_username {
 		display: flex;
 		justify-content: space-between;

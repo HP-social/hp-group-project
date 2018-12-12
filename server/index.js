@@ -16,7 +16,8 @@ const {
 	isBookmarked,
 	likeNumber,
 	commentNumber,
-	FollowerNumber
+	followerNumber,
+	followingNumber
 } = require('./controllers/favoritesController');
 const {
 	getPosts,
@@ -147,7 +148,8 @@ app.get('/api/isliked/:id', isLiked);
 app.get('/api/isbookmarked/:id', isBookmarked);
 app.get('/api/likenumber/:id', likeNumber);
 app.get('/api/postnumber/:id', commentNumber);
-app.get('/api/follwernumber/:id', FollowerNumber);
+app.get('/api/follwernumber/:id', followerNumber);
+app.get('/api/follwingnumber/:id', followingNumber);
 
 // ***** Forum Endpoints ****
 app.get('/api/forum/posts/:id', getPosts); //likes comes in as a string
@@ -162,7 +164,7 @@ app.delete('/api/post/:postid', deletePost);
 app.get('/api/likes/:postid', getLikes); //likes comes in as a string
 
 // ***** Comment Endpoints ****
-app.get('/api/comments/:id', getComments);
+app.get('/api/comment/:id', getComments);
 app.post('/api/comment', makeComment);
 app.put('/api/comment/:id', updateComment);
 app.delete('/api/comment/:id', deleteComment);
