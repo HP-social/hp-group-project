@@ -20,23 +20,31 @@ class Forum extends Component {
 		};
 		this.setPosts = this.setPosts.bind(this);
 	}
+	componentDidUpdate(prevProps){
+		if(this.props.match.params.id !== prevProps.match.params.id){
+			this.setForum()
+		}
+	}
+
 	componentDidMount = async () => {
-		// await axios.get('/api/user').then((result) => {
-		//  if (!result.data.house) {
-		//      this.props.history.push('/sortinghat');
-		//  }
-		// });
-		await axios
-			.get(`/api/forum/${this.props.match.params.id}`)
-			.then((result) => {
-				this.setState({ forum: result.data[0] });
-			});
-		await axios
-			.get(`/api/forum/posts/${this.props.match.params.id}`)
-			.then((results) => {
-				this.setState({ posts: results.data });
-			});
+		this.setForum()
+	
+	
 	};
+
+	setForum=async()=>{
+		await axios
+		.get(`/api/forum/${this.props.match.params.id}`)
+		.then((result) => {
+			this.setState({ forum: result.data[0] });
+		});
+	await axios
+		.get(`/api/forum/posts/${this.props.match.params.id}`)
+		.then((results) => {
+			this.setState({ posts: results.data });
+		});
+	}
+
 	tweet = () => {
 		this.setState({ makeATweet: !this.state.makeATweet });
 	};
