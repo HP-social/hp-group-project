@@ -25,7 +25,7 @@ class Bookmarks extends Component {
 	render() {
 		let bookmarks = this.state.bookmarks.map((post) => <Card post={post} />);
 		return (
-			<div>
+			<div className='fav'>
 				<HouseHeader house={this.props.user.house}>Bookmarks</HouseHeader>
 				{bookmarks}
 			</div>
