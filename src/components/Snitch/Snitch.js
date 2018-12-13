@@ -10,7 +10,8 @@ class Snitch extends Component {
 
     this.state = {
       points: 0,
-      empty: ''
+      empty: '',
+      snitch_random: 0
     };
   }
 
@@ -26,6 +27,8 @@ class Snitch extends Component {
 }
 
   render() {
+
+    let snitch_random = Math.floor(Math.random() * (10 - 1) + 1);
     return (
       <div className='container'>
         {' '}
