@@ -178,6 +178,17 @@ app.post('/api/sendEmail1', sendEmail1);
 app.get('/api/emails', getHouseEmails);
 // app.post('/api/sendEmail2', sendEmail2);
 
+app.get('/api/mentions', (req, res, next) => {
+	console.log(req.query.username);
+	req.app
+		.get('db')
+		.forum_post.search({ columns: ['post', 'title'], term: req.query.username })
+		.then((result) => {
+			res.status(200).json(result);
+		})
+		.catch((err) => res.status(500).send(err));
+});
+
 app.listen(port, () => {
 	console.log(`Port ${port} is listening...`);
 });
