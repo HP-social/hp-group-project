@@ -169,7 +169,7 @@ app.get('/api/postnumber/:id', commentNumber);
 app.get('/api/followernumber/:id', followerNumber);
 app.get('/api/followingnumber/:id', followingNumber);
 app.delete('/api/deletebookmark/:id', deleteBookmark);
-app.delete('/api/deletesubscription /:id', deleteSubscription);
+app.delete('/api/deletesubscription/:id', deleteSubscription);
 app.post('/api/addbookmark/:id', addBookmark);
 app.post('/api/addsubscription/:id', addSubscription);
 

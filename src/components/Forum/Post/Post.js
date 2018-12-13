@@ -91,13 +91,16 @@ class Post extends Component {
 					/>
 					<div className='new_buttons'>
 						<button onClick={() => this.newPost()} className='submitTweet'>
-							<img src='https://image.flaticon.com/icons/svg/1305/1305386.svg' />
+							<img src='https://image.flaticon.com/icons/svg/1305/1305386.svg' alt='quill'/>
 						</button>
 					</div>
 					<div className='forum_card'>{comments} </div>
 				</div>
-				<button className='tweetButton' onClick={() => this.tweet()}>
-					<img src='https://image.flaticon.com/icons/svg/1305/1305386.svg' />
+				<button
+					className={this.props.user.house + '_color tweetButton'}
+					onClick={() => this.tweet()}
+				>
+					<img src='https://image.flaticon.com/icons/svg/1305/1305386.svg' alt='quill2' />
 				</button>
 				{this.state.makeATweet === true ? (
 					<Tweet newTweetStatus={this.tweet} />

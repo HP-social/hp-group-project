@@ -73,7 +73,7 @@ class Profile extends Component {
         <div className='inner_div_left'>
           <div className='top_left'>
             <>
-              <sigil className='gryffindor sm' />
+              <sigil className={this.props.user.house + ' sm'} />
             </>
             <>
               <div className='top_right'>
