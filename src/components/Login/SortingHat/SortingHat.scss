@@ -103,14 +103,14 @@ $hufflepuff_yellow: #ecb939;
 	width: 70px;
 	height: 70px;
 	margin-left: 80vw;
-	background: $slytherin_green;
-	border: 1px solid $slytherin_silver;
+	// background: $slytherin_green;
+	// border: 1px solid $slytherin_silver;
 	float: left;
 	border-radius: 50%;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 600px) {
 	.tweetButton {
-		bottom: 4%;
+		bottom: 40px;
 	}
 }
