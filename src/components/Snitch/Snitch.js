@@ -9,13 +9,15 @@ class Snitch extends Component {
     super();
 
     this.state = {
-      points: 0
+      points: 0,
+      empty: ''
     };
   }
 
   snitch = () => {
     alert(`100 points for ${this.props.user.house}!!!!`);
-    this.setState({ points: (this.state.points += 100) });
+    this.setState({ points: (this.state.points += 100) })
+    axios.post('/api/addpoints', {wizard_id: this.props.user.wizard_id, house: this.props.user.house, points: this.state.points});
   };
 
   render() {
