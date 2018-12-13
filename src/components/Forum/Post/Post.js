@@ -96,7 +96,10 @@ class Post extends Component {
 					</div>
 					<div className='forum_card'>{comments} </div>
 				</div>
-				<button className='tweetButton' onClick={() => this.tweet()}>
+				<button
+					className={this.props.user.house + '_color tweetButton'}
+					onClick={() => this.tweet()}
+				>
 					<img src='https://image.flaticon.com/icons/svg/1305/1305386.svg' />
 				</button>
 				{this.state.makeATweet === true ? (
