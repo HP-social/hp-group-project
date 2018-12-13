@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import HouseHeader from '../../Tools/HouseHeader/HouseHeader';
 import axios from 'axios';
 import Card from '../../Forum/Cards/Card';
+import '../../Forum/Cards/Card.scss';
+import '../Fav.scss';
+import '../../Forum/Forum.scss';
 
 class Bookmarks extends Component {
 	constructor(props) {
