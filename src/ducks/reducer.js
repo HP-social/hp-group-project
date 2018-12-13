@@ -2,6 +2,8 @@ const axios = require('axios');
 const SET_USER = 'SET_USER';
 const PPL_YOU_FOLLOW = 'PPL_YOU_FOLLOW';
 const FOLLOWING_YOU = 'FOLLOWING_YOU';
+const DAILY_PROPHET = 'DAILY_PROPHET';
+const MENTIONS = 'MENTIONS';
 
 const initialState = {
 	user: {},
@@ -25,6 +27,10 @@ function reducer(state = initialState, action) {
 			return { ...state, youFollow: action.payload };
 		case `${FOLLOWING_YOU}_FULFILLED`:
 			return { ...state, followingYou: action.payload };
+		case `${DAILY_PROPHET}_FULFILLED`:
+			return { ...state, dailyProphetCount: action.payload };
+		case `${MENTIONS}_FULFILLED`:
+			return { ...state, mentionsCount: action.payload };
 		default:
 			return state;
 	}
@@ -51,6 +57,22 @@ export function peopleFollowingYou(id) {
 		type: FOLLOWING_YOU,
 		payload: axios.get(`/api/followingnumber/${id}`).then((response) => {
 			return response.data[0];
+		})
+	};
+}
+export function dailyProphet(id) {
+	return {
+		type: DAILY_PROPHET,
+		payload: axios.get(`/api/news/${id}`).then((response) => {
+			return response.data;
+		})
+	};
+}
+export function getMessages(id) {
+	return {
+		type: MENTIONS,
+		payload: axios.get(`/api/news/${id}`).then((response) => {
+			return response.data;
 		})
 	};
 }

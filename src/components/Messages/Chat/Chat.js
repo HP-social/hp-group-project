@@ -119,7 +119,6 @@ class Chat extends Component {
 			if (message.email === this.props.user.email) {
 				return (
 					<div key={i} className='user_outer'>
-						<sigil className={this.props.user.house + ' sm'} />
 						{/* <img
               className='avatar'
               alt='avatar'
@@ -128,6 +127,7 @@ class Chat extends Component {
 						<div className={`${this.props.user.house}_color user_message`}>
 							{message.text}
 						</div>
+						<sigil className={this.props.user.house + ' sm'} />
 						<br />
 					</div>
 				);
@@ -137,10 +137,10 @@ class Chat extends Component {
 						{/* <HouseHeader house={this.state.wizard.house}>
 							{this.state.wizard.username}
 						</HouseHeader> */}
+						<sigil className={this.state.wizard.house + ' sm'} />
 						<div className={`${this.state.wizard.house}_color friend_message`}>
 							{message.text}
 						</div>
-						<sigil className={this.state.wizard.house + ' sm'} />
 						{/* <img
 							className='avatar'
 							alt='avatar'
@@ -160,7 +160,7 @@ class Chat extends Component {
 				<div className='chat'>
 					{this.renderMessages()}
 					<textarea
-						className='chat_input'
+						className={this.props.user.house + '_color chat_input'}
 						autoFocus={true}
 						rowsmax={3}
 						placeholder='Type something..'

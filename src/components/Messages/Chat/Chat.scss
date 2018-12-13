@@ -18,10 +18,10 @@ $hufflepuff_yellow: #ecb939;
 	align-self: center;
 	text-align: center;
 	margin-bottom: 40px;
-	margin-top: 60px;
+	// margin-top: 60px;
 	margin-left: 200px;
 	// z-index: 100;
-	width: 100%;
+	width: calc(100% - 200px);
 }
 // @media (max-width: 600px) {
 // 	.chat_envelope {
@@ -39,9 +39,15 @@ $hufflepuff_yellow: #ecb939;
 	overflow-y: scroll;
 	min-height: 100px;
 	max-height: 1000px;
-	width: 200px;
+	width: 180px;
 	height: 100%;
-	border: 1px solid black;
+	// border: 1px solid black;
+}
+
+@media (max-width: 800px) {
+	.message_container {
+		margin-bottom: 50px;
+	}
 }
 
 .message_friend {
@@ -51,25 +57,40 @@ $hufflepuff_yellow: #ecb939;
 	padding: 5px;
 	padding-left: 10px;
 	padding-right: 10px;
+	margin-bottom: 5px;
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
 	align-items: center;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.16), 0 1px 2px rgba(0, 0, 0, 0.23);
+	-webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+	transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 	// top: 0;
 	// border: 1px solid black;
+}
+
+.message_friend:hover {
+	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .chat_input {
 	position: fixed;
 	bottom: 0px;
-	width: 66%;
+	width: calc(100% - 310px);
 	margin: 5px;
+	color: white;
+}
+
+@media (max-width: 800px) {
+	.chat_input {
+		bottom: 40px;
+	}
 }
 
 .user_message {
 	display: flex;
 	align-items: center;
-	align-self: flex-start;
+	align-self: flex-end;
 	padding: 10px;
 	border-radius: 15px;
 	color: white;
@@ -78,7 +99,7 @@ $hufflepuff_yellow: #ecb939;
 .friend_message {
 	display: flex;
 	align-items: center;
-	align-self: flex-end;
+	align-self: flex-start;
 	padding: 10px;
 
 	border-radius: 15px;
@@ -116,17 +137,23 @@ $hufflepuff_yellow: #ecb939;
 }
 
 .friend_outer {
+	sigil {
+		width: 50px;
+	}
 	display: flex;
 	align-content: center;
-	align-self: flex-end;
+	align-self: flex-start;
 	margin: 10px;
 }
 
 .user_outer {
+	sigil {
+		width: 50px;
+	}
 	display: flex;
 
 	align-content: center;
-	align-self: flex-start;
+	align-self: flex-end;
 	margin: 10px;
 }
 

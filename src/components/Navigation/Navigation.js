@@ -233,7 +233,7 @@ class Navigation extends React.Component {
 	};
 
 	randNum = () => {
-		let stairwell = Math.floor(Math.random() * (17 - 1) + 1);
+		let stairwell = Math.floor(Math.random() * (16 - 1) + 1);
 		// this.setState({ number: stairwell });
 		return stairwell;
 	};
@@ -335,7 +335,7 @@ class Navigation extends React.Component {
 			'/follows'
 		];
 		const dynamicLinkBottom = [
-			'/forum/:id',
+			'/forum/1',
 			'/maps',
 			'/bookmarks',
 			`/forum/${ranNumber}`
@@ -478,8 +478,8 @@ class Navigation extends React.Component {
 							'Subscriptions',
 							'Follow'
 						].map((text, index) => (
-							<Link to={dynamicLinkTop[index]}>
-								<ListItem button key={text}>
+							<Link to={dynamicLinkTop[index]} key={text}>
+								<ListItem button>
 									<ListItemIcon
 										aria-owns={isMenuOpen ? 'material-appbar' : undefined}
 										aria-haspopup='true'
@@ -496,8 +496,8 @@ class Navigation extends React.Component {
 					<Divider />
 					<List>
 						{['Commons', 'Map', 'Bookmarks', 'Stairwell'].map((text, index) => (
-							<Link to={dynamicLinkBottom[index]}>
-								<ListItem button key={text}>
+							<Link to={dynamicLinkBottom[index]} key={text}>
+								<ListItem button>
 									<ListItemIcon>{sideIconBottom[index]}</ListItemIcon>
 									<ListItemText primary={text} />
 								</ListItem>

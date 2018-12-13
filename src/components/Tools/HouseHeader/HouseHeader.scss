@@ -1,3 +1,18 @@
+@font-face {
+	font-family: 'harryp';
+	src: url('../../../HARRYP__.TTF') format('truetype');
+}
+
+@font-face {
+	font-family: 'lumos';
+	src: url('../../../LUMOS.TTF') format('truetype');
+}
+
+@font-face {
+	font-family: 'parselto';
+	src: url('../../../PARSELTO.TTF') format('truetype');
+}
+
 $slytherin_green: #1a472a;
 $slytherin_silver: #5d5d5d;
 $gryffindor_red: #740001;
@@ -6,6 +21,15 @@ $ravenclaw_blue: #0e1a40;
 $ravenclaw_bronze: #946b2d;
 $hufflepuff_black: #372e29;
 $hufflepuff_yellow: #ecb939;
+
+.forum_title {
+	display: flex;
+	flex-wrap: wrap;
+	// justify-content: center;
+	font-size: 50px;
+	font-family: 'parselto';
+	height: 10%;
+}
 
 .topper {
 	// margin-top: 115px;
@@ -17,6 +41,8 @@ $hufflepuff_yellow: #ecb939;
 	top: 60px;
 	// height: 60px;
 	background: #191919;
+	border-bottom: solid 2px $gryffindor_gold;
+
 	color: white;
 	width: calc(100% - 70px);
 	z-index: 10;
@@ -30,15 +56,19 @@ $hufflepuff_yellow: #ecb939;
 
 .slyth {
 	background: $slytherin_silver;
+	border-bottom: solid 2px $slytherin_green;
 }
 .griff {
 	background: $gryffindor_gold;
+	border-bottom: solid 2px $gryffindor_red;
 }
 .rave {
 	background: $ravenclaw_bronze;
+	border-bottom: solid 2px $ravenclaw_blue;
 }
 .huff {
 	background: $hufflepuff_black;
+	border-bottom: solid 2px $hufflepuff_yellow;
 }
 
 .img-responsive {
