@@ -18,7 +18,7 @@ module.exports = {
 			.query(
 				`select * from bookmarks join forum_post on bookmarks.post_id=forum_post.post_id join wizards on wizards.wizard_id=forum_post.wizard_id where bookmarks.wizard_id=${
 					req.params.id
-				} order by time`
+				} order by time desc`
 			)
 			.then((result) => {
 				res.status(200).json(result);

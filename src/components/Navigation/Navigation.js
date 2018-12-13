@@ -233,7 +233,7 @@ class Navigation extends React.Component {
 	};
 
 	randNum = () => {
-		let stairwell = Math.floor(Math.random() * (17 - 1) + 1);
+		let stairwell = Math.floor(Math.random() * (16 - 1) + 1);
 		// this.setState({ number: stairwell });
 		return stairwell;
 	};
@@ -335,7 +335,7 @@ class Navigation extends React.Component {
 			'/follows'
 		];
 		const dynamicLinkBottom = [
-			'/forum/:id',
+			'/forum/1',
 			'/maps',
 			'/bookmarks',
 			`/forum/${ranNumber}`

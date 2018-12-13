@@ -6,11 +6,13 @@ module.exports = {
 		req.app
 			.get('db')
 			.query(
-				`select distinct like_table.likes,forum_post.gif,forum_post.title,forum.location,forum_post.post_id,forum_post.forum_id,forum_post.wizard_id,forum_post.post,forum_post.time,wizards.username,wizards.house,wizards.role,wizards.profile_img from forum_post join wizards on wizards.wizard_id=forum_post.wizard_id join subscribe on subscribe.forum_id=forum_post.forum_id join forum on forum.forum_id=forum_post.forum_id join follow on follow.followed_id=forum_post.wizard_id join (select count(*)as likes, post_id from likes group by post_id) as like_table on like_table.post_id=forum_post.post_id where follow.follower_id=${
+				`select * from (select count(*) as likes,forum_post.post_id from subscribe join forum_post on forum_post.forum_id=subscribe.forum_id join wizards on wizards.wizard_id=forum_post.wizard_id right join likes on likes.post_id=forum_post.post_id where subscribe.wizard_id=${
 					req.params.id
-				} or subscribe.wizard_id=${
+				} group by forum_post.post_id order by likes desc) as news join forum_post on forum_post.post_id=news.post_id join wizards on forum_post.wizard_id=wizards.wizard_id 
+				union all
+				select * from (select count(*) as likes,forum_post.post_id from follow join forum_post on forum_post.wizard_id=follow.followed_id join wizards on wizards.wizard_id=forum_post.wizard_id right join likes on likes.post_id=forum_post.post_id where follow.follower_id=${
 					req.params.id
-				} order by forum_post.time, like_table.likes desc`
+				} group by forum_post.post_id order by likes desc) as news join forum_post on forum_post.post_id=news.post_id join wizards on forum_post.wizard_id=wizards.wizard_id order by time desc, likes desc`
 			)
 			.then((result) => {
 				res.status(200).json(result);
