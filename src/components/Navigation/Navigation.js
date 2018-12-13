@@ -232,11 +232,19 @@ class Navigation extends React.Component {
     this.setState({ mobileMoreAnchorEl: null });
   };
 
+<<<<<<< HEAD
   randNum = () => {
     let stairwell = Math.floor(Math.random() * (17 - 1) + 1);
     // this.setState({ number: stairwell });
     return stairwell;
   };
+=======
+	randNum = () => {
+		let stairwell = Math.floor(Math.random() * (16 - 1) + 1);
+		// this.setState({ number: stairwell });
+		return stairwell;
+	};
+>>>>>>> master
 
   render() {
     const ranNumber = this.randNum();
@@ -329,6 +337,7 @@ class Navigation extends React.Component {
       <GroupIcon />
     ];
 
+<<<<<<< HEAD
     const dynamicLinkTop = [
       `/profile/${this.props.user.wizard_id}`,
       '/subscriptions',
@@ -340,6 +349,19 @@ class Navigation extends React.Component {
       '/bookmarks',
       `/forum/${ranNumber}`
     ];
+=======
+		const dynamicLinkTop = [
+			`/profile/${this.props.user.wizard_id}`,
+			'/subscriptions',
+			'/follows'
+		];
+		const dynamicLinkBottom = [
+			'/forum/1',
+			'/maps',
+			'/bookmarks',
+			`/forum/${ranNumber}`
+		];
+>>>>>>> master
 
     return (
       <div className={classes.root}>

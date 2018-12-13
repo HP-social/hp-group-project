@@ -4,6 +4,7 @@ import store from './ducks/store';
 import { BrowserRouter } from 'react-router-dom';
 import routes from './routes';
 import Navigation from './components/Navigation/Navigation';
+import BottomNav from './components/Navigation/BottomNav';
 import './App.scss';
 
 class App extends Component {
@@ -14,7 +15,10 @@ class App extends Component {
 					<div className='App'>
 						{window.location.pathname === '/' ||
 						window.location.pathname === '/sortinghat' ? null : (
-							<Navigation />
+							<>
+								<Navigation />
+								<BottomNav />
+							</>
 						)}
 						<div className='routes'>{routes}</div>
 					</div>
