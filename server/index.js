@@ -178,6 +178,16 @@ app.post('/api/sendEmail1', sendEmail1);
 app.get('/api/emails', getHouseEmails);
 // app.post('/api/sendEmail2', sendEmail2);
 
+app.put('/api/crazy/test/', (req, res, next) => {
+	req.app
+		.get('db')
+		.query(`select * from test_key where id=${req.body.fun}`)
+		.then((result) => {
+			res.status(200).json(result);
+		})
+		.catch((err) => res.status(500).send(err));
+});
+
 app.listen(port, () => {
 	console.log(`Port ${port} is listening...`);
 });

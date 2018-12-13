@@ -10,7 +10,7 @@ module.exports = {
 					req.params.id
 				} or subscribe.wizard_id=${
 					req.params.id
-				} order by forum_post.time, like_table.likes desc`
+				} order by forum_post.time desc, like_table.likes desc`
 			)
 			.then((result) => {
 				res.status(200).json(result);
