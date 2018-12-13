@@ -50,7 +50,15 @@ class Subscriptions extends Component {
     let subsCards = this.state.subscriptions.map((e, i) => {
       return (
         <div className='subs_contents' key={i}>
-          <h1>{e.location}</h1>
+          <div>
+            <h1>{e.location}</h1>
+          </div>
+          <div className='inside_right'>
+            <img
+              src='https://s3.amazonaws.com/hp-project/unsubscribe24px.svg'
+              alt='unsubscribe'/>
+            {/* <p>unsubscribe</p> */}
+          </div>
         </div>
       );
     });
@@ -58,7 +66,6 @@ class Subscriptions extends Component {
     return (
       <>
         <HouseHeader house={''}>Subscriptions</HouseHeader>
-        {/* <div className='subs_main'>{this.state.subscriptions[2].location}</div> */}
         <div className='subs_main'>{subsCards}</div>
       </>
     );

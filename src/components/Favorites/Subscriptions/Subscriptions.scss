@@ -1,11 +1,31 @@
 .subs_main {
-  margin-top: 109px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-top: 110px;
   height: 80vh;
-  width: 80vw;
+  width: 100%;
   background: rgb(245, 180, 180);
-  border: 1px dashed purple;
 
-  .subs_contents{
+  .subs_contents {
+    padding: 1%;
+    margin-left: 10%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    align-items: center;
     background: rgb(240, 209, 152);
+    width: 45%;
+    height: 10vh;
+    border: 1px dashed purple;
+
+    h1 {
+      font-size: 2em;
+    }
+    .inside_right{
+      display: flex;
+      align-items: center;
+      margin-right: 2%;
+    }
   }
 }
