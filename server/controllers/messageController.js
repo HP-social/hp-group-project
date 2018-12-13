@@ -17,10 +17,9 @@ module.exports = {
 		req.app
 			.get('db')
 			.query(
-				`select one.followed_id,wizards.username,wizards.house,wizards.profile_img from follow as one full join follow on one.followed_id=follow.follower_id join wizards on one.followed_id=wizards.wizard_id where one.follower_id=${
+				`select * from (select distinct one.followed_id from follow as one full join follow on one.follower_id=follow.followed_id and one.follower_id=${
 					req.params.id
-				} and one.follower_id=follow.followed_id
-    `
+				} where one.followed_id=follow.follower_id) as friends join wizards on friends.followed_id=wizards.wizard_id`
 			)
 			.then((result) => {
 				res.status(200).json(result);

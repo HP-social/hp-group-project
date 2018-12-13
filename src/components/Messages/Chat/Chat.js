@@ -4,7 +4,7 @@ import firebase from 'firebase';
 import Messages from '../Messages';
 import './Chat.scss';
 import axios from 'axios';
-import HouseHeader from '../../Tools/HouseHeader/HouseHeader';
+// import HouseHeader from '../../Tools/HouseHeader/HouseHeader';
 
 class Chat extends Component {
 	constructor(props) {
@@ -125,7 +125,7 @@ class Chat extends Component {
               alt='avatar'
               src={this.props.user.house}
             /> */}
-						<div className={`${this.props.user.house}_color` + ' user_message'}>
+						<div className={`${this.props.user.house}_color user_message`}>
 							{message.text}
 						</div>
 						<br />
@@ -137,9 +137,7 @@ class Chat extends Component {
 						{/* <HouseHeader house={this.state.wizard.house}>
 							{this.state.wizard.username}
 						</HouseHeader> */}
-						<div
-							className={`${this.state.wizard.house}_color` + ' friend_message'}
-						>
+						<div className={`${this.state.wizard.house}_color friend_message`}>
 							{message.text}
 						</div>
 						<sigil className={this.state.wizard.house + ' sm'} />

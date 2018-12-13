@@ -45,9 +45,15 @@ $hufflepuff_yellow: #ecb939;
 }
 
 .message_friend {
+	p {
+		margin-left: 10px;
+	}
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
 	display: flex;
 	flex-direction: row;
-	justify-content: space-around;
+	justify-content: flex-start;
 	align-items: center;
 	// top: 0;
 	// border: 1px solid black;

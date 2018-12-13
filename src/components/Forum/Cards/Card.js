@@ -12,7 +12,6 @@ class Card extends Component {
 		this.state = {
 			isLiked: false,
 			isBookmarked: false,
-			post: {},
 			likeNumber: 0,
 			commentNumber: 0,
 			className: 'hidden-class',
@@ -24,25 +23,25 @@ class Card extends Component {
 	}
 
 	componentDidMount() {
-		axios.get(`/api/isLiked/${this.props.post_id}`).then((result) => {
-			if (result.data.length > 0) {
-				this.setState({ isLiked: true });
-			}
-		});
-		axios.get(`/api/isBookmarked/${this.props.post_id}`).then((result) => {
-			if (result.data.length > 0) {
-				this.setState({ isBookmarked: true });
-			}
-		});
-		axios
-			.get(`/api/post/${this.props.post_id}`)
-			.then((result) => this.setState({ post: result.data }));
-		axios
-			.get(`/api/likes/${this.props.post_id}`)
-			.then((result) => this.setState({ likeNumber: result.data }));
-		axios
-			.get(`/api/comments/${this.props.post_id}`)
-			.then((result) => this.setState({ commentNumber: result.data }));
+		// axios.get(`/api/isLiked/${this.props.post_id}`).then((result) => {
+		// 	if (result.data.length > 0) {
+		// 		this.setState({ isLiked: true });
+		// 	}
+		// });
+		// axios.get(`/api/isBookmarked/${this.props.post_id}`).then((result) => {
+		// 	if (result.data.length > 0) {
+		// 		this.setState({ isBookmarked: true });
+		// 	}
+		// });
+		// axios
+		// 	.get(`/api/post/${this.props.post_id}`)
+		// 	.then((result) => this.setState({ post: result.data }));
+		// axios
+		// 	.get(`/api/likes/${this.props.post_id}`)
+		// 	.then((result) => this.setState({ likeNumber: result.data }));
+		// axios
+		// 	.get(`/api/comments/${this.props.post_id}`)
+		// 	.then((result) => this.setState({ commentNumber: result.data }));
 	}
 
 	editChanger() {
