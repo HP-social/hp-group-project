@@ -341,176 +341,178 @@ class Navigation extends React.Component {
       `/forum/${ranNumber}`
     ];
 
-    return (
-      <div className={classes.root}>
-        <MuiThemeProvider
-          theme={
-            this.state.theme === 'hufflepuff'
-              ? HufflepuffTheme
-              : this.state.theme === 'gryffindor'
-              ? GryffindorTheme
-              : this.state.theme === 'slytherin'
-              ? SlytherinTheme
-              : RavenclawTheme
-          }
-        >
-          <AppBar
-            position='fixed'
-            className={classNames(classes.appBar, {
-              [classes.appBarShift]: this.state.open
-            })}
-          >
-            <Toolbar disableGutters={!this.state.open}>
-              <IconButton
-                color='inherit'
-                aria-label='Open drawer'
-                onClick={this.handleDrawerOpen}
-                className={classNames(classes.menuButton, {
-                  [classes.hide]: this.state.open
-                })}
-              >
-                <MenuIcon />
-              </IconButton>
-              <IconButton
-                aria-owns={isMenuOpen ? 'material-appbar' : undefined}
-                aria-haspopup='true'
-                // onClick={this.handleProfileMenuOpen}
-                color='inherit'
-              />
-              <div className={classes.search}>
-                <div className={classes.searchIcon}>
-                  <SearchIcon />
-                </div>
-                <InputBase
-                  // placeholder="Search…"
-                  classes={{
-                    root: classes.inputRoot,
-                    input: classes.inputInput
-                  }}
-                />
-              </div>
-              <div className={classes.grow} />
-              <div className={classes.sectionDesktop}>
-                <IconButton color='inherit'>
-                  <Badge
-                    badgeContent={`${this.props.dailyProphetCount}` && 5}
-                    color='secondary'
-                  >
-                    <Link to={'/dailyprophet'}>
-                      <DailyProphetIcon />{' '}
-                    </Link>
-                  </Badge>
-                </IconButton>
-                <IconButton color='inherit'>
-                  <Badge
-                    badgeContent={`${this.props.messagesCount}` && 2}
-                    color='secondary'
-                  >
-                    <Link to={'/messages'}>
-                      <MessagesIcon />
-                    </Link>
-                  </Badge>
-                </IconButton>
-                <IconButton color='inherit'>
-                  <Badge
-                    badgeContent={`${this.props.mentionsCount}` && 14}
-                    color='secondary'
-                  >
-                    <Link to={'/thequibbler'}>
-                      <MentionsIcon />
-                    </Link>
-                  </Badge>
-                </IconButton>
-                <div
-                  onClick={() =>
-                    window.open(
-                      `${process.env.REACT_APP_SERVER}/api/logout`,
-                      '_self'
-                    )
-                  }
-                >
-                  <IconButton color='inherit'>
-                    <LogoutIcon />
-                  </IconButton>
-                </div>
-              </div>
-              <div className={classes.sectionMobile}>
-                <IconButton
-                  aria-haspopup='true'
-                  onClick={this.handleMobileMenuOpen}
-                  color='inherit'
-                >
-                  <MoreIcon />
-                </IconButton>
-              </div>
-            </Toolbar>
-          </AppBar>
-        </MuiThemeProvider>
-        {renderMenu}
-        {renderMobileMenu}
-        <Drawer
-          variant='permanent'
-          className={classNames(classes.drawer, {
-            [classes.drawerOpen]: this.state.open,
-            [classes.drawerClose]: !this.state.open
-          })}
-          classes={{
-            paper: classNames({
-              [classes.drawerOpen]: this.state.open,
-              [classes.drawerClose]: !this.state.open
-            })
-          }}
-          open={this.state.open}
-        >
-          <div className={classes.toolbar}>
-            <IconButton onClick={this.handleDrawerClose}>
-              {theme.direction === 'rtl' ? (
-                <ChevronRightIcon />
-              ) : (
-                <ChevronLeftIcon />
-              )}
-            </IconButton>
-          </div>
-          <Divider />
-          <List>
-            {[
-              `${this.props.username}` && 'Username',
-              'Subscriptions',
-              'Follow'
-            ].map((text, index) => (
-              <Link to={dynamicLinkTop[index]} key={text}>
-                <ListItem button>
-                  <ListItemIcon
-                    aria-owns={isMenuOpen ? 'material-appbar' : undefined}
-                    aria-haspopup='true'
-                    // onClick={this.handleProfileMenuOpen}
-                    color='inherit'
-                  >
-                    {sideIconTop[index]}
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItem>
-              </Link>
-            ))}
-          </List>
-          <Divider />
-          <List>
-            {['Commons', 'Map', 'Bookmarks', 'Stairwell'].map((text, index) => (
-              <Link to={dynamicLinkBottom[index]} key={text}>
-                <ListItem button>
-                  <ListItemIcon>{sideIconBottom[index]}</ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItem>
-              </Link>
-            ))}
-          </List>
-        </Drawer>
-        <main className={classes.content}>
-          <div className={classes.toolbar} />
-        </main>
-      </div>
-    );
-  }
+		return (
+			<div className={classes.root}>
+				<MuiThemeProvider
+					theme={
+						this.state.theme === 'hufflepuff'
+							? HufflepuffTheme
+							: this.state.theme === 'gryffindor'
+							? GryffindorTheme
+							: this.state.theme === 'slytherin'
+							? SlytherinTheme
+							: RavenclawTheme
+					}
+				>
+					<AppBar
+						position='fixed'
+						className={classNames(classes.appBar, {
+							[classes.appBarShift]: this.state.open
+						})}
+					>
+						<Toolbar disableGutters={!this.state.open}>
+							<IconButton
+								color='inherit'
+								aria-label='Open drawer'
+								onClick={this.handleDrawerOpen}
+								className={classNames(classes.menuButton, {
+									[classes.hide]: this.state.open
+								})}
+							>
+								<MenuIcon />
+							</IconButton>
+							<IconButton
+								aria-owns={isMenuOpen ? 'material-appbar' : undefined}
+								aria-haspopup='true'
+								// onClick={this.handleProfileMenuOpen}
+								color='inherit'
+							/>
+							<div className={classes.search}>
+								<div className={classes.searchIcon}>
+									<SearchIcon />
+								</div>
+								<InputBase
+									// placeholder="Search…"
+									classes={{
+										root: classes.inputRoot,
+										input: classes.inputInput
+									}}
+								/>
+							</div>
+							<div className={classes.grow} />
+							<div className={classes.sectionDesktop}>
+								<IconButton color='inherit'>
+									<Badge
+										badgeContent={`${this.props.dailyProphetCount}` && 5}
+										color='secondary'
+									>
+										<Link to={'/dailyprophet'}>
+											<DailyProphetIcon />{' '}
+										</Link>
+									</Badge>
+								</IconButton>
+								<IconButton color='inherit'>
+									<Badge
+										badgeContent={`${this.props.messagesCount}` && 2}
+										color='secondary'
+									>
+										<Link to={'/messages'}>
+											<MessagesIcon />
+										</Link>
+									</Badge>
+								</IconButton>
+								<IconButton color='inherit'>
+									<Badge
+										badgeContent={`${this.props.mentionsCount}` && 14}
+										color='secondary'
+									>
+										<Link to={'/thequibbler'}>
+											<MentionsIcon />
+										</Link>
+									</Badge>
+								</IconButton>
+								<div
+									onClick={() =>
+										window.open(
+											`${process.env.REACT_APP_SERVER}/api/logout`,
+											'_self'
+										)
+									}
+								>
+									<IconButton color='inherit'>
+										<LogoutIcon />
+									</IconButton>
+								</div>
+							</div>
+							<div className={classes.sectionMobile}>
+								<IconButton
+									aria-haspopup='true'
+									onClick={this.handleMobileMenuOpen}
+									color='inherit'
+								>
+									<MoreIcon />
+								</IconButton>
+							</div>
+						</Toolbar>
+					</AppBar>
+				</MuiThemeProvider>
+				{renderMenu}
+				{renderMobileMenu}
+				<Drawer
+					variant='permanent'
+					className={classNames(classes.drawer, {
+						[classes.drawerOpen]: this.state.open,
+						[classes.drawerClose]: !this.state.open
+					})}
+					classes={{
+						paper: classNames({
+							[classes.drawerOpen]: this.state.open,
+							[classes.drawerClose]: !this.state.open
+						})
+					}}
+					open={this.state.open}
+				>
+					<div className={classes.toolbar}>
+						<IconButton onClick={this.handleDrawerClose}>
+							{theme.direction === 'rtl' ? (
+								<ChevronRightIcon />
+							) : (
+								<ChevronLeftIcon />
+							)}
+						</IconButton>
+					</div>
+					<Divider />
+					<List>
+						{[
+							`${this.props.user.username}`
+								? this.props.user.username
+								: 'Username',
+							'Subscriptions',
+							'Follow'
+						].map((text, index) => (
+							<Link to={dynamicLinkTop[index]} key={text}>
+								<ListItem button>
+									<ListItemIcon
+										aria-owns={isMenuOpen ? 'material-appbar' : undefined}
+										aria-haspopup='true'
+										// onClick={this.handleProfileMenuOpen}
+										color='inherit'
+									>
+										{sideIconTop[index]}
+									</ListItemIcon>
+									<ListItemText primary={text} />
+								</ListItem>
+							</Link>
+						))}
+					</List>
+					<Divider />
+					<List>
+						{['Commons', 'Map', 'Bookmarks', 'Stairwell'].map((text, index) => (
+							<Link to={dynamicLinkBottom[index]} key={text}>
+								<ListItem button>
+									<ListItemIcon>{sideIconBottom[index]}</ListItemIcon>
+									<ListItemText primary={text} />
+								</ListItem>
+							</Link>
+						))}
+					</List>
+				</Drawer>
+				<main className={classes.content}>
+					<div className={classes.toolbar} />
+				</main>
+			</div>
+		);
+	}
 }
 
 function mapStateToProps(state) {

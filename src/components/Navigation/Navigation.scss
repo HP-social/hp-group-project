@@ -34,17 +34,33 @@ $hufflepuff_yellow: #ecb939;
 	color: $slytherin_green;
 	filter: invert(100%);
 }
+.slytherinSelected {
+	filter: invert(20%) sepia(6%) saturate(4305%) hue-rotate(88deg)
+		brightness(100%) contrast(89%);
+}
 .griffindorIcon {
 	color: $gryffindor_red;
 	filter: invert(100%);
+}
+.gryffindorelected {
+	filter: invert(12%) sepia(54%) saturate(6114%) hue-rotate(349deg)
+		brightness(67%) contrast(111%);
 }
 .hufflepuffIcon {
 	color: $hufflepuff_yellow;
 	filter: invert(100%);
 }
+.hufflepuffSelected {
+	filter: invert(93%) sepia(67%) saturate(1512%) hue-rotate(324deg)
+		brightness(96%) contrast(91%);
+}
 .ravenclawIcon {
 	color: $ravenclaw_blue;
 	filter: invert(100%);
+}
+.ravenclawSelected {
+	filter: invert(8%) sepia(65%) saturate(1905%) hue-rotate(208deg)
+		brightness(101%) contrast(98%);
 }
 
 @media (min-width: 600px) {
