@@ -154,12 +154,30 @@ $hufflepuff_yellow: #ecb939;
 	display: none;
 }
 
+.tweetButton {
+	position: fixed;
+	right: 2%;
+	bottom: 2%;
+	img {
+		filter: invert(100%);
+		width: 50px;
+		height: 66px;
+	}
+	width: 70px;
+	height: 70px;
+	margin-left: 80vw;
+	// background: $slytherin_green;
+	// border: 1px solid $slytherin_silver;
+	float: left;
+	border-radius: 50%;
+}
+
 @media (max-width: 600px) {
 	.newReview {
 		left: 80px;
 		top: 100px;
 	}
 	.tweetButton {
-		bottom: 4%;
+		bottom: 40px;
 	}
 }
