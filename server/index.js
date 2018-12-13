@@ -40,7 +40,10 @@ const {
 	getUser,
 	getNews,
 	getWizard,
-	addPoints
+	addPoints,
+	getPostMentions,
+	getCommentMentions,
+	getWizardMentions
 } = require('./controllers/userController');
 const { getFriends, checkFriends } = require('./controllers/messageController');
 const {
@@ -149,6 +152,9 @@ app.get('/api/user', getUser);
 app.get('/api/wizard/:id', getWizard);
 app.get('/api/news/:id', getNews);
 app.post('/api/addpoints', addPoints);
+app.get('/api/postmentions', getPostMentions);
+app.get('/api/commentmentions', getCommentMentions);
+app.get('/api/wizardmentions', getWizardMentions);
 
 // ***** Favorites Endpoints ****
 app.get('/api/followed/:id', getFollowed);
