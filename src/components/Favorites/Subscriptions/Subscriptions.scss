@@ -1,31 +1,72 @@
+@font-face {
+  font-family: 'harryp';
+  src: url('../../../HARRYP__.TTF') format('truetype');
+}
+
+@font-face {
+  font-family: 'lumos';
+  src: url('../../../LUMOS.TTF') format('truetype');
+}
+
+@font-face {
+  font-family: 'parselto';
+  src: url('../../../PARSELTO.TTF') format('truetype');
+}
+
+.sub_outer {
+  margin-bottom: -15px;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: url(https://images.ctfassets.net/bxd3o8b291gf/3hollgS5QIcaUmoAWMsMEC/0ab7c45e0842488acdce82a76f6a7123/Hogwarts_PM_B4C37M1_GreatHallMourningCedricsDeath_Moment.jpg?w=1200);
+  background-position: center;
+  background-size: cover;
+  z-index: -10;
+}
 .subs_main {
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-evenly;
   margin-top: 110px;
-  height: 80vh;
+  // height: 80vh;
   width: 100%;
-  background: rgb(245, 180, 180);
+  padding: 1%;
+  overflow: scroll;
+  z-index: 10;
 
   .subs_contents {
     padding: 1%;
-    margin-left: 10%;
+    margin-left: 2%;
     display: flex;
     justify-content: space-between;
     flex-wrap: nowrap;
     align-items: center;
-    background: rgb(240, 209, 152);
-    width: 45%;
+    background: lightgrey;
+    width: 400px;
     height: 10vh;
-    border: 1px dashed purple;
+    border: 1px solid grey;
+    border-radius: 10px;
+    margin-bottom: 50px;
+    padding-left: 5%;
 
     h1 {
+      font-family: 'parselto';
       font-size: 2em;
     }
-    .inside_right{
+    .inside_right {
       display: flex;
       align-items: center;
       margin-right: 2%;
+
+      img {
+        height: 35px;
+      }
+    }
+  }
+  @media (max-width: 500px) {
+    .subs_contents {
+      width: 265px;
     }
   }
 }

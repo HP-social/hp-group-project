@@ -9,42 +9,49 @@ class Subscriptions extends Component {
     super(props);
     this.state = {
       subscriptions: [
-        {
-          forum_id: 9,
-          wizard_id: 2,
-          location: 'dumbledores office',
-          description: null,
-          img: null,
-          private: true,
-          on_map: true
-        },
-        {
-          forum_id: 6,
-          wizard_id: 2,
-          location: 'chamber of secrets',
-          description: null,
-          img: null,
-          private: true,
-          on_map: false
-        },
-        {
-          forum_id: 13,
-          wizard_id: 2,
-          location: 'hogsmead',
-          description: null,
-          img: null,
-          private: false,
-          on_map: false
-        }
+        // {
+        //   forum_id: 9,
+        //   wizard_id: 2,
+        //   location: 'dumbledores office',
+        //   description: null,
+        //   img: null,
+        //   private: true,
+        //   on_map: true
+        // },
+        // {
+        //   forum_id: 6,
+        //   wizard_id: 2,
+        //   location: 'chamber of secrets',
+        //   description: null,
+        //   img: null,
+        //   private: true,
+        //   on_map: false
+        // },
+        // {
+        //   forum_id: 13,
+        //   wizard_id: 2,
+        //   location: 'hogsmead',
+        //   description: null,
+        //   img: null,
+        //   private: false,
+        //   on_map: false
+        // }
+
+        // /api/deletesubscrition/${e.forum_id}
+        // /api/deletesubscrition
       ]
     };
   }
 
-  // componentDidMount() {
-  //   axios
-  //     .get(`/api/subscriptions/${this.props.user.wizard_id}`)
-  //     .then(res => this.setState({ subscriptions: res.data }));
-  // }
+  componentDidMount() {
+    axios
+      .get(`/api/subscriptions/${this.props.user.wizard_id}`)
+      .then(res => this.setState({ subscriptions: res.data }));
+  }
+
+  deleteSubscription = () => {
+    axios.delete(`api/`)
+  }
 
   render() {
     let subsCards = this.state.subscriptions.map((e, i) => {
@@ -56,8 +63,8 @@ class Subscriptions extends Component {
           <div className='inside_right'>
             <img
               src='https://s3.amazonaws.com/hp-project/unsubscribe24px.svg'
-              alt='unsubscribe'/>
-            {/* <p>unsubscribe</p> */}
+              alt='unsubscribe'
+            />
           </div>
         </div>
       );
@@ -66,6 +73,7 @@ class Subscriptions extends Component {
     return (
       <>
         <HouseHeader house={''}>Subscriptions</HouseHeader>
+        <div className='sub_outer' />
         <div className='subs_main'>{subsCards}</div>
       </>
     );
