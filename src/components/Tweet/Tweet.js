@@ -70,14 +70,13 @@ class Tweet extends Component {
 					>
 						{options}
 					</select>
+					{this.state.gif.length > 5 && (
+						<img alt='chosenGif' src={this.state.gif} />
+					)}
 					<textarea
 						placeholder='What is on your mind?'
 						type='text'
-						className={
-							this.state.gif === ''
-								? this.props.user.house + '_secondary_color tweet'
-								: 'tweetWithGif'
-						}
+						className={this.props.user.house + '_secondary_color tweet'}
 						onChange={(e) => this.changeHandler(e, 'post')}
 						value={this.state.post}
 					/>

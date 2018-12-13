@@ -8,40 +8,40 @@ $hufflepuff_black: #372e29;
 $hufflepuff_yellow: #ecb939;
 
 .noTweet {
-  display: none;
+	display: none;
 }
 .confirmWhiteout {
-  position: fixed;
-  top: 0%;
-  left: 0%;
-  width: 100vw;
-  min-height: 100%;
-  /* max-height: 1000%; */
-  z-index: 9;
-  background: #9999a1;
-  opacity: 0.6;
+	position: fixed;
+	top: 0%;
+	left: 0%;
+	width: 100vw;
+	min-height: 100%;
+	/* max-height: 1000%; */
+	z-index: 9;
+	background: #9999a1;
+	opacity: 0.6;
 }
 
 .newReview {
-  position: fixed;
-  top: 20%;
-  left: 30%;
-  /* right: 40%; */
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  // align-items: flex-start;
-  padding-left: 25px;
-  padding-right: 25px;
-  background: $slytherin_green;
-  margin: 10px;
-  min-height: 300px;
-  min-width: 500px;
-  /* max-width: 400px; */
-  border-radius: 25px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+	position: fixed;
+	top: 20%;
+	left: 40%;
+	right: 30%; /* right: 40%; */
+	z-index: 10;
+	display: flex;
+	flex-direction: column;
+	// align-items: flex-start;
+	padding-left: 25px;
+	padding-right: 25px;
+	background: $slytherin_green;
+	margin: 10px;
+	// min-height: 300px;
+	min-width: 250px;
+	/* max-width: 400px; */
+	border-radius: 25px;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+	-webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+	transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .tweet,
@@ -49,113 +49,114 @@ $hufflepuff_yellow: #ecb939;
 .submitTweet,
 .cancelTweet,
 .drop_down {
-  border: 2px solid black;
+	border: 2px solid black;
 }
 
 .title::placeholder {
-  color: white;
+	color: white;
 }
 .tweet::placeholder {
-  color: white;
+	color: white;
 }
 
 .drop_down {
-  margin-top: 1vh;
-  background: $slytherin_silver;
+	margin-top: 1vh;
+	background: $slytherin_silver;
 }
 
 #screen_name {
-  color: black;
-  background: rgb(201, 188, 171);
-  border: 1px solid black;
+	color: black;
+	background: rgb(201, 188, 171);
+	border: 1px solid black;
 }
 
 .title {
-  margin-top: 2vh;
-  width: 25%;
-  margin-left: 33%;
-  font-size: 20px;
-  background: $slytherin_silver;
-  color: white;
-  font-style: italic;
+	margin-top: 2vh;
+	width: 25%;
+	margin-left: 33%;
+	font-size: 20px;
+	background: $slytherin_silver;
+	color: white;
+	font-style: italic;
 }
 
 .tweet {
-  width: 100%;
-  height: 200px;
-  background: $slytherin_silver;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  font-size: 20px;
+	width: 100%;
+	height: 200px;
+	background: $slytherin_silver;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-size: 20px;
 }
 
 .reviewButtonContainer {
-  display: flex;
-  /* background: pink; */
-  width: 100%;
+	display: flex;
+	/* background: pink; */
+	width: 80%;
 }
 
 .submitGif {
-  margin-left: 65%;
-  background: $slytherin_silver;
-  color: white;
-  height: 47.5px;
-  width: 47.5px;
-  border-radius: 50%;
-  margin-bottom: 1vh;
-  border: 2px solid black;
-  img {
-    filter: invert(100%);
-    width: 30px;
-    height: 25px;
-  }
+	margin-left: 65%;
+	background: $slytherin_silver;
+	color: white;
+	height: 47.5px;
+	width: 47.5px;
+	border-radius: 50%;
+	margin-bottom: 1vh;
+	border: 2px solid black;
+	img {
+		filter: invert(100%);
+		width: 30px;
+		height: 25px;
+	}
 }
 
 .submitTweet {
-  margin-left: 1%;
-  background: $slytherin_silver;
-  color: white;
-  height: 47.5px;
-  width: 47.5px;
-  border-radius: 50%;
-  margin-bottom: 1vh;
-  img {
-    filter: invert(100%);
-    width: 25px;
-    height: 28px;
-  }
+	margin-left: 1%;
+	background: $slytherin_silver;
+	color: white;
+	height: 47.5px;
+	width: 47.5px;
+	border-radius: 50%;
+	margin-bottom: 1vh;
+	img {
+		filter: invert(100%);
+		width: 25px;
+		height: 28px;
+	}
 }
 
 .cancelTweet {
-  background: rgb(46, 43, 43);
-  color: white;
-  border-radius: 50%;
-  height: 47.5px;
-  width: 47.5px;
-  margin-bottom: 1vh;
-  img {
-    filter: invert(100%);
-    width: 25px;
-    height: 28px;
-  }
+	background: rgb(46, 43, 43);
+	color: white;
+	border-radius: 50%;
+	height: 47.5px;
+	width: 47.5px;
+	margin-bottom: 1vh;
+	img {
+		filter: invert(100%);
+		width: 25px;
+		height: 28px;
+	}
 }
 
 .show_gif {
-  left: 14vw;
-  bottom: 1vh;
-  width: 200px;
-  height: 25px;
-  position: absolute;
-  background: $slytherin_silver;
-  border: 2px solid black;
+	left: 14vw;
+	bottom: 1vh;
+	width: 200px;
+	height: 25px;
+	position: absolute;
+	background: $slytherin_silver;
+	border: 2px solid black;
 }
 
 .hide_gif {
-  display: none;
+	display: none;
 }
 
 @media (max-width: 500px) {
-  .newReview {
-    left: 10%;
-  }
+	.newReview {
+		left: 80px;
+		top: 100px;
+	}
 }

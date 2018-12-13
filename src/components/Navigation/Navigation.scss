@@ -1,0 +1,51 @@
+$slytherin_green: #1a472a;
+$slytherin_silver: #5d5d5d;
+$gryffindor_red: #740001;
+$gryffindor_gold: #d3a625;
+$ravenclaw_blue: #0e1a40;
+$ravenclaw_bronze: #946b2d;
+$hufflepuff_black: #372e29;
+$hufflepuff_yellow: #ecb939;
+
+.selector {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	z-index: 2;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	/* margin: 5px; */
+	color: white;
+	font-weight: 700;
+	font-size: 1.25em;
+	width: 100vw;
+	min-height: 30px;
+	cursor: pointer;
+	flex-wrap: wrap;
+	width: calc(100% - 55px);
+}
+
+.slytherinIcon {
+	color: $slytherin_green;
+	filter: invert(100%);
+}
+.griffindorIcon {
+	color: $gryffindor_red;
+	filter: invert(100%);
+}
+.hufflepuffIcon {
+	color: $hufflepuff_yellow;
+	filter: invert(100%);
+}
+.ravenclawIcon {
+	color: $ravenclaw_blue;
+	filter: invert(100%);
+}
+
+@media (min-width: 800px) {
+	.selector {
+		display: none;
+	}
+}
