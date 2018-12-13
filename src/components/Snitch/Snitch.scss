@@ -1,5 +1,5 @@
 .container {
-	margin-left: 0vw;
+	margin-left: -20vw;
 	position: relative;
 	z-index: 50;
 }
@@ -9,9 +9,9 @@
 	position: fixed;
 	top: 40%;
 	margin-top: 20vh;
-	animation: animate 4s infinite;
-	// animation-duration: 5s;
+	animation: animate 10s infinite;
 	animation-direction: alternate-reverse;
+	animation-iteration-count: 2;
 	z-index: 50;
 	width: 100px;
 	height: 100px;
