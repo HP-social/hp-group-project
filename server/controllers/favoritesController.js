@@ -25,6 +25,26 @@ module.exports = {
 			})
 			.catch((err) => res.status(500).send(err));
 	},
+	deleteBookmark: (req, res, next) => {
+		req.app
+			.get('db')
+			.query(
+				`delete from bookmarks where post_id=${req.params.id} and wizard_id=${
+					req.session.user.wizard_id
+				}`
+			)
+			.catch((err) => res.status(500).send(err));
+	},
+	addBookmark: (req, res, next) => {
+		req.app
+			.get('db')
+			.bookmarks.insert({
+				post_id: req.params.id,
+				wizard_id: req.session.user.wizard_id
+			})
+			.then((response) => res.status(200).json(response))
+			.catch((err) => res.status(500).send(err));
+	},
 	getSubscriptions: (req, res, next) => {
 		req.app
 			.get('db')
@@ -36,6 +56,26 @@ module.exports = {
 			.then((result) => {
 				res.status(200).json(result);
 			})
+			.catch((err) => res.status(500).send(err));
+	},
+	deleteSubscription: (req, res, next) => {
+		req.app
+			.get('db')
+			.query(
+				`delete from subscribe where forum_id=${req.params.id} and wizard_id=${
+					req.session.user.wizard_id
+				}`
+			)
+			.catch((err) => res.status(500).send(err));
+	},
+	addSubscription: (req, res, next) => {
+		req.app
+			.get('db')
+			.subscribe.insert({
+				forum_id: req.params.id,
+				wizard_id: req.session.user.wizard_id
+			})
+			.then((response) => res.status(200).json(response))
 			.catch((err) => res.status(500).send(err));
 	},
 	isLiked: (req, res, next) => {
