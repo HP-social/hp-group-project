@@ -1,3 +1,12 @@
+$slytherin_green: #1a472a;
+$slytherin_silver: #5d5d5d;
+$gryffindor_red: #740001;
+$gryffindor_gold: #d3a625;
+$ravenclaw_blue: #0e1a40;
+$ravenclaw_bronze: #946b2d;
+$hufflepuff_black: #372e29;
+$hufflepuff_yellow: #ecb939;
+
 .profile_container {
   display: flex;
   justify-content: space-evenly;
@@ -79,15 +88,15 @@
     .admin_controls {
       padding: 2%;
       border: 1px solid grey;
-      h1{
+      h1 {
         text-align: center;
         font-size: 1.5em;
         padding: 1%;
       }
-      input{
+      input {
         width: 80%;
       }
-      .admin_bottom{
+      .admin_bottom {
         display: flex;
         justify-content: space-between;
       }
@@ -128,5 +137,16 @@
       border-radius: 1%;
       border-radius: 3px;
     }
+  }
+}
+
+.points_box {
+  border: 1px solid grey;
+  padding-right: 2vw;
+  display: flex;
+  #amount_of_points {
+    font-weight: bold;
+    padding-left: 1vw;
+    color: $slytherin_green;
   }
 }

@@ -15,7 +15,7 @@ class Profile extends Component {
         house: 'ravenclaw',
         role: 'student'
       },
-      house_points: 0,
+      house_points: null,
       default_message: 'Enter New Passphrase...',
       houseStudents: []
     };
@@ -24,9 +24,10 @@ class Profile extends Component {
   componentDidMount() {
     axios
       .get(`/api/wizard/${this.props.match.params.id}`)
-      .then(results => this.setState({ userInfo: results.data[0] }))
-     axios
-      .get('/api/getauxpoints').then(results => this.setState({house_points: results.data}))
+      .then(results => this.setState({ userInfo: results.data[0] }));
+    axios
+      .get('/api/getauxpoints')
+      .then(results => this.setState({ house_points: results.data }));
   }
 
   sendNewPassword = async () => {
@@ -54,7 +55,19 @@ class Profile extends Component {
         </div>
       );
     });
-    console.log(this.state)
+    let xxx =
+      this.state.house_points &&
+      this.state.house_points
+        .filter(elem => {
+          return elem.house.includes(this.state.userInfo.house);
+        })
+        .map((elem, i) => {
+          return (
+            <div id='each_house' key={i}>
+              {elem.sum}
+            </div>
+          );
+        });
     return (
       <div className='profile_container'>
         <div className='inner_div_left'>
@@ -70,9 +83,13 @@ class Profile extends Component {
                   <h3>&#9899;</h3>
                   <h3>Following {this.props.youFollow.count} </h3>
                 </div>
-                <h3 id='am_i_winning'>House Points:</h3>
               </div>
             </>
+          </div>
+          <br />
+          <div className='points_box'>
+            <h3>House Points:</h3>
+            <h3 id='amount_of_points'>{xxx}</h3>
           </div>
           <br />
           <div className='bottom'>
