@@ -144,32 +144,27 @@ $hufflepuff_yellow: #ecb939;
   border: 1px solid grey;
   padding-right: 2vw;
   display: flex;
-  
+  #slytherinText,
+  #ravenclawText,
+  #gryffindorText,
+  #hufflepuffText {
+    font-weight: bold;
+    padding-left: 1vw;
+    color: $slytherin_green;
+  }
 }
 #slytherinText {
-  color: $slytherin_green;
-  font-weight: bold;
-  padding-left: 1vw;
   color: $slytherin_green;
 }
 
 #ravenclawText {
   color: $ravenclaw_blue;
-  font-weight: bold;
-  padding-left: 1vw;
-  color: $slytherin_green;
 }
 
 #gryffindorText {
   color: $gryffindor_gold;
-  font-weight: bold;
-  padding-left: 1vw;
-  color: $slytherin_green;
 }
 
 #hufflepuffText {
   color: $hufflepuff_yellow;
-  font-weight: bold;
-  padding-left: 1vw;
-  color: $slytherin_green;
 }
