@@ -32,7 +32,12 @@ const {
 	// getHouseEmails
 } = require('./controllers/forumController');
 const { getQuestions, getAnswers } = require('./controllers/quizController');
-const { getUser, getNews, getWizard } = require('./controllers/userController');
+const {
+	getUser,
+	getNews,
+	getWizard,
+	addPoints
+} = require('./controllers/userController');
 const { getFriends, checkFriends } = require('./controllers/messageController');
 const {
 	makePost,
@@ -139,6 +144,7 @@ app.get('/api/quiz/answers', getAnswers);
 app.get('/api/user', getUser);
 app.get('/api/wizard/:id', getWizard);
 app.get('/api/news/:id', getNews);
+app.post('/api/addpoints', addPoints);
 
 // ***** Favorites Endpoints ****
 app.get('/api/followed/:id', getFollowed);
