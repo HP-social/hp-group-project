@@ -5,10 +5,12 @@
 }
 
 .snitch {
+	margin-left: -200px;
 	position: fixed;
 	top: 40%;
 	margin-top: 20vh;
 	animation: animate 4s infinite;
+	// animation-duration: 5s;
 	animation-direction: alternate-reverse;
 	z-index: 50;
 	width: 100px;
