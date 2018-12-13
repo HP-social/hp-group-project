@@ -43,7 +43,8 @@ const {
 	addPoints,
 	getPostMentions,
 	getCommentMentions,
-	getWizardMentions
+	getWizardMentions,
+	getAuxPoints
 } = require('./controllers/userController');
 const { getFriends, checkFriends } = require('./controllers/messageController');
 const {
@@ -155,6 +156,7 @@ app.post('/api/addpoints', addPoints);
 app.get('/api/postmentions', getPostMentions);
 app.get('/api/commentmentions', getCommentMentions);
 app.get('/api/wizardmentions', getWizardMentions);
+app.get('/api/getauxpoints', getAuxPoints);
 
 // ***** Favorites Endpoints ****
 app.get('/api/followed/:id', getFollowed);
@@ -197,17 +199,6 @@ app.get('/api/message/allfriends/:id', getFriends);
 app.post('/api/sendEmail1', sendEmail1);
 app.get('/api/emails', getHouseEmails);
 // app.post('/api/sendEmail2', sendEmail2);
-
-app.get('/api/mentions', (req, res, next) => {
-	console.log(req.query.username);
-	req.app
-		.get('db')
-		.forum_post.search({ columns: ['post', 'title'], term: req.query.username })
-		.then((result) => {
-			res.status(200).json(result);
-		})
-		.catch((err) => res.status(500).send(err));
-});
 
 app.listen(port, () => {
 	console.log(`Port ${port} is listening...`);

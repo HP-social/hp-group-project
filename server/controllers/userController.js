@@ -60,12 +60,21 @@ module.exports = {
 			.catch((err) => res.status(500).send(err));
 	},
 	getWizardMentions: (req, res, next) => {
-		console.log(req.query.input.toUpperCase());
+		// console.log(req.query.input.toUpperCase());
 		req.app
 			.get('db')
 			.query(
 				`select * from wizards where upper(email) like '%${req.query.input.toUpperCase()}%' or upper(username) like '%${req.query.input.toUpperCase()}%' or upper(house) like '%${req.query.input.toUpperCase()}%' or upper(role) like '%${req.query.input.toUpperCase()}%' order by username`
 			)
+			.then((result) => {
+				res.status(200).json(result);
+			})
+			.catch((err) => res.status(500).send(err));
+	},
+	getAuxPoints: (req, res, next) => {
+		req.app
+			.get('db')
+			.query('select sum(points),house from house_points group by house')
 			.then((result) => {
 				res.status(200).json(result);
 			})
