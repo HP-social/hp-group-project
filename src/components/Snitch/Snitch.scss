@@ -17,6 +17,10 @@
     fill: gold;
 }
 
+.snitch_null {
+	display: none;
+}
+
 @keyframes animate {
 	0% {
 		transform: translate(0) scale(0.1);

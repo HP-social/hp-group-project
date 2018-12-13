@@ -15,6 +15,11 @@ class Snitch extends Component {
     };
   }
 
+  componentDidMount() {
+    var numba = Math.floor(Math.random() * (10 - 1) + 1)
+    this.setState({snitch_random: numba})
+  }
+
   snitch = () => {
     alert(`100 points for ${this.props.user.house}!!!!`);
     this.setState({ points: this.state.points + 100 }, () => {
@@ -28,13 +33,13 @@ class Snitch extends Component {
 
   render() {
 
-    let snitch_random = Math.floor(Math.random() * (10 - 1) + 1);
+    console.log(this.state.snitch_random)
     return (
       <div className='container'>
         {' '}
         <svg
           onClick={() => this.snitch()}
-          className='snitch'
+          className={this.state.snitch_random === 3 ? 'snitch' : 'snitch_null'}
           version='1.1'
           id='Capa_1'
           x='0px'
