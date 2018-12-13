@@ -4,8 +4,8 @@ import axios from 'axios';
 import './Home.scss';
 
 class Home extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		var today = new Date();
 		var month = today.getMonth();
 		var day = today.getDate();
@@ -54,7 +54,7 @@ class Home extends Component {
 		setTimeout(
 			() =>
 				axios
-					.get('/api/news/1')
+					.get(`/api/news/${this.props.user.wizard_id}`)
 					.then((result) => this.setState({ posts: result.data })),
 			3000
 		);
