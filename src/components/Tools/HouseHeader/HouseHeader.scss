@@ -1,3 +1,18 @@
+@font-face {
+	font-family: 'harryp';
+	src: url('../../../HARRYP__.TTF') format('truetype');
+}
+
+@font-face {
+	font-family: 'lumos';
+	src: url('../../../LUMOS.TTF') format('truetype');
+}
+
+@font-face {
+	font-family: 'parselto';
+	src: url('../../../PARSELTO.TTF') format('truetype');
+}
+
 $slytherin_green: #1a472a;
 $slytherin_silver: #5d5d5d;
 $gryffindor_red: #740001;
@@ -6,6 +21,15 @@ $ravenclaw_blue: #0e1a40;
 $ravenclaw_bronze: #946b2d;
 $hufflepuff_black: #372e29;
 $hufflepuff_yellow: #ecb939;
+
+.forum_title {
+	display: flex;
+	flex-wrap: wrap;
+	// justify-content: center;
+	font-size: 50px;
+	font-family: 'parselto';
+	height: 10%;
+}
 
 .topper {
 	// margin-top: 115px;
