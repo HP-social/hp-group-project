@@ -17,7 +17,8 @@ class Forum extends Component {
 			forum: {},
 			title: '',
 			gif: '',
-			post: ''
+			post: '',
+			isSubbed: false
 		};
 		this.setPosts = this.setPosts.bind(this);
 	}
@@ -30,6 +31,12 @@ class Forum extends Component {
 	componentDidMount = async () => {
 		this.setForum();
 	};
+
+	subToggle() {
+		if (this.state.isSubbed) {
+		} else if (!this.state.isSubbed)
+			this.setState({ isSubbed: !this.state.isSubbed });
+	}
 
 	setForum = async () => {
 		await axios
