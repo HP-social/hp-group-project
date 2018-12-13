@@ -15,6 +15,7 @@ class Profile extends Component {
         house: 'ravenclaw',
         role: 'student'
       },
+      house_points: null,
       default_message: 'Enter New Passphrase...',
       houseStudents: []
     };
@@ -24,6 +25,9 @@ class Profile extends Component {
     axios
       .get(`/api/wizard/${this.props.match.params.id}`)
       .then(results => this.setState({ userInfo: results.data[0] }));
+    axios
+      .get('/api/getauxpoints')
+      .then(results => this.setState({ house_points: results.data }));
   }
 
   sendNewPassword = async () => {
@@ -51,12 +55,25 @@ class Profile extends Component {
         </div>
       );
     });
+    let xxx =
+      this.state.house_points &&
+      this.state.house_points
+        .filter(elem => {
+          return elem.house.includes(this.state.userInfo.house);
+        })
+        .map((elem, i) => {
+          return (
+            <div id='each_house' key={i}>
+              {elem.sum}
+            </div>
+          );
+        });
     return (
       <div className='profile_container'>
         <div className='inner_div_left'>
           <div className='top_left'>
             <>
-              <sigil className='gryffindor sm' />
+              <sigil className={this.props.user.house + ' sm'} />
             </>
             <>
               <div className='top_right'>
@@ -68,6 +85,11 @@ class Profile extends Component {
                 </div>
               </div>
             </>
+          </div>
+          <br />
+          <div className='points_box'>
+            <h3>House Points:</h3>
+            <h3 id='amount_of_points'>{xxx}</h3>
           </div>
           <br />
           <div className='bottom'>
