@@ -17,7 +17,11 @@ const {
 	likeNumber,
 	commentNumber,
 	followerNumber,
-	followingNumber
+	followingNumber,
+	deleteSubscription,
+	deleteBookmark,
+	addSubscription,
+	addBookmark
 } = require('./controllers/favoritesController');
 const {
 	getPosts,
@@ -32,7 +36,12 @@ const {
 	// getHouseEmails
 } = require('./controllers/forumController');
 const { getQuestions, getAnswers } = require('./controllers/quizController');
-const { getUser, getNews, getWizard } = require('./controllers/userController');
+const {
+	getUser,
+	getNews,
+	getWizard,
+	addPoints
+} = require('./controllers/userController');
 const { getFriends, checkFriends } = require('./controllers/messageController');
 const {
 	makePost,
@@ -139,6 +148,7 @@ app.get('/api/quiz/answers', getAnswers);
 app.get('/api/user', getUser);
 app.get('/api/wizard/:id', getWizard);
 app.get('/api/news/:id', getNews);
+app.post('/api/addpoints', addPoints);
 
 // ***** Favorites Endpoints ****
 app.get('/api/followed/:id', getFollowed);
@@ -150,6 +160,10 @@ app.get('/api/likenumber/:id', likeNumber);
 app.get('/api/postnumber/:id', commentNumber);
 app.get('/api/followernumber/:id', followerNumber);
 app.get('/api/followingnumber/:id', followingNumber);
+app.delete('/api/deletebookmark/:id', deleteBookmark);
+app.delete('/api/deletesubscription /:id', deleteSubscription);
+app.post('/api/addbookmark/:id', addBookmark);
+app.post('/api/addsubscription/:id', addSubscription);
 
 // ***** Forum Endpoints ****
 app.get('/api/forum/posts/:id', getPosts); //likes comes in as a string
