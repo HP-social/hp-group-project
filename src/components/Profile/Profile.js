@@ -15,6 +15,7 @@ class Profile extends Component {
         house: 'ravenclaw',
         role: 'student'
       },
+      house_points: 0,
       default_message: 'Enter New Passphrase...',
       houseStudents: []
     };
@@ -23,7 +24,9 @@ class Profile extends Component {
   componentDidMount() {
     axios
       .get(`/api/wizard/${this.props.match.params.id}`)
-      .then(results => this.setState({ userInfo: results.data[0] }));
+      .then(results => this.setState({ userInfo: results.data[0] }))
+     axios
+      .get('/api/getauxpoints').then(results => this.setState({house_points: results.data}))
   }
 
   sendNewPassword = async () => {
@@ -51,6 +54,7 @@ class Profile extends Component {
         </div>
       );
     });
+    console.log(this.state)
     return (
       <div className='profile_container'>
         <div className='inner_div_left'>
@@ -66,6 +70,7 @@ class Profile extends Component {
                   <h3>&#9899;</h3>
                   <h3>Following {this.props.youFollow.count} </h3>
                 </div>
+                <h3 id='am_i_winning'>House Points:</h3>
               </div>
             </>
           </div>
