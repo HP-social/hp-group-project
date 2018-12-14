@@ -9,10 +9,14 @@ $hufflepuff_yellow: #ecb939;
 
 .Words {
 	color: white;
+	font-size: 1.5em;
 }
 
 .slytherinWords {
 	color: $slytherin_silver;
+	border-bottom: $slytherin_silver 2px solid;
+
+	font-size: 1.5em;
 }
 .slytherinBack {
 	background: $slytherin_green;
@@ -20,6 +24,9 @@ $hufflepuff_yellow: #ecb939;
 }
 .griffindorWords {
 	color: $gryffindor_gold;
+	border-bottom: $gryffindor_gold 2px solid;
+
+	font-size: 1.5em;
 }
 .gryffindorBack {
 	background: $gryffindor_red;
@@ -27,6 +34,9 @@ $hufflepuff_yellow: #ecb939;
 }
 .hufflepuffWords {
 	color: $hufflepuff_black;
+	border-bottom: $hufflepuff_black 2px solid;
+
+	font-size: 1.5em;
 }
 .hufflepuffBack {
 	background: $hufflepuff_yellow;
@@ -34,6 +44,8 @@ $hufflepuff_yellow: #ecb939;
 }
 .ravenclawWords {
 	color: $ravenclaw_bronze;
+	border-bottom: $ravenclaw_bronze 2px solid;
+	font-size: 1.5em;
 }
 .ravenclawBack {
 	background: $ravenclaw_blue;

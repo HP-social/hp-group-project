@@ -48,6 +48,12 @@ $hufflepuff_yellow: #ecb939;
 		font-family: 'parselto';
 		height: 10%;
 	}
+
+	@media (max-width: 600px) {
+		.forum_title {
+			font-size: 40px;
+		}
+	}
 	.forum_post {
 		height: 30%;
 		display: flex;
