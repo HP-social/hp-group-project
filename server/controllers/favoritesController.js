@@ -58,6 +58,21 @@ module.exports = {
 			.then((response) => res.status(200).json(response))
 			.catch((err) => res.status(500).send(err));
 	},
+	isSubscribed: (req, res, next) => {
+		req.app
+			.get('db')
+			.query(
+				`select * from subscribe where wizard_id=${
+					req.session.user.wizard_id
+				} and forum_id=${req.params.id}
+		`
+			)
+			.then((result) => {
+				res.status(200).json(result);
+			})
+			.then((response) => res.status(200).json(response))
+			.catch((err) => res.status(500).send(err));
+	},
 	getSubscriptions: (req, res, next) => {
 		req.app
 			.get('db')

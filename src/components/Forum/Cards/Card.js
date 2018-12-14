@@ -23,16 +23,17 @@ class Card extends Component {
 	}
 
 	componentDidMount() {
-		// axios.get(`/api/isLiked/${this.props.post_id}`).then((result) => {
-		// 	if (result.data.length > 0) {
-		// 		this.setState({ isLiked: true });
-		// 	}
-		// });
-		// axios.get(`/api/isBookmarked/${this.props.post_id}`).then((result) => {
-		// 	if (result.data.length > 0) {
-		// 		this.setState({ isBookmarked: true });
-		// 	}
-		// });
+		axios.get(`/api/isliked/${this.props.post.post_id}`).then((result) => {
+			if (result.data.length > 0) {
+				this.setState({ isLiked: true });
+			}
+		});
+		axios.get(`/api/isBookmarked/${this.props.post.post_id}`).then((result) => {
+			if (result.data.length > 0) {
+				this.setState({ isBookmarked: true });
+			}
+		});
+		this.setState({ likeNumber: this.props.post.likes });
 		// axios
 		// 	.get(`/api/post/${this.props.post_id}`)
 		// 	.then((result) => this.setState({ post: result.data }));
