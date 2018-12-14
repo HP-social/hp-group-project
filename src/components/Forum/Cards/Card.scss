@@ -177,3 +177,23 @@ $hufflepuff_yellow: #ecb939;
 	border-top: 1px solid $ravenclaw_bronze;
 	border-bottom: 1px solid $ravenclaw_bronze;
 }
+
+.slytherin_Selected {
+	filter: invert(20%) sepia(6%) saturate(4305%) hue-rotate(88deg)
+		brightness(100%) contrast(89%);
+}
+
+.gryffindor_Selected {
+	filter: invert(12%) sepia(54%) saturate(6114%) hue-rotate(349deg)
+		brightness(67%) contrast(111%);
+}
+
+.hufflepuff_Selected {
+	filter: invert(93%) sepia(67%) saturate(1512%) hue-rotate(324deg)
+		brightness(96%) contrast(91%);
+}
+
+.ravenclaw_Selected {
+	filter: invert(8%) sepia(65%) saturate(1905%) hue-rotate(208deg)
+		brightness(101%) contrast(98%);
+}
