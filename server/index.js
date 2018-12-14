@@ -180,7 +180,7 @@ app.get('/api/forum/:id', getForum);
 
 // ***** Post Endpoints ****
 app.get('/api/post/:postid', getPost);
-app.post('/api/post/', makePost);
+// app.post('/api/post/', makePost);
 app.put('/api/post/:postid', updatePost);
 app.delete('/api/post/:postid', deletePost);
 app.get('/api/likes/:postid', getLikes); //likes comes in as a string
