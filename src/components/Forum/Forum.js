@@ -21,6 +21,7 @@ class Forum extends Component {
 			isSubbed: false
 		};
 		this.setPosts = this.setPosts.bind(this);
+		this.subToggle = this.subToggle.bind(this);
 	}
 	componentDidUpdate(prevProps) {
 		if (this.props.match.params.id !== prevProps.match.params.id) {
@@ -34,8 +35,14 @@ class Forum extends Component {
 
 	subToggle() {
 		if (this.state.isSubbed) {
-		} else if (!this.state.isSubbed)
-			this.setState({ isSubbed: !this.state.isSubbed });
+			axios
+				.delete(`/api/deletesubscription/${this.props.match.params.id}`)
+				.then(() => this.setState({ isSubbed: this.state.isSubbed }));
+		} else if (!this.state.isSubbed) {
+			axios
+				.post(`/api/addsubscription/${this.props.match.params.id}`)
+				.then(() => this.setState({ isSubbed: !this.state.isSubbed }));
+		}
 	}
 
 	setForum = async () => {
@@ -48,6 +55,13 @@ class Forum extends Component {
 			.get(`/api/forum/posts/${this.props.match.params.id}`)
 			.then((results) => {
 				this.setState({ posts: results.data });
+			});
+		await axios
+			.get(`/api/issubscribed/${this.props.match.params.id}`)
+			.then((result) => {
+				if (result.data.length > 0) {
+					this.setState({ isSubbed: true });
+				}
 			});
 	};
 
@@ -65,7 +79,7 @@ class Forum extends Component {
 		axios
 			.get(`/api/forum/posts/${this.props.match.params.id}`)
 			.then((results) => {
-				this.setState({ posts: results.data });
+				this.setState({ posts: results.data }, () => this.cleanState());
 			});
 	}
 
@@ -80,13 +94,7 @@ class Forum extends Component {
 				forum_id: this.state.forum.forum_id
 			}
 		);
-		axios.post('/api/post', newPost).then(() =>
-			axios
-				.get(`/api/forum/posts/${this.props.match.params.id}`)
-				.then((results) => {
-					this.setState({ posts: results.data }, () => this.cleanState());
-				})
-		);
+		axios.post('/api/post', newPost).then(() => this.setPosts());
 	}
 	render() {
 		let posts = this.state.posts.map((elem, i) => {
@@ -95,7 +103,11 @@ class Forum extends Component {
 		return (
 			<div className='everything'>
 				{this.state.forum.location && (
-					<HouseHeader house={this.state.forum.location}>
+					<HouseHeader
+						house={this.state.forum.location}
+						isSubbed={this.state.isSubbed}
+						subToggle={this.subToggle}
+					>
 						{this.state.forum.location.toUpperCase()}
 					</HouseHeader>
 				)}

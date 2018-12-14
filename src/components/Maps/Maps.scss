@@ -1,0 +1,26 @@
+@font-face {
+	font-family: 'harryp';
+	src: url('../../HARRYP__.TTF') format('truetype');
+}
+
+.font {
+	font-family: 'harryp';
+	text-align: center;
+	/* color: white; */
+	font-size: 2em;
+	width: 100vw;
+	z-index: 12;
+}
+
+.mapground {
+	margin-top: -10px;
+	height: 50px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: #ebc876;
+	/* background-image: url('http://i.stack.imgur.com/kb0Zm.jpg'); */
+	/* justify-content: flex-start;
+	align-items: center; */
+}
