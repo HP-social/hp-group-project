@@ -22,7 +22,8 @@ const {
 	deleteBookmark,
 	addSubscription,
 	addBookmark,
-	getPins
+	getPins,
+	isSubscribed
 } = require('./controllers/favoritesController');
 const {
 	getPosts,
@@ -45,7 +46,9 @@ const {
 	getPostMentions,
 	getCommentMentions,
 	getWizardMentions,
-	getAuxPoints
+	getAuxPoints,
+	commentMentionsCount,
+	postMentionsCount
 } = require('./controllers/userController');
 const { getFriends, checkFriends } = require('./controllers/messageController');
 const {
@@ -158,6 +161,8 @@ app.get('/api/postmentions', getPostMentions);
 app.get('/api/commentmentions', getCommentMentions);
 app.get('/api/wizardmentions', getWizardMentions);
 app.get('/api/getauxpoints', getAuxPoints);
+app.get('/api/countcommentmentions', commentMentionsCount);
+app.get('/api/countpostmentions', postMentionsCount);
 
 // ***** Favorites Endpoints ****
 app.get('/api/followed/:id', getFollowed);
@@ -174,6 +179,7 @@ app.delete('/api/deletebookmark/:id', deleteBookmark);
 app.delete('/api/deletesubscription/:id', deleteSubscription);
 app.post('/api/addbookmark/:id', addBookmark);
 app.post('/api/addsubscription/:id', addSubscription);
+app.get('/api/issubscribed/:id', isSubscribed);
 
 // ***** Forum Endpoints ****
 app.get('/api/forum/posts/:id', getPosts); //likes comes in as a string

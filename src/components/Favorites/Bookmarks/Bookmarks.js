@@ -30,7 +30,7 @@ class Bookmarks extends Component {
 		return (
 			<div className='fav'>
 				<HouseHeader house={this.props.user.house}>Bookmarks</HouseHeader>
-				{bookmarks}
+				<div className='forum_card'>{bookmarks}</div>
 			</div>
 		);
 	}

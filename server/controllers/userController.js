@@ -78,5 +78,31 @@ module.exports = {
 				res.status(200).json(result);
 			})
 			.catch((err) => res.status(500).send(err));
+	},
+	postMentionsCount: (req, res, next) => {
+		req.app
+			.get('db')
+			.query(
+				`select count(*) from forum_post join wizards on wizards.wizard_id=forum_post.wizard_id where upper(title) like '%${
+					req.query.input
+				}%' or upper(post) like '%${req.query.input}%'`
+			)
+			.then((result) => {
+				res.status(200).json(result);
+			})
+			.catch((err) => res.status(500).send(err));
+	},
+	commentMentionsCount: (req, res, next) => {
+		req.app
+			.get('db')
+			.query(
+				`select count(*) from wizard_comment join wizards on wizards.wizard_id=wizard_comment.wizard_id where upper(comment) like '%${
+					req.query.input
+				}%'`
+			)
+			.then((result) => {
+				res.status(200).json(result);
+			})
+			.catch((err) => res.status(500).send(err));
 	}
 };

@@ -34,8 +34,14 @@ class Forum extends Component {
 
 	subToggle() {
 		if (this.state.isSubbed) {
-		} else if (!this.state.isSubbed)
-			this.setState({ isSubbed: !this.state.isSubbed });
+			axios
+				.delete(`/api/deletesubscription/${this.props.match.params.id}`)
+				.then(() => this.setState({ isSubbed: this.state.isSubbed }));
+		} else if (!this.state.isSubbed) {
+			axios
+				.postƒ(`/api/addsubscription/${this.props.match.params.id}`)
+				.then(() => this.setState({ isSubbed: !this.state.isSubbed }));
+		}
 	}
 
 	setForum = async () => {
@@ -48,6 +54,13 @@ class Forum extends Component {
 			.get(`/api/forum/posts/${this.props.match.params.id}`)
 			.then((results) => {
 				this.setState({ posts: results.data });
+			});
+		await axios
+			.get(`/api/issubscribed/${this.props.match.params.id}`)
+			.then((result) => {
+				if (result.data.length > 0) {
+					this.setState({ isSubbed: true });
+				}
 			});
 	};
 
@@ -89,7 +102,11 @@ class Forum extends Component {
 		return (
 			<div className='everything'>
 				{this.state.forum.location && (
-					<HouseHeader house={this.state.forum.location}>
+					<HouseHeader
+						house={this.state.forum.location}
+						isSubbed={this.state.isSubbed}
+						subToggle={this.subToggle}
+					>
 						{this.state.forum.location.toUpperCase()}
 					</HouseHeader>
 				)}
