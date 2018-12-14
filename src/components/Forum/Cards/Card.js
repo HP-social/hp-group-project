@@ -77,7 +77,6 @@ class Card extends Component {
 		axios
 			.put(`/api/post/${this.props.post.post_id}`, updatedPost)
 			.then(() => this.posted());
-		// console.log(updatedPost);
 	}
 
 	hide() {
@@ -209,7 +208,6 @@ class Card extends Component {
 						</div>
 						<div className='mid_title' onClick={() => this.hide()}>
 							{e.title}
-							{/* <div className='triangle' /> */}
 						</div>
 						<div className='media_container'>
 							{e.gif === null || e.gif === '' ? null : (

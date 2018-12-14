@@ -141,12 +141,30 @@ $hufflepuff_yellow: #ecb939;
 }
 
 .points_box {
-	border: 1px solid grey;
-	padding-right: 2vw;
-	display: flex;
-	#amount_of_points {
-		font-weight: bold;
-		padding-left: 1vw;
-		color: $slytherin_green;
-	}
+  border: 1px solid grey;
+  padding-right: 2vw;
+  display: flex;
+  #slytherinText,
+  #ravenclawText,
+  #gryffindorText,
+  #hufflepuffText {
+    font-weight: bold;
+    padding-left: 1vw;
+    color: $slytherin_green;
+  }
+}
+#slytherinText {
+  color: $slytherin_green;
+}
+
+#ravenclawText {
+  color: $ravenclaw_blue;
+}
+
+#gryffindorText {
+  color: $gryffindor_gold;
+}
+
+#hufflepuffText {
+  color: $hufflepuff_yellow;
 }
