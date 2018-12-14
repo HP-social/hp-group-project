@@ -21,6 +21,7 @@ class Forum extends Component {
 			isSubbed: false
 		};
 		this.setPosts = this.setPosts.bind(this);
+		this.subToggle = this.subToggle.bind(this);
 	}
 	componentDidUpdate(prevProps) {
 		if (this.props.match.params.id !== prevProps.match.params.id) {
@@ -39,7 +40,7 @@ class Forum extends Component {
 				.then(() => this.setState({ isSubbed: this.state.isSubbed }));
 		} else if (!this.state.isSubbed) {
 			axios
-				.postƒ(`/api/addsubscription/${this.props.match.params.id}`)
+				.post(`/api/addsubscription/${this.props.match.params.id}`)
 				.then(() => this.setState({ isSubbed: !this.state.isSubbed }));
 		}
 	}

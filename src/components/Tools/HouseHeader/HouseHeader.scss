@@ -46,6 +46,11 @@ $hufflepuff_yellow: #ecb939;
 	color: white;
 	width: calc(100% - 70px);
 	z-index: 10;
+
+	button:hover {
+		cursor: pointer;
+		color: white;
+	}
 }
 @media (max-width: 600px) {
 	.topper {
@@ -123,4 +128,35 @@ sigil.hufflepuff {
 .font {
 	font-family: 'parselto';
 	color: white;
+}
+
+.slytherinSub {
+	background: $slytherin_green;
+	color: $slytherin_silver;
+	border: solid 1px $slytherin_green;
+}
+.gryffindorSub {
+	background: $gryffindor_red;
+	color: $gryffindor_gold;
+	border: solid 1px $gryffindor_red;
+}
+.ravenclawSub {
+	background: $ravenclaw_blue;
+	color: $ravenclaw_bronze;
+	border: solid 1px $ravenclaw_blue;
+}
+.hufflepuffSub {
+	background: $hufflepuff_yellow;
+	color: $hufflepuff_black;
+	border: solid 1px $hufflepuff_yellow;
+}
+
+.hogSub {
+	background: white;
+	color: black;
+	border: solid 1px white;
+}
+.hogSub:hover {
+	color: white;
+	background: black;
 }
