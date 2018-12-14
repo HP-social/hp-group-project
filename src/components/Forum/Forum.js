@@ -65,7 +65,7 @@ class Forum extends Component {
 		axios
 			.get(`/api/forum/posts/${this.props.match.params.id}`)
 			.then((results) => {
-				this.setState({ posts: results.data });
+				this.setState({ posts: results.data }, () => this.cleanState());
 			});
 	}
 
@@ -80,13 +80,7 @@ class Forum extends Component {
 				forum_id: this.state.forum.forum_id
 			}
 		);
-		axios.post('/api/post', newPost).then(() =>
-			axios
-				.get(`/api/forum/posts/${this.props.match.params.id}`)
-				.then((results) => {
-					this.setState({ posts: results.data }, () => this.cleanState());
-				})
-		);
+		axios.post('/api/post', newPost).then(() => this.setPosts());
 	}
 	render() {
 		let posts = this.state.posts.map((elem, i) => {
