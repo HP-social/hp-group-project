@@ -55,7 +55,7 @@ class Profile extends Component {
         </div>
       );
     });
-    let xxx =
+    let amount_of_points =
       this.state.house_points &&
       this.state.house_points
         .filter(elem => {
@@ -89,7 +89,21 @@ class Profile extends Component {
           <br />
           <div className='points_box'>
             <h3>House Points:</h3>
-            <h3 id='amount_of_points'>{xxx}</h3>
+            <h3
+              id={
+                this.state.userInfo.house === 'gryffindor'
+                  ? 'gryffindorText'
+                  : this.state.userInfo.house === 'ravenclaw'
+                  ? 'ravenclawText'
+                  : this.state.userInfo.house === 'slytherin'
+                  ? 'slytherinText'
+                  : this.state.userInfo.house === 'hufflepuff'
+                  ? 'hufflepuffText'
+                  : null
+              }
+            >
+              {amount_of_points}
+            </h3>
           </div>
           <br />
           <div className='bottom'>
