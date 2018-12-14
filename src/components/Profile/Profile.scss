@@ -137,15 +137,14 @@ $hufflepuff_yellow: #ecb939;
       border-radius: 1%;
       border-radius: 3px;
       button {
-		margin-left: 11.5vw;
+        margin-left: 11.5vw;
         background: black;
-		color: white;
-		width: 30px;
-        border-radius: 80%;
+        color: white;
+        width: 30px;
+        border-radius: 50%;
+        transition-duration: 0.1s;
       }
-      button:hover {
-        background: red;
-      }
+
       button:active {
         box-shadow: 0 5px #666;
         transform: translateY(2px);
@@ -180,4 +179,23 @@ $hufflepuff_yellow: #ecb939;
 
 #hufflepuffText {
   color: $hufflepuff_yellow;
+}
+
+@media (max-width: 375px) {
+  .profile_container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background: #e3e1e1;
+    height: 90vh;
+    width: 90vw;
+    position: relative;
+    margin-top: 10vh;
+    .inner_div_right {
+      width: 100vw;
+    }
+    .inner_div_left {
+      display: none;
+    }
+  }
 }
