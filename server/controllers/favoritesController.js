@@ -39,6 +39,7 @@ module.exports = {
 			.catch((err) => res.status(500).send(err));
 	},
 	deleteBookmark: (req, res, next) => {
+		console.log('pleaaaaaase get bookmarks', req.params)
 		req.app
 			.get('db')
 			.query(

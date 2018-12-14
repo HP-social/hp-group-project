@@ -17,7 +17,8 @@ class Profile extends Component {
       },
       house_points: null,
       default_message: 'Enter New Passphrase...',
-      houseStudents: []
+      houseStudents: [],
+      pinned_bookmarks: []
     };
   }
 
@@ -28,6 +29,9 @@ class Profile extends Component {
     axios
       .get('/api/getauxpoints')
       .then(results => this.setState({ house_points: results.data }));
+    axios
+      .get(`/api/pins/${this.props.user.wizard_id}`)
+      .then(results => this.setState({cards: results.data}))
   }
 
   sendNewPassword = async () => {
@@ -48,7 +52,8 @@ class Profile extends Component {
   };
 
   render() {
-    let cards = ['One', 'Two', 'Three'].map((e, i) => {
+    console.log(this.props.user)
+    let cards = this.state.pinned_bookmarks.map((e, i) => {
       return (
         <div key={i} className='card'>
           Title: {e}
