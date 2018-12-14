@@ -84,7 +84,6 @@ module.exports = {
 			.then((result) => {
 				res.status(200).json(result);
 			})
-			.then((response) => res.status(200).json(response))
 			.catch((err) => res.status(500).send(err));
 	},
 	deleteSubscription: (req, res, next) => {

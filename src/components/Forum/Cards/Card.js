@@ -33,7 +33,7 @@ class Card extends Component {
 				this.setState({ isBookmarked: true });
 			}
 		});
-		this.setState({ likeNumber: this.props.post.likes });
+		// this.setState({ likeNumber: this.props.post.likes });
 		// axios
 		// 	.get(`/api/post/${this.props.post_id}`)
 		// 	.then((result) => this.setState({ post: result.data }));
@@ -110,7 +110,13 @@ class Card extends Component {
 		].map((e, i) => {
 			return (
 				<div className='card' key={i}>
-					<img src={bottomIcon[i]} alt='icons' />
+					<img
+						className={
+							this.state.isLiked ? this.props.user.house + 'Selected' : 'fun'
+						}
+						src={bottomIcon[i]}
+						alt='icons'
+					/>
 					<h3>{e}</h3>
 				</div>
 			);
@@ -220,7 +226,28 @@ class Card extends Component {
 							<div className='text_area'>{e.post}</div>
 						</div>
 						<div className={e.house + '_top_bottom' + ' bottom_container'}>
-							{bottomDiv}
+							<div className='card' key={i}>
+								<img
+									className={this.state.isLiked && e.house + '_Selected'}
+									src='https://image.flaticon.com/icons/svg/149/149217.svg'
+									alt='icons'
+								/>
+							</div>
+							<div className='card' key={i}>
+								<Link to={`/post/${this.props.post.post_id}`}>
+									<img
+										src='https://image.flaticon.com/icons/svg/134/134797.svg'
+										alt='icons'
+									/>
+								</Link>
+							</div>
+							<div className='card' key={i}>
+								<img
+									className={this.state.isBookmarked && e.house + '_Selected'}
+									src='https://image.flaticon.com/icons/svg/1174/1174410.svg'
+									alt='icons'
+								/>
+							</div>
 						</div>
 					</div>
 				</>
