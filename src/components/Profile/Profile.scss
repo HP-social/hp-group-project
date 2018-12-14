@@ -141,7 +141,6 @@ $hufflepuff_yellow: #ecb939;
 }
 
 .points_box {
-<<<<<<< HEAD
   border: 1px solid grey;
   padding-right: 2vw;
   display: flex;
@@ -153,16 +152,6 @@ $hufflepuff_yellow: #ecb939;
     padding-left: 1vw;
     color: $slytherin_green;
   }
-=======
-	border: 1px solid grey;
-	padding-right: 2vw;
-	display: flex;
-	#amount_of_points {
-		font-weight: bold;
-		padding-left: 1vw;
-		color: $slytherin_green;
-	}
->>>>>>> master
 }
 #slytherinText {
   color: $slytherin_green;
