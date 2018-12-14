@@ -22,28 +22,6 @@ class Card extends Component {
 		};
 	}
 
-	componentDidMount() {
-		// axios.get(`/api/isLiked/${this.props.post_id}`).then((result) => {
-		// 	if (result.data.length > 0) {
-		// 		this.setState({ isLiked: true });
-		// 	}
-		// });
-		// axios.get(`/api/isBookmarked/${this.props.post_id}`).then((result) => {
-		// 	if (result.data.length > 0) {
-		// 		this.setState({ isBookmarked: true });
-		// 	}
-		// });
-		// axios
-		// 	.get(`/api/post/${this.props.post_id}`)
-		// 	.then((result) => this.setState({ post: result.data }));
-		// axios
-		// 	.get(`/api/likes/${this.props.post_id}`)
-		// 	.then((result) => this.setState({ likeNumber: result.data }));
-		// axios
-		// 	.get(`/api/comments/${this.props.post_id}`)
-		// 	.then((result) => this.setState({ commentNumber: result.data }));
-	}
-
 	editChanger() {
 		if (this.props.user.wizard_id == this.props.post.wizard_id) {
 			this.setState({ edit: !this.state.edit }, () =>
@@ -76,7 +54,6 @@ class Card extends Component {
 		axios
 			.put(`/api/post/${this.props.post.post_id}`, updatedPost)
 			.then(() => this.posted());
-		// console.log(updatedPost);
 	}
 
 	hide() {
@@ -208,7 +185,6 @@ class Card extends Component {
 						</div>
 						<div className='mid_title' onClick={() => this.hide()}>
 							{e.title}
-							{/* <div className='triangle' /> */}
 						</div>
 						<div className='media_container'>
 							{e.gif === null || e.gif === '' ? null : (
