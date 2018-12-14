@@ -29,10 +29,19 @@ class Profile extends Component {
     axios
       .get('/api/getauxpoints')
       .then(results => this.setState({ house_points: results.data }));
+    this.getBookMarks();
+  }
+
+  getBookMarks = () => {
     axios
       .get(`/api/pins/${this.props.user.wizard_id}`)
-      .then(results => this.setState({cards: results.data}))
-  }
+      .then(results => this.setState({ pinned_bookmarks: results.data }));
+  };
+
+  delete_pinned_bookmark = id => {
+    axios.delete(`/api/deletebookmark/${id.post_id}`);
+    this.getBookMarks();
+  };
 
   sendNewPassword = async () => {
     const { default_message } = this.state;
@@ -52,11 +61,11 @@ class Profile extends Component {
   };
 
   render() {
-    console.log(this.props.user)
     let cards = this.state.pinned_bookmarks.map((e, i) => {
       return (
         <div key={i} className='card'>
-          Title: {e}
+          Title: {e.title}
+          <button onClick={() => this.delete_pinned_bookmark(e)}>X</button>
         </div>
       );
     });
