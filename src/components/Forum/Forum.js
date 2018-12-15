@@ -37,8 +37,8 @@ class Forum extends Component {
 		if (this.state.isSubbed) {
 			axios
 				.delete(`/api/deletesubscription/${this.props.match.params.id}`)
-				.then(() => this.setState({ isSubbed: this.state.isSubbed }));
-		} else if (!this.state.isSubbed) {
+				.then(() => this.setState({ isSubbed: !this.state.isSubbed }));
+		} else {
 			axios
 				.post(`/api/addsubscription/${this.props.match.params.id}`)
 				.then(() => this.setState({ isSubbed: !this.state.isSubbed }));
