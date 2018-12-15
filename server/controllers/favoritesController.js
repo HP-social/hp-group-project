@@ -46,6 +46,7 @@ module.exports = {
 					req.session.user.wizard_id
 				}`
 			)
+			.then((result) => res.status(200).json(result))
 			.catch((err) => res.status(500).send(err));
 	},
 	addBookmark: (req, res, next) => {

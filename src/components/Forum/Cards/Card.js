@@ -57,6 +57,30 @@ class Card extends Component {
 		}
 	}
 
+	bookmark() {
+		if (this.state.isBookmarked) {
+			axios
+				.delete(`/api/deletebookmark/${this.props.post.post_id}`)
+				.then(() => this.setState({ isBookmarked: !this.state.isBookmarked }));
+		} else if (!this.state.isBookmarked) {
+			axios
+				.post(`/api/addbookmark/${this.props.post.post_id}`)
+				.then(() => this.setState({ isBookmarked: !this.state.isBookmarked }));
+		}
+	}
+
+	like() {
+		if (this.state.isLiked) {
+			axios
+				.delete(`/api/deletepostlike/${this.props.post.post_id}`)
+				.then(() => this.setState({ isLiked: !this.state.isLiked }));
+		} else if (!this.state.isLiked) {
+			axios
+				.post(`/api/addpostlike/${this.props.post.post_id}`)
+				.then(() => this.setState({ isLiked: !this.state.isLiked }));
+		}
+	}
+
 	posted() {
 		this.editChanger();
 		this.props.setPosts();
@@ -226,23 +250,26 @@ class Card extends Component {
 						<div className={e.house + '_top_bottom' + ' bottom_container'}>
 							<div className='card' key={i}>
 								<img
+									onClick={() => this.like()}
+									id='star'
 									className={this.state.isLiked && e.house + '_Selected'}
-									src='https://image.flaticon.com/icons/svg/149/149217.svg'
+									src='https://s3.us-east-2.amazonaws.com/hpsocial/baseline-star_rate-18px.svg'
 									alt='icons'
 								/>
 							</div>
 							<div className='card' key={i}>
 								<Link to={`/post/${this.props.post.post_id}`}>
 									<img
-										src='https://image.flaticon.com/icons/svg/134/134797.svg'
+										src='https://s3.us-east-2.amazonaws.com/hpsocial/baseline-comment-24px.svg'
 										alt='icons'
 									/>
 								</Link>
 							</div>
 							<div className='card' key={i}>
 								<img
+									onClick={() => this.bookmark()}
 									className={this.state.isBookmarked && e.house + '_Selected'}
-									src='https://image.flaticon.com/icons/svg/1174/1174410.svg'
+									src='https://s3.us-east-2.amazonaws.com/hpsocial/baseline-bookmark-24px.svg'
 									alt='icons'
 								/>
 							</div>

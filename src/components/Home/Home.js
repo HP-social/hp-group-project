@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './Home.scss';
 
@@ -51,13 +52,9 @@ class Home extends Component {
 	}
 
 	componentDidMount() {
-		setTimeout(
-			() =>
-				axios
-					.get(`/api/news/${this.props.user.wizard_id}`)
-					.then((result) => this.setState({ posts: result.data })),
-			3000
-		);
+		axios
+			.get(`/api/news/${this.props.user.wizard_id}`)
+			.then((result) => this.setState({ posts: result.data }));
 
 		axios.get('http://ipinfo.io').then((result) =>
 			this.setState(
@@ -89,10 +86,13 @@ class Home extends Component {
 	render() {
 		let cards = this.state.posts.map((e, i) => (
 			<div className='news_card' key={i}>
-				<h1>{e.title}</h1>
+				<Link to={`/post/${e.post_id}`}>
+					<h1>{e.title}</h1>
+				</Link>
 				<div className='line' />
 				<br />
 				<img src={e.gif} alt='gif' />
+				<Link to={`/foum/${e.forum_id}`} />
 				<div>Room:{e.location}</div>
 			</div>
 		));
@@ -133,9 +133,13 @@ class Home extends Component {
 			return (
 				<div key={i} className='collumn'>
 					<div className='head'>
-						<span className={styles[i].title}>{e.title}</span>
+						<Link to={`/post/${e.post_id}`}>
+							<span className={styles[i].title}>{e.title}</span>
+						</Link>
 						<div className='p'>
-							<span className={styles[i].username}>by {e.username}</span>
+							<Link to={`/profile/${e.wizard_id}`}>
+								<span className={styles[i].username}>by {e.username}</span>
+							</Link>
 						</div>
 					</div>
 
@@ -144,10 +148,12 @@ class Home extends Component {
 						{e.post.slice(0, parseInt(e.post.length / 4))}
 					</div>
 					<figure className='figure'>
-						<img className='media' src={e.gif} alt='' />
-						<figcaption className='figcaption'>
-							Location: {e.location}
-						</figcaption>
+						<Link to={`/forum/${e.forum_id}`}>
+							<img className='media' src={e.gif} alt='' />
+							<figcaption className='figcaption'>
+								Location: {e.location}
+							</figcaption>
+						</Link>
 					</figure>
 					<div className='p'>{e.post.slice(parseInt(e.post.length / 4))}</div>
 				</div>

@@ -23,7 +23,11 @@ const {
 	addSubscription,
 	addBookmark,
 	getPins,
-	isSubscribed
+	isSubscribed,
+	addPostLike,
+	deletePostLike,
+	addCommentLike,
+	deleteCommentLike
 } = require('./controllers/favoritesController');
 const {
 	getPosts,
@@ -180,6 +184,10 @@ app.delete('/api/deletesubscription/:id', deleteSubscription);
 app.post('/api/addbookmark/:id', addBookmark);
 app.post('/api/addsubscription/:id', addSubscription);
 app.get('/api/issubscribed/:id', isSubscribed);
+app.post('/api/addpostlike/:id', addPostLike);
+app.delete('/api/deletepostlike/:id', deletePostLike);
+app.post('/api/addcommentlike/:id', addCommentLike);
+app.delete('/api/deletecommentlike/:id', deleteCommentLike);
 
 // ***** Forum Endpoints ****
 app.get('/api/forum/posts/:id', getPosts); //likes comes in as a string
