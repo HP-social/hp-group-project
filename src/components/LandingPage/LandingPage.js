@@ -44,11 +44,11 @@ class LandingPage extends Component {
           <a href='#WelcomeWizards'>
             <h1>Welcome Muggles</h1>
           </a>
-          <section class='example example--2'>
+          {/* <section class='example example--2'>
             <span class='scroll-icon'>
               <span class='scroll-icon__dot' />
             </span>
-          </section>
+          </section> */}
         </div>
         <div class='photo_after'>
           <h1 id='WelcomeWizards'>Welcome Wizards</h1>
