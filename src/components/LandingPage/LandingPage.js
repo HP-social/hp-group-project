@@ -41,10 +41,17 @@ class LandingPage extends Component {
     return (
       <div className='main_landing'>
         <div class='photo_before'>
-          <h1>Welcome Muggles</h1>
+          <a href='#WelcomeWizards'>
+            <h1>Welcome Muggles</h1>
+          </a>
+          <section class='example example--2'>
+            <span class='scroll-icon'>
+              <span class='scroll-icon__dot' />
+            </span>
+          </section>
         </div>
         <div class='photo_after'>
-          <h1>Welcome Wizards</h1>
+          <h1 id='WelcomeWizards'>Welcome Wizards</h1>
         </div>
         <div className='mid_container'>{cardTitle}</div>
         <div className='bottom_container'>
