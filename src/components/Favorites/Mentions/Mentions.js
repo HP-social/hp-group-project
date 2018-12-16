@@ -43,7 +43,9 @@ class Mentions extends Component {
 		));
 		return (
 			<div className='fav'>
-				<HouseHeader house={this.props.user.house}>Mentions</HouseHeader>
+				<HouseHeader noButton='nope' house={this.props.user.house}>
+					Mentions
+				</HouseHeader>
 				<div className={this.props.user.house + 'Back mention_header'}>
 					<div
 						onClick={() => this.changeMention(true)}

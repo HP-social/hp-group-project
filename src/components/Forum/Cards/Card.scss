@@ -6,7 +6,15 @@ $ravenclaw_blue: #0e1a40;
 $ravenclaw_bronze: #946b2d;
 $hufflepuff_black: #372e29;
 $hufflepuff_yellow: #ecb939;
-
+.new_title {
+	margin: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 80%;
+	align-self: center;
+	background: none;
+}
 .card_main {
 	position: relative;
 	display: flex;
@@ -28,15 +36,15 @@ $hufflepuff_yellow: #ecb939;
 		max-width: 300px;
 	}
 
-	.new_title {
-		margin: 10px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 80%;
-		align-self: center;
-		background: none;
-	}
+	// .new_title {
+	// 	margin: 10px;
+	// 	display: flex;
+	// 	align-items: center;
+	// 	justify-content: center;
+	// 	width: 80%;
+	// 	align-self: center;
+	// 	background: none;
+	// }
 
 	.new_buttons {
 		display: flex;
@@ -130,7 +138,7 @@ $hufflepuff_yellow: #ecb939;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		height: 5vh;
+		height: 30px;
 		width: 85%;
 		.card {
 			width: 100%;
@@ -144,10 +152,18 @@ $hufflepuff_yellow: #ecb939;
 			}
 			img {
 				height: 30px;
+				width: 30px;
+				margin: 10px;
 				padding-right: 2%;
+				// filter: invert(100%);
+			}
+			#star {
+				width: 45px;
+				height: 45px;
 			}
 			img:hover {
-				background: red;
+				// background: red;
+				cursor: pointer;
 			}
 		}
 	}
