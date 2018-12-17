@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import './Subscriptions.scss';
 import HouseHeader from '../../Tools/HouseHeader/HouseHeader';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class Subscriptions extends Component {
 	constructor(props) {
@@ -26,23 +27,23 @@ class Subscriptions extends Component {
 		axios.delete(`/api/deletesubscription/${id}`).then(() => this.getSubs());
 	};
 
-	render() {
-		let subsCards = this.state.subscriptions.map((e, i) => {
-			return (
-				<div className='subs_contents' key={i}>
-					<div>
-						<h1>{e.location}</h1>
-					</div>
-					<div className='inside_right'>
-						<img
-							onClick={() => this.deleteSubscription(e.forum_id)}
-							src='https://s3.amazonaws.com/hp-project/unsubscribe24px.svg'
-							alt='unsubscribe'
-						/>
-					</div>
-				</div>
-			);
-		});
+  render() {
+    let subsCards = this.state.subscriptions.map((e, i) => {
+      return (
+        <div className='subs_contents' key={i}>
+          <>
+            <Link to={`/forum/${e.forum_id}`}><h1>{e.location}</h1></Link>
+          </>
+          <div className='inside_right'>
+            <img
+              onClick={() => this.deleteSubscription(e.forum_id)}
+              src='https://s3.amazonaws.com/hp-project/unsubscribe24px.svg'
+              alt='unsubscribe'
+            />
+          </div>
+        </div>
+      );
+    });
 
 		return (
 			<>
