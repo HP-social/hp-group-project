@@ -24,14 +24,14 @@ class Follows extends Component {
 	render() {
 		let follows = this.state.posts.map((post) => <Card post={post} />);
 		return (
-			<div className='fav'>
-				<div className='everything'>
-					<HouseHeader noButton='nope' house={this.props.user.house}>
-						follows
-					</HouseHeader>
-					{follows}
-				</div>
+			// <div className='fav'>
+			<div className='everything'>
+				<HouseHeader noButton='nope' house={this.props.user.house}>
+					follows
+				</HouseHeader>
+				{follows}
 			</div>
+			// </div>
 		);
 	}
 }
