@@ -102,6 +102,8 @@ class Forum extends Component {
 		});
 		return (
 			<div className='everything'>
+				{/* <>
+				<div className='confirmWhiteout' /><> */}
 				{this.state.forum.location && (
 					<HouseHeader
 						house={this.state.forum.location}

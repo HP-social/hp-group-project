@@ -85,19 +85,19 @@ class Comment extends Component {
 		let postTime = moment(this.props.post.time);
 		let duration = timeNow.diff(postTime, 'hours');
 
-		const bottomIcon = [
-			'https://image.flaticon.com/icons/svg/149/149217.svg',
-			'https://image.flaticon.com/icons/svg/1174/1174410.svg'
-		];
+		// const bottomIcon = [
+		// 	'https://image.flaticon.com/icons/svg/149/149217.svg',
+		// 	'https://image.flaticon.com/icons/svg/1174/1174410.svg'
+		// ];
 
-		const bottomDiv = ['Likes', 'Bookmarks'].map((e, i) => {
-			return (
-				<div className='card' key={i}>
-					<img src={bottomIcon[i]} alt='icons' />
-					<h3>{e}</h3>
-				</div>
-			);
-		});
+		// const bottomDiv = ['Likes', 'Bookmarks'].map((e, i) => {
+		// 	return (
+		// 		<div className='card' key={i}>
+		// 			<img src={bottomIcon[i]} alt='icons' />
+		// 			<h3>{e}</h3>
+		// 		</div>
+		// 	);
+		// });
 
 		const editCard = [this.props.post].map((e, i) => {
 			return (

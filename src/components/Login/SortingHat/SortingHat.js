@@ -35,11 +35,11 @@ class SortingHat extends Component {
 
 	componentDidMount() {
 		axios
-			.get('http://localhost:3001/api/quiz/questions')
+			.get('/api/quiz/questions')
 			.then((result) => this.setState({ questions: result.data }));
 
 		axios
-			.get('http://localhost:3001/api/quiz/answers')
+			.get('/api/quiz/answers')
 			.then((result) => this.setState({ answers: result.data }));
 	}
 	change() {
