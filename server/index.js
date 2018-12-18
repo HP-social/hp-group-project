@@ -27,7 +27,8 @@ const {
 	addPostLike,
 	deletePostLike,
 	addCommentLike,
-	deleteCommentLike
+	deleteCommentLike,
+	isCommentLiked
 } = require('./controllers/favoritesController');
 const {
 	getPosts,
@@ -188,6 +189,7 @@ app.post('/api/addpostlike/:id', addPostLike);
 app.delete('/api/deletepostlike/:id', deletePostLike);
 app.post('/api/addcommentlike/:id', addCommentLike);
 app.delete('/api/deletecommentlike/:id', deleteCommentLike);
+app.get('/api/iscommentliked/:id', isCommentLiked);
 
 // ***** Forum Endpoints ****
 app.get('/api/forum/posts/:id', getPosts); //likes comes in as a string
