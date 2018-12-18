@@ -42,7 +42,7 @@ class Mentions extends Component {
 			<Comment post={comment} />
 		));
 		return (
-			<div className='fav'>
+			<div className='everything'>
 				<HouseHeader noButton='nope' house={this.props.user.house}>
 					Mentions
 				</HouseHeader>

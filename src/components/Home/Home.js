@@ -145,7 +145,10 @@ class Home extends Component {
 
 					{/* <p>{e.post}</p> */}
 					<div className='p'>
-						{e.post.slice(0, parseInt(e.post.length / 4))}
+						{e.post
+							.split(' ')
+							.slice(0, parseInt(e.post.split(' ').length / 4))
+							.join(' ')}
 					</div>
 					<figure className='figure'>
 						<Link to={`/forum/${e.forum_id}`}>
@@ -155,7 +158,12 @@ class Home extends Component {
 							</figcaption>
 						</Link>
 					</figure>
-					<div className='p'>{e.post.slice(parseInt(e.post.length / 4))}</div>
+					<div className='p'>
+						{e.post
+							.split(' ')
+							.slice(parseInt(e.post.split(' ').length / 4))
+							.join(' ')}
+					</div>
 				</div>
 			);
 		});

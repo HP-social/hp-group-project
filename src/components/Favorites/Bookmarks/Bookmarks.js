@@ -29,10 +29,12 @@ class Bookmarks extends Component {
 		let bookmarks = this.state.bookmarks.map((post) => <Card post={post} />);
 		return (
 			<div className='fav'>
-				<HouseHeader noButton='nope' house={this.props.user.house}>
-					Bookmarks
-				</HouseHeader>
-				<div className='forum_card'>{bookmarks}</div>
+				<div className='everything'>
+					<HouseHeader noButton='nope' house={this.props.user.house}>
+						Bookmarks
+					</HouseHeader>
+					<div className='forum_card'>{bookmarks}</div>
+				</div>
 			</div>
 		);
 	}

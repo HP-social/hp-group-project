@@ -7,6 +7,8 @@ const { json } = require('body-parser');
 const cors = require('cors');
 const passport = require('passport');
 const AuthStrategy = require('passport-auth0');
+const path = require('path'); // Usually moved to the start of file
+
 // ***** Import Server Controllers ****
 const {
 	getFollowed,
@@ -27,7 +29,8 @@ const {
 	addPostLike,
 	deletePostLike,
 	addCommentLike,
-	deleteCommentLike
+	deleteCommentLike,
+	isCommentLiked
 } = require('./controllers/favoritesController');
 const {
 	getPosts,
@@ -70,7 +73,7 @@ const {
 
 const session = require('express-session');
 
-const port = 3001;
+const port = process.env.PORT || 3001;
 
 const app = express();
 app.use(json());
@@ -78,7 +81,7 @@ app.use(cors());
 
 // ***** ExpressStatic ****
 
-// app.use(express.static(__dirname + "/../public/build/"));
+app.use(express.static(`${__dirname}/../build/`));
 
 // ***** Sessions Setup ****
 app.use(
@@ -188,6 +191,7 @@ app.post('/api/addpostlike/:id', addPostLike);
 app.delete('/api/deletepostlike/:id', deletePostLike);
 app.post('/api/addcommentlike/:id', addCommentLike);
 app.delete('/api/deletecommentlike/:id', deleteCommentLike);
+app.get('/api/iscommentliked/:id', isCommentLiked);
 
 // ***** Forum Endpoints ****
 app.get('/api/forum/posts/:id', getPosts); //likes comes in as a string
@@ -215,6 +219,10 @@ app.get('/api/message/allfriends/:id', getFriends);
 app.post('/api/sendEmail1', sendEmail1);
 app.get('/api/emails', getHouseEmails);
 // app.post('/api/sendEmail2', sendEmail2);
+
+app.get('*', (req, res) => {
+	res.sendFile(path.join(__dirname, '../build/index.html'));
+});
 
 app.listen(port, () => {
 	console.log(`Port ${port} is listening...`);
