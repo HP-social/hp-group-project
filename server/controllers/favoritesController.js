@@ -219,5 +219,14 @@ module.exports = {
 			})
 			.then((response) => res.status(200).json(response))
 			.catch((err) => res.status(500).send(err));
+	},
+	isCommentLiked: (req, res, next) => {
+		req.app
+			.get('db')
+			.query(
+				`select * from comment_likes where comment_id=${
+					req.params.id
+				} and wizard_id=${req.session.user.wizard_id}`
+			);
 	}
 };

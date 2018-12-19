@@ -19,11 +19,11 @@ class Comment extends Component {
 	}
 
 	componentDidMount() {
-		// axios.get(`/api/isLiked/${this.props.post_id}`).then((result) => {
-		// 	if (result.data.length > 0) {
-		// 		this.setState({ isLiked: true });
-		// 	}
-		// });
+		axios.get(`/api/isCommentLiked/${this.props.post_id}`).then((result) => {
+			if (result.data.length > 0) {
+				this.setState({ isLiked: true });
+			}
+		});
 		// axios.get(`/api/isBookmarked/${this.props.post_id}`).then((result) => {
 		// 	if (result.data.length > 0) {
 		// 		this.setState({ isBookmarked: true });
@@ -45,6 +45,18 @@ class Comment extends Component {
 			this.setState({ edit: !this.state.edit }, () =>
 				this.setState({ comment: this.props.post.comment })
 			);
+		}
+	}
+
+	like() {
+		if (this.state.isLiked) {
+			axios
+				.delete(`/api/deletecommentlike/${this.props.post.post_id}`)
+				.then(() => this.setState({ isLiked: !this.state.isLiked }));
+		} else if (!this.state.isLiked) {
+			axios
+				.post(`/api/addcommentlike/${this.props.post.post_id}`)
+				.then(() => this.setState({ isLiked: !this.state.isLiked }));
 		}
 	}
 
@@ -73,19 +85,19 @@ class Comment extends Component {
 		let postTime = moment(this.props.post.time);
 		let duration = timeNow.diff(postTime, 'hours');
 
-		const bottomIcon = [
-			'https://image.flaticon.com/icons/svg/149/149217.svg',
-			'https://image.flaticon.com/icons/svg/1174/1174410.svg'
-		];
+		// const bottomIcon = [
+		// 	'https://image.flaticon.com/icons/svg/149/149217.svg',
+		// 	'https://image.flaticon.com/icons/svg/1174/1174410.svg'
+		// ];
 
-		const bottomDiv = ['Likes', 'Bookmarks'].map((e, i) => {
-			return (
-				<div className='card' key={i}>
-					<img src={bottomIcon[i]} alt='icons' />
-					<h3>{e}</h3>
-				</div>
-			);
-		});
+		// const bottomDiv = ['Likes', 'Bookmarks'].map((e, i) => {
+		// 	return (
+		// 		<div className='card' key={i}>
+		// 			<img src={bottomIcon[i]} alt='icons' />
+		// 			<h3>{e}</h3>
+		// 		</div>
+		// 	);
+		// });
 
 		const editCard = [this.props.post].map((e, i) => {
 			return (
@@ -166,7 +178,20 @@ class Comment extends Component {
 						</div>
 
 						<div className='text_area'>{e.comment}</div>
-						<div className='bottom_container'>{bottomDiv}</div>
+						<div className='bottom_container'>
+							{' '}
+							<div className={e.house + '_top_bottom' + ' bottom_container'}>
+								<div className='card' key={i}>
+									<img
+										onClick={() => this.like()}
+										id='star'
+										className={this.state.isLiked && e.house + '_Selected'}
+										src='https://s3.us-east-2.amazonaws.com/hpsocial/baseline-star_rate-18px.svg'
+										alt='icons'
+									/>
+								</div>
+							</div>
+						</div>
 					</div>
 				</>
 			);

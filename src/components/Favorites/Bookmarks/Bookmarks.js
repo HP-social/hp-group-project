@@ -28,7 +28,7 @@ class Bookmarks extends Component {
 	render() {
 		let bookmarks = this.state.bookmarks.map((post) => <Card post={post} />);
 		return (
-			<div className='fav'>
+			<div className='everything'>
 				<HouseHeader noButton='nope' house={this.props.user.house}>
 					Bookmarks
 				</HouseHeader>
