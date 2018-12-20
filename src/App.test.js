@@ -15,6 +15,9 @@ import BottomNav from './components/Navigation/BottomNav';
 import Profile from './components/Profile/Profile';
 import SortingHat from './components/Login/SortingHat/SortingHat';
 import Subscriptions from './components/Favorites/Subscriptions/Subscriptions';
+import Card from './components/Forum/Cards/Card';
+import Snitch from './components/Snitch/Snitch';
+import Tweet from './components/Tweet/Tweet';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -94,24 +97,49 @@ test('Profile Comonent followYou count should be 0', () => {
   expect(wrapper.props().followingYou.count).toBe(0);
 });
 
-//MOUNT
-test('profile component following you count to be 0', () => {
+//1
+test('the position object inside SortingHat has a property - position - equal to 0', () => {
   const store = mockStore(initialState);
-  const wrapper = mount(<Profile store={store} />);
-  expect(wrapper.props().followingYou.count).toBe(0);
+  const wrapper = shallow(
+    <SortingHat position={{ position: 0 }} store={store} />
+  );
+  expect(wrapper.props().position.position).toEqual(0);
 });
 
+//2
+test('if the SortingHat component renders', () => {
+  const store = mockStore(initialState);
+  const wrapper = shallow(<SortingHat store={store} />);
+  expect(wrapper.exists()).toBe(true);
+});
+
+//3
 describe('SortingHat', () => {
-  it('displays an index less than 18 upon loading the page', () => {
-    const store = mockStore(initialState);
-    const sortingHat = shallow(<SortingHat store={store} />);
-    expect(sortingHat.state('index')).toBe(undefined);
+  describe('when makeATweet is false', () => {
+    it('should render children', () => {
+      const wrapper = mount(<SortingHat makeATweet={false} store={store} />);
+      expect(wrapper.html()).toEqual(
+        '<div class="theQuiz"><div class="sortingHatQuestionBox"><div id="quiz_name">Sorting Hat Quiz</div><img class="sortingHatPicture" src="https://www.hp-lexicon.org/wp-content/uploads/2016/09/the_sorting_hat_by_sahinduezguen-d47mwt5.png" alt="text"><div class="sortingHatQuestion"></div><div class="sortingHatAnswers"></div></div></div>'
+      );
+      wrapper.unmount();
+    });
   });
 });
+
+//4
 describe('SortingHat', () => {
-  it('has a sortingHatPicture', () => {
-  const store = mockStore(initialState);
-  const wrapper = mount(<SortingHat store={store} />);
-  expect(wrapper.find('.sortingHatPicture').hasClass('sortingHatPicture')).to.equal(undefined);
+  it('should render correctly in "debug" mode', () => {
+    const component = shallow(<SortingHat store={store} debug />);
+    expect(component).toMatchSnapshot();
+  });
 });
+
+//5
+describe('Tweet', () => {
+  it('should render initial layout', () => {
+    // when
+    const component = shallow(<Tweet store={store} />);
+    // then
+    expect(component.getElements()).toMatchSnapshot();
+  });
 });
