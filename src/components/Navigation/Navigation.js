@@ -496,7 +496,7 @@ class Navigation extends React.Component {
 						))}
 					</List>
 					<Divider />
-					<List>
+					<List> 
 						{['Commons', 'Map', 'Bookmarks', 'Stairwell'].map((text, index) => (
 							<Link to={dynamicLinkBottom[index]} key={text}>
 								<ListItem button>
